@@ -1,0 +1,168 @@
+---
+import Container from "../ui/Container.astro";
+import Button from "../ui/Button.astro";
+
+const clients = [
+    {
+        name: "Starbucks",
+        logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Hilton_logo.svg/512px-Hilton_logo.svg.png",
+    },
+    {
+        name: "Burger King",
+        logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Burger_King_2020.svg/512px-Burger_King_2020.svg.png",
+    },
+    {
+        name: "Hotel Four Seasons",
+        logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Logo_CEMACO.png/512px-Logo_CEMACO.png",
+    },
+    {
+        name: "Marriott",
+        logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Cerveza_Gallo_logo.png/512px-Cerveza_Gallo_logo.png",
+    },
+    {
+        name: "Pharaos Casinos",
+        logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Pollo_Campero_Logo.svg/512px-Pollo_Campero_Logo.svg.png",
+    },
+    {
+        name: "Starbucks",
+        logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Hilton_logo.svg/512px-Hilton_logo.svg.png",
+    },
+    {
+        name: "Burger King",
+        logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Burger_King_2020.svg/512px-Burger_King_2020.svg.png",
+    },
+    {
+        name: "Hotel Four Seasons",
+        logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Logo_CEMACO.png/512px-Logo_CEMACO.png",
+    },
+    {
+        name: "Marriott",
+        logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Cerveza_Gallo_logo.png/512px-Cerveza_Gallo_logo.png",
+    },
+    {
+        name: "Pharaos Casinos",
+        logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Pollo_Campero_Logo.svg/512px-Pollo_Campero_Logo.svg.png",
+    },
+    {
+        name: "Molino Coffee Shop",
+        logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Hilton_logo.svg/512px-Hilton_logo.svg.png",
+    },
+    {
+        name: "Guacalito Nicaragua",
+        logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Burger_King_2020.svg/512px-Burger_King_2020.svg.png",
+    },
+    {
+        name: "Rancho Santana",
+        logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Logo_CEMACO.png/512px-Logo_CEMACO.png",
+    },
+    {
+        name: "HYATT Place",
+        logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Cerveza_Gallo_logo.png/512px-Cerveza_Gallo_logo.png",
+    },
+    {
+        name: "Porter House Steak",
+        logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Pollo_Campero_Logo.svg/512px-Pollo_Campero_Logo.svg.png",
+    },
+    {
+        name: "ZacateLimon",
+        logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Hilton_logo.svg/512px-Hilton_logo.svg.png",
+    },
+    {
+        name: "Real Intercontinental Metrocentro",
+        logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Burger_King_2020.svg/512px-Burger_King_2020.svg.png",
+    },
+];
+---
+
+<section class="py-24 bg-card border-b border-border overflow-hidden">
+    <Container>
+        <div class="grid lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-4">
+                <h2
+                    class="text-3xl font-heading font-black text-foreground mb-4"
+                >
+                    Confianza que Trasciende
+                </h2>
+                <p class="text-muted-foreground mb-8">
+                    Más de 27 años de experiencia implementando tecnología en el
+                    sector corporativo y hospitalidad a nivel regional.
+                </p>
+                <div class="flex gap-8">
+                    <div>
+                        <p class="text-3xl font-bold text-primary-600 mb-1">
+                            +27
+                        </p>
+                        <p
+                            class="text-xs font-bold uppercase tracking-wider text-muted-foreground"
+                        >
+                            Años Exp.
+                        </p>
+                    </div>
+                    <div>
+                        <p class="text-3xl font-bold text-primary-600 mb-1">
+                            30+
+                        </p>
+                        <p
+                            class="text-xs font-bold uppercase tracking-wider text-muted-foreground"
+                        >
+                            Clientes Activos
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-8 overflow-hidden relative">
+                <!-- Fog overlays for smooth scrolling effect -->
+                <div
+                    class="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-card to-transparent z-10 pointer-events-none"
+                >
+                </div>
+                <div
+                    class="absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-card to-transparent z-10 pointer-events-none"
+                >
+                </div>
+
+                <div
+                    class="flex items-center gap-14 opacity-60 grayscale hover:grayscale-0 transition-all duration-500 animate-scroll"
+                >
+                    {
+                        clients.map((client) => (
+                            <div class="flex-shrink-0 w-32 h-20 flex items-center justify-center">
+                                <span class="text-lg font-bold text-muted-foreground">
+                                    {client.name}
+                                </span>
+                            </div>
+                        ))
+                    }
+                    {/* Duplicate for infinite effect */}
+                    {
+                        clients.map((client) => (
+                            <div class="flex-shrink-0 w-32 h-16 flex items-center justify-center">
+                                <span class="text-lg font-bold text-muted-foreground">
+                                    {client.name}
+                                </span>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+        </div>
+    </Container>
+</section>
+
+<style>
+    .animate-scroll {
+        display: flex;
+        width: max-content;
+        animation: scroll 20s linear infinite;
+    }
+
+    @keyframes scroll {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(-50%);
+        }
+    }
+</style>

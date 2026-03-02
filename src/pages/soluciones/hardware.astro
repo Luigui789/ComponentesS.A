@@ -1,0 +1,67 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import Container from "../../components/ui/Container.astro";
+import CTA from "../../components/sections/CTA.astro";
+---
+
+<MainLayout
+    title="Hardware y Equipamiento POS"
+    description="Terminales, impresoras, y periféricos certificados de alta durabilidad."
+>
+    <section
+        class="pt-32 pb-24 bg-slate-900 text-white relative overflow-hidden"
+    >
+        <Container className="relative z-10 text-center max-w-4xl">
+            <h1 class="text-5xl md:text-6xl font-black mb-6">
+                Equipamiento Industrial
+            </h1>
+            <p class="text-xl text-slate-300 max-w-2xl mx-auto mb-8">
+                Hardware de grado comercial certificado por Oracle para soportar
+                las condiciones más exigentes en cocinas y áreas de alto
+                tráfico.
+            </p>
+        </Container>
+    </section>
+
+    <section class="py-24 bg-background">
+        <Container>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div
+                    class="border border-border rounded-2xl p-8 hover:shadow-lg transition-shadow bg-card"
+                >
+                    <img
+                        src="https://images.unsplash.com/photo-1591405018659-1fde0cce508b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                        alt="Terminal POS WS5A"
+                        class="w-full h-64 object-cover rounded-xl mb-6"
+                    />
+                    <h3 class="text-2xl font-bold mb-4">Terminales WS5A</h3>
+                    <p class="text-muted-foreground">
+                        Hardware de alta gama y robusto con múltiples puertos de
+                        conectividad para periféricos. Diseñado específicamente
+                        para resistir las condiciones intensas del punto de
+                        venta.
+                    </p>
+                </div>
+                <div
+                    class="border border-border rounded-2xl p-8 hover:shadow-lg transition-shadow bg-card"
+                >
+                    <img
+                        src="https://images.unsplash.com/photo-1524143878510-ce596f2a246d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                        alt="Impresoras Micros"
+                        class="w-full h-64 object-cover rounded-xl mb-6"
+                    />
+                    <h3 class="text-2xl font-bold mb-4">
+                        Impresoras de Tickets Micros
+                    </h3>
+                    <p class="text-muted-foreground">
+                        Integración nativa e impecable con impresoras de la
+                        marca Micros, asegurando una comunicación instantánea y
+                        una generación de tickets o comandas ininterrumpida.
+                    </p>
+                </div>
+            </div>
+        </Container>
+    </section>
+
+    <CTA />
+</MainLayout>

@@ -1,0 +1,92 @@
+---
+import Container from "../ui/Container.astro";
+import Card from "../ui/Card.astro";
+
+const testimonials = [
+    {
+        content:
+            "La implementación de Oracle Simphony revolucionó nuestra operación. Redujimos los tiempos de espera y mejoramos significativamente la experiencia de nuestros clientes en todas las sucursales.",
+        author: "Carlos Méndez",
+        role: "Director de Operaciones",
+        company: "Grupo Gastronómico Excelencia",
+        image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    },
+    {
+        content:
+            "El módulo Safiro FEL nos solucionó un dolor de cabeza administrativo gigante. Ahora la facturación es transparente, automática y 100% libre de errores manuales.",
+        author: "Ana Rodríguez",
+        role: "CFO",
+        company: "Cadena Hotelera Horizonte",
+        image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    },
+    {
+        content:
+            "Soporte 24/7 real y efectivo. Cuando tuvimos un pico de transacciones en temporada alta, el sistema ni parpadeó y el equipo técnico estuvo monitoreando todo el tiempo.",
+        author: "Javier López",
+        role: "Gerente General",
+        company: "Resorts del Caribe",
+        image: "https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    },
+];
+---
+
+<section class="py-24 bg-muted/30">
+    <Container>
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <h2
+                class="text-primary-600 font-bold tracking-wide uppercase text-sm mb-3"
+            >
+                Casos de Éxito
+            </h2>
+            <h3 class="text-4xl font-heading font-bold text-foreground mb-6">
+                Lo que Dicen Nuestros Clientes
+            </h3>
+            <p class="text-lg text-muted-foreground">
+                Empresas líderes confían en nuestras soluciones para operar de
+                manera eficiente y escalar sin límites. Descubre por qué nos
+                eligen.
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+            {
+                testimonials.map((testimonial) => (
+                    <Card className="p-8 hover:-translate-y-2 transition-transform duration-300">
+                        <div class="flex gap-1 text-secondary-500 mb-6">
+                            {[1, 2, 3, 4, 5].map(() => (
+                                <svg
+                                    class="w-5 h-5"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                >
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                </svg>
+                            ))}
+                        </div>
+                        <p class="text-foreground/80 text-lg italic mb-8 relative z-10">
+                            "{testimonial.content}"
+                        </p>
+                        <div class="flex items-center gap-4 mt-auto">
+                            <img
+                                src={testimonial.image}
+                                alt={testimonial.author}
+                                class="w-14 h-14 rounded-full object-cover border-2 border-primary-100"
+                            />
+                            <div>
+                                <p class="font-bold text-foreground">
+                                    {testimonial.author}
+                                </p>
+                                <p class="text-sm text-primary-600 font-medium">
+                                    {testimonial.role}
+                                </p>
+                                <p class="text-xs text-muted-foreground">
+                                    {testimonial.company}
+                                </p>
+                            </div>
+                        </div>
+                    </Card>
+                ))
+            }
+        </div>
+    </Container>
+</section>

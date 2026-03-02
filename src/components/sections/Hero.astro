@@ -1,0 +1,96 @@
+---
+import Button from "../ui/Button.astro";
+import Container from "../ui/Container.astro";
+---
+
+<section class="section-padding bg-background border-b border-border">
+    <Container>
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <div class="max-w-xl">
+                <div
+                    class="inline-flex items-center gap-2 px-3 py-1 rounded bg-muted text-foreground font-bold text-xs uppercase tracking-widest mb-6 border border-border"
+                >
+                    <span class="w-2 h-2 rounded-full bg-secondary-500"></span>
+                    Partner Oficial Oracle Hospitality
+                </div>
+
+                <h1
+                    class="text-4xl lg:text-5xl xl:text-6xl font-black text-foreground leading-tight mb-6"
+                >
+                    Control total con <br />
+                    <span class="text-primary-500">Safiro</span> y <span
+                        class="text-secondary-500">Simphony</span
+                    > de Oracle
+                </h1>
+
+                <p class="text-lg text-muted-foreground mb-8 leading-relaxed">
+                    Automatiza y optimiza la administración de tu empresa con el
+                    Sistema de Gestión Financiera y Contable Safiro. Una
+                    solución integral de Inversiones Arguello Tercero, S.A.
+                </p>
+
+                <div class="flex flex-wrap items-center gap-4">
+                    <Button
+                        href="/contacto"
+                        variant="primary"
+                        size="lg"
+                        className="rounded-md px-8"
+                    >
+                        Solicitar Demo
+                    </Button>
+                    <Button
+                        href="/soluciones/pos"
+                        variant="outline"
+                        size="lg"
+                        className="rounded-md px-8 text-foreground border-border hover:bg-muted"
+                    >
+                        Conocer Soluciones
+                    </Button>
+                </div>
+
+                <div
+                    class="mt-10 flex items-center gap-8 text-sm text-foreground font-bold uppercase tracking-wider"
+                >
+                    <div class="flex items-center gap-2">
+                        <svg
+                            class="w-5 h-5 text-secondary-500"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            ><path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M5 13l4 4L19 7"></path></svg
+                        >
+                        Soporte 24/7
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <svg
+                            class="w-5 h-5 text-secondary-500"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            ><path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M5 13l4 4L19 7"></path></svg
+                        >
+                        Implementación Rápida
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="relative w-full h-[500px] lg:h-[600px] rounded-xl overflow-hidden shadow-xl border border-border"
+            >
+                <img
+                    src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+                    alt="Sistema POS en restaurante moderno"
+                    class="object-cover w-full h-full"
+                />
+            </div>
+        </div>
+    </Container>
+</section>

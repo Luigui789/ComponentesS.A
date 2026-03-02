@@ -1,0 +1,62 @@
+---
+const menuItems = [
+    {
+        title: "POS Restaurantes (Simphony)",
+        description:
+            "Punto de venta líder mundial para gestionar restaurantes de cualquier tamaño.",
+        href: "/soluciones/pos",
+        icon: `<svg class="w-6 h-6 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>`,
+    },
+    {
+        title: "Facturación Electrónica (Safiro)",
+        description:
+            "Emite facturas electrónicas de forma rápida, segura y cumpliendo la normativa.",
+        href: "/soluciones/facturacion",
+        icon: `<svg class="w-6 h-6 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>`,
+    },
+    {
+        title: "Gestión Hotelera (Opera)",
+        description:
+            "Software de Property Management System para cadenas y hoteles independientes.",
+        href: "/soluciones/hotelero",
+        icon: `<svg class="w-6 h-6 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>`,
+    },
+    {
+        title: "Hardware y Equipamiento",
+        description:
+            "Terminales, impresoras, y periféricos certificados de alta durabilidad.",
+        href: "/soluciones/hardware",
+        icon: `<svg class="w-6 h-6 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>`,
+    },
+];
+---
+
+<div
+    class="absolute top-full left-1/2 -translate-x-1/2 pt-4 w-[600px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50"
+>
+    <div
+        class="bg-card shadow-xl border border-border rounded-xl p-6 grid grid-cols-2 gap-4"
+    >
+        {
+            menuItems.map((item) => (
+                <a
+                    href={item.href}
+                    class="flex items-start gap-4 p-3 rounded-lg hover:bg-muted transition-colors group/item"
+                >
+                    <div
+                        class="p-2 bg-primary-50 rounded-lg group-hover/item:bg-white transition-colors"
+                        set:html={item.icon}
+                    />
+                    <div>
+                        <h4 class="font-medium text-foreground mb-1 group-hover/item:text-primary-600 transition-colors">
+                            {item.title}
+                        </h4>
+                        <p class="text-sm text-muted-foreground leading-relaxed">
+                            {item.description}
+                        </p>
+                    </div>
+                </a>
+            ))
+        }
+    </div>
+</div>

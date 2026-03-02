@@ -1,0 +1,25 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import Container from "../components/ui/Container.astro";
+import Testimonials from "../components/sections/Testimonials.astro";
+import CTA from "../components/sections/CTA.astro";
+---
+
+<MainLayout
+    title="Nuestros Clientes"
+    description="Casos de éxito y empresas que confían en nosotros."
+>
+    <section class="pt-32 pb-24 bg-card border-b border-border">
+        <Container className="text-center max-w-4xl">
+            <h1 class="text-5xl md:text-6xl font-black mb-6 text-foreground">
+                Comunidad de Clientes
+            </h1>
+            <p class="text-xl text-muted-foreground mx-auto">
+                Conoce a las marcas que han llevado su operación al siguiente
+                nivel trabajando con nuestros sistemas.
+            </p>
+        </Container>
+    </section>
+    <Testimonials />
+    <CTA />
+</MainLayout>

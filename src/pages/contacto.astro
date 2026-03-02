@@ -1,0 +1,136 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import Container from "../components/ui/Container.astro";
+import Button from "../components/ui/Button.astro";
+---
+
+<MainLayout
+    title="Contacto"
+    description="Ponte en contacto con nuestro equipo de expertos."
+>
+    <section class="pt-32 pb-24 bg-card border-b border-border">
+        <Container className="max-w-6xl">
+            <div class="grid md:grid-cols-2 gap-16 items-start">
+                <div>
+                    <h1 class="text-5xl font-black mb-6 text-foreground">
+                        Hablemos de tu Proyecto
+                    </h1>
+                    <p class="text-lg text-muted-foreground mb-8">
+                        Ya sea que necesites renovar tus terminales, implementar
+                        un PMS en tu hotel o habilitar la facturación
+                        electrónica, nuestros consultores están listos para
+                        escucharte.
+                    </p>
+                    <div class="space-y-6">
+                        <div class="flex items-center gap-4">
+                            <div
+                                class="w-12 h-12 bg-primary-50 rounded-full flex items-center justify-center text-primary-600"
+                            >
+                                <svg
+                                    class="w-6 h-6"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                    ><path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                                    ></path></svg
+                                >
+                            </div>
+                            <div>
+                                <p class="font-bold text-foreground">
+                                    Ventas y Soporte
+                                </p>
+                                <p class="text-muted-foreground">
+                                    +502 1234 5678
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div
+                                class="w-12 h-12 bg-primary-50 rounded-full flex items-center justify-center text-primary-600"
+                            >
+                                <svg
+                                    class="w-6 h-6"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                    ><path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                                    ></path></svg
+                                >
+                            </div>
+                            <div>
+                                <p class="font-bold text-foreground">
+                                    Correo Corporativo
+                                </p>
+                                <p class="text-muted-foreground">
+                                    info@componentessa.com
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="bg-card shadow-xl border border-border rounded-3xl p-8"
+                >
+                    <form class="space-y-6">
+                        <div class="grid grid-cols-2 gap-6">
+                            <div class="space-y-2">
+                                <label
+                                    class="font-medium text-sm text-foreground"
+                                    >Nombre</label
+                                >
+                                <input
+                                    type="text"
+                                    class="w-full bg-background border border-border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary-500"
+                                    placeholder="Tu nombre"
+                                />
+                            </div>
+                            <div class="space-y-2">
+                                <label
+                                    class="font-medium text-sm text-foreground"
+                                    >Empresa</label
+                                >
+                                <input
+                                    type="text"
+                                    class="w-full bg-background border border-border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary-500"
+                                    placeholder="Nombre de tu negocio"
+                                />
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <label class="font-medium text-sm text-foreground"
+                                >Correo Electrónico</label
+                            >
+                            <input
+                                type="email"
+                                class="w-full bg-background border border-border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary-500"
+                                placeholder="tucorreo@empresa.com"
+                            />
+                        </div>
+                        <div class="space-y-2">
+                            <label class="font-medium text-sm text-foreground"
+                                >Mensaje</label
+                            >
+                            <textarea
+                                rows="4"
+                                class="w-full bg-background border border-border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary-500"
+                                placeholder="¿Cómo podemos ayudarte?"
+                            ></textarea>
+                        </div>
+                        <Button variant="primary" className="w-full">
+                            Enviar Mensaje
+                        </Button>
+                    </form>
+                </div>
+            </div>
+        </Container>
+    </section>
+</MainLayout>

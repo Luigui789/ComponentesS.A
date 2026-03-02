@@ -1,0 +1,123 @@
+---
+import Container from "../ui/Container.astro";
+import Card from "../ui/Card.astro";
+import Button from "../ui/Button.astro";
+
+const services = [
+    {
+        title: "Oracle Simphony",
+        subtitle: "El mejor POS del mundo",
+        description:
+            "Administra reservas, ventas y experiencia del huésped o comensal desde cualquier dispositivo. La tecnología en la nube de nivel mundial para crecimiento escalable.",
+        features: [
+            "Integración en la nube",
+            "Gestión de menú centralizada",
+            "Reporting & Analitycs",
+            "Disponibilidad offline",
+        ],
+        icon: `<svg class="w-12 h-12 text-secondary-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>`,
+        href: "/soluciones/pos",
+    },
+    {
+        title: "Safiro",
+        subtitle: "Gestión Financiera y Contable",
+        description:
+            "El sistema integral de Inversiones Arguello Tercero para control absoluto. Múltiples módulos diseñados para tener la claridad financiera total de tu negocio.",
+        features: [
+            "Contabilidad y Presupuesto",
+            "Cuentas por Cobrar/Pagar",
+            "Módulos de Inventarios",
+            "Facturación Electrónica",
+        ],
+        icon: `<svg class="w-12 h-12 text-primary-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>`,
+        href: "/soluciones/facturacion",
+    },
+    {
+        title: "Hardware Compatible",
+        subtitle: "Equipos de Alto Rendimiento",
+        description:
+            "Terminales WS5A robustas con múltiples puertos, e impresoras de tickets integradas de manera nativa con Micros para facturación ininterrumpida.",
+        features: [
+            "Terminales WS5A",
+            "Impresoras Micros",
+            "Instalación profesional",
+            "Soporte técnico local",
+        ],
+        icon: `<svg class="w-12 h-12 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>`,
+        href: "/soluciones/hardware",
+    },
+];
+---
+
+<section class="py-24 bg-background border-b border-border">
+    <Container>
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <h2
+                class="text-primary-600 font-bold tracking-wide uppercase text-sm mb-3"
+            >
+                Nuestras Soluciones
+            </h2>
+            <h3
+                class="text-4xl lg:text-5xl font-heading font-black text-foreground mb-6"
+            >
+                Tecnología de Punta para tu Operación
+            </h3>
+            <p class="text-lg text-muted-foreground">
+                Ofrecemos un ecosistema completo de herramientas de software y
+                hardware para optimizar cada aspecto de tu negocio, desde la
+                venta hasta la administración fiscal.
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+            {
+                services.map((service, index) => (
+                    <div class="group flex flex-col h-full bg-card border border-border shadow-sm p-8 transition-shadow hover:shadow-md">
+                        <div class="flex-grow flex flex-col">
+                            <div
+                                class="w-16 h-16 rounded bg-muted flex items-center justify-center mb-6"
+                                set:html={service.icon}
+                            />
+                            <span class="text-xs font-bold text-secondary-500 uppercase tracking-widest mb-2 block">
+                                {service.subtitle}
+                            </span>
+                            <h4 class="text-2xl font-bold text-foreground mb-4">
+                                {service.title}
+                            </h4>
+                            <p class="text-muted-foreground mb-8 leading-relaxed flex-grow">
+                                {service.description}
+                            </p>
+                            <ul class="space-y-3 mb-8 border-t border-border/50 pt-6">
+                                {service.features.map((feature) => (
+                                    <li class="flex items-center text-sm text-foreground font-medium">
+                                        <svg
+                                            class="w-5 h-5 text-primary-500 mr-3 flex-shrink-0"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke="currentColor"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M5 13l4 4L19 7"
+                                            />
+                                        </svg>
+                                        {feature}
+                                    </li>
+                                ))}
+                            </ul>
+                            <Button
+                                href={service.href}
+                                variant={index === 0 ? "primary" : "outline"}
+                                className="w-full mt-auto rounded-none"
+                            >
+                                Más Información
+                            </Button>
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+    </Container>
+</section>

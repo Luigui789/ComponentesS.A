@@ -1,0 +1,24 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import Container from "../../components/ui/Container.astro";
+import CTA from "../../components/sections/CTA.astro";
+---
+
+<MainLayout
+    title="Soluciones para Franquicias"
+    description="Gestión centralizada de menú, reportes y precios para múltiples sucursales."
+>
+    <section class="pt-32 pb-24 bg-card border-b border-border">
+        <Container className="text-center max-w-4xl">
+            <h1 class="text-5xl md:text-6xl font-black mb-6 text-foreground">
+                Cadenas y Franquicias
+            </h1>
+            <p class="text-xl text-muted-foreground mx-auto">
+                Estandariza tu marca. Mantén un control absoluto de precios,
+                promociones, recetarios e inventarios sobre decenas o cientos de
+                franquicias geográficamente dispersas.
+            </p>
+        </Container>
+    </section>
+    <CTA />
+</MainLayout>

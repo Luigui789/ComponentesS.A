@@ -1,0 +1,24 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import Container from "../../components/ui/Container.astro";
+import CTA from "../../components/sections/CTA.astro";
+---
+
+<MainLayout
+    title="Soluciones para Hoteles"
+    description="Integra el POS con el PMS para una experiencia de huésped unificada."
+>
+    <section class="pt-32 pb-24 bg-card border-b border-border">
+        <Container className="text-center max-w-4xl">
+            <h1 class="text-5xl md:text-6xl font-black mb-6 text-foreground">
+                Hoteles y Resorts
+            </h1>
+            <p class="text-xl text-muted-foreground mx-auto">
+                Conecta las operaciones de alimentos y bebidas con la gestión de
+                huéspedes. La dupla de Simphony y OPERA es el estándar dorado en
+                la hospitalidad mundial.
+            </p>
+        </Container>
+    </section>
+    <CTA />
+</MainLayout>

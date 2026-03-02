@@ -1,0 +1,109 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import Container from "../../components/ui/Container.astro";
+import Card from "../../components/ui/Card.astro";
+import Button from "../../components/ui/Button.astro";
+import CTA from "../../components/sections/CTA.astro";
+
+const posts = [
+    {
+        title: "El Futuro del Punto de Venta en la Nube",
+        excerpt:
+            "Descubre cómo las soluciones basadas en la nube están transformando la eficiencia operativa de los restaurantes.",
+        date: "15 Oct 2026",
+        category: "Restaurantes",
+        image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    },
+    {
+        title: "Cumplimiento Fiscal 2026: Todo sobre Safiro FEL",
+        excerpt:
+            "Las normativas cambian rápidamente. Aquí te explicamos cómo mantener tu negocio en regla con la facturación electrónica.",
+        date: "28 Sep 2026",
+        category: "Finanzas",
+        image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    },
+    {
+        title: "Integración PMS y POS: La Clave para Hoteles Exitosos",
+        excerpt:
+            "Por qué conectar Oracle OPERA con Simphony es la mejor decisión para maximizar el revenue y mejorar la experiencia del huésped.",
+        date: "10 Sep 2026",
+        category: "Hoteles",
+        image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    },
+];
+---
+
+<MainLayout
+    title="Blog y Recursos"
+    description="Últimas noticias y conocimientos sobre tecnología POS."
+>
+    <section class="pt-32 pb-24 bg-card border-b border-border">
+        <Container className="text-center max-w-4xl">
+            <h1 class="text-5xl md:text-6xl font-black mb-6 text-foreground">
+                Blog y Recursos
+            </h1>
+            <p class="text-xl text-muted-foreground mx-auto">
+                Insights, guías y casos de estudio sobre tecnología, operaciones
+                y crecimiento en la industria HORECA y Retail.
+            </p>
+        </Container>
+    </section>
+
+    <section class="py-24 bg-background">
+        <Container>
+            <div class="grid md:grid-cols-3 gap-8">
+                {
+                    posts.map((post) => (
+                        <Card className="flex flex-col h-full hover:shadow-xl transition-shadow group cursor-pointer overflow-hidden border border-border">
+                            <div class="h-48 overflow-hidden relative">
+                                <img
+                                    src={post.image}
+                                    alt={post.title}
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                />
+                                <div class="absolute top-4 left-4 bg-primary-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
+                                    {post.category}
+                                </div>
+                            </div>
+                            <div class="p-6 flex flex-col flex-grow">
+                                <p class="text-xs text-muted-foreground font-medium mb-3">
+                                    {post.date}
+                                </p>
+                                <h3 class="text-xl font-bold text-foreground mb-3 leading-tight group-hover:text-primary-600 transition-colors">
+                                    {post.title}
+                                </h3>
+                                <p class="text-muted-foreground text-sm mb-6 flex-grow">
+                                    {post.excerpt}
+                                </p>
+                                <div class="mt-auto">
+                                    <span class="text-primary-600 font-bold text-sm inline-flex items-center group-hover:translate-x-1 transition-transform">
+                                        Leer artículo
+                                        <svg
+                                            class="w-4 h-4 ml-1"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke="currentColor"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M14 5l7 7m0 0l-7 7m7-7H3"
+                                            />
+                                        </svg>
+                                    </span>
+                                </div>
+                            </div>
+                        </Card>
+                    ))
+                }
+            </div>
+            <div class="mt-16 text-center">
+                <Button variant="outline" size="lg">Cargar más artículos</Button
+                >
+            </div>
+        </Container>
+    </section>
+
+    <CTA />
+</MainLayout>

@@ -1,0 +1,184 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import Container from "../../components/ui/Container.astro";
+import CTA from "../../components/sections/CTA.astro";
+---
+
+<MainLayout
+    title="POS Oracle Simphony"
+    description="Punto de venta líder mundial para gestionar restaurantes de cualquier tamaño."
+>
+    <section
+        class="pt-32 pb-24 bg-primary-900 border-b border-primary-800 relative overflow-hidden"
+    >
+        <!-- Subtle Corporate Grid Background -->
+        <div class="absolute inset-0 z-0">
+            <svg
+                class="absolute w-full h-full opacity-10"
+                xmlns="http://www.w3.org/2000/svg"
+            >
+                <defs>
+                    <pattern
+                        id="grid-pattern-pos"
+                        x="0"
+                        y="0"
+                        width="40"
+                        height="40"
+                        patternUnits="userSpaceOnUse"
+                    >
+                        <path
+                            d="M 40 0 L 0 0 0 40"
+                            fill="none"
+                            stroke="white"
+                            stroke-width="1"></path>
+                    </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#grid-pattern-pos)"
+                ></rect>
+            </svg>
+        </div>
+
+        <Container className="relative z-10 text-center max-w-4xl">
+            <h1
+                class="text-5xl md:text-6xl font-heading font-black text-white mb-6"
+            >
+                Oracle Simphony POS
+            </h1>
+            <p
+                class="text-xl text-primary-100 max-w-2xl mx-auto mb-8 font-medium"
+            >
+                La plataforma de gestión para restaurantes y bares más potente y
+                escalable del mercado, alojada en la nube y diseñada para
+                maximizar tus ingresos.
+            </p>
+        </Container>
+    </section>
+
+    <section class="py-24 bg-background border-b border-border">
+        <Container>
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div
+                    class="border border-border bg-muted p-4 lg:p-8 flex items-center justify-center h-full min-h-[400px]"
+                >
+                    <img
+                        src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                        alt="Interfaz de Simphony"
+                        class="shadow border border-border w-full object-cover"
+                    />
+                </div>
+                <div>
+                    <h2
+                        class="text-xs font-bold text-secondary-500 uppercase tracking-widest mb-2 block"
+                    >
+                        Ingeniería en Punto de Venta
+                    </h2>
+                    <h3
+                        class="text-3xl font-heading font-black text-foreground mb-8"
+                    >
+                        Características Principales
+                    </h3>
+
+                    <ul class="space-y-6">
+                        <li class="flex gap-4 p-4 border border-border bg-card">
+                            <div
+                                class="w-10 h-10 bg-muted flex items-center justify-center flex-shrink-0 mt-1 border border-border"
+                            >
+                                <svg
+                                    class="w-5 h-5 text-primary-600"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                    ><path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path></svg
+                                >
+                            </div>
+                            <div>
+                                <h4
+                                    class="font-bold text-foreground mb-1 text-lg"
+                                >
+                                    Cloud-First con Modo Offline
+                                </h4>
+                                <p
+                                    class="text-muted-foreground text-sm leading-relaxed"
+                                >
+                                    Opera 100% en la nube para análisis en
+                                    tiempo real, la facturación jamás se detiene
+                                    incluso ante cortes de red.
+                                </p>
+                            </div>
+                        </li>
+
+                        <li class="flex gap-4 p-4 border border-border bg-card">
+                            <div
+                                class="w-10 h-10 bg-muted flex items-center justify-center flex-shrink-0 mt-1 border border-border"
+                            >
+                                <svg
+                                    class="w-5 h-5 text-primary-600"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                    ><path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path></svg
+                                >
+                            </div>
+                            <div>
+                                <h4
+                                    class="font-bold text-foreground mb-1 text-lg"
+                                >
+                                    Gestión Centralizada Absoluta
+                                </h4>
+                                <p
+                                    class="text-muted-foreground text-sm leading-relaxed"
+                                >
+                                    Control sobre múltiples sucursales de forma
+                                    matricial. Modifica un solo parámetro y
+                                    actualízalo en segundos globalmente.
+                                </p>
+                            </div>
+                        </li>
+
+                        <li class="flex gap-4 p-4 border border-border bg-card">
+                            <div
+                                class="w-10 h-10 bg-muted flex items-center justify-center flex-shrink-0 mt-1 border border-border"
+                            >
+                                <svg
+                                    class="w-5 h-5 text-primary-600"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                    ><path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path></svg
+                                >
+                            </div>
+                            <div>
+                                <h4
+                                    class="font-bold text-foreground mb-1 text-lg"
+                                >
+                                    Reporting & Analítica
+                                </h4>
+                                <p
+                                    class="text-muted-foreground text-sm leading-relaxed"
+                                >
+                                    Decisiones basadas en datos. Herramientas
+                                    avanzadas de reportería corporativa para
+                                    directores de operación.
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </Container>
+    </section>
+
+    <CTA />
+</MainLayout>

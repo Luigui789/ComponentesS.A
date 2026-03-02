@@ -1,0 +1,66 @@
+---
+const industries = [
+    {
+        title: "Restaurantes y Bares",
+        description:
+            "Agiliza la toma de pedidos y controla el inventario en tiempo real.",
+        href: "/industrias/restaurantes",
+        image: "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+    },
+    {
+        title: "Hoteles y Resorts",
+        description:
+            "Integra el POS con el PMS para una experiencia de huésped unificada.",
+        href: "/industrias/hoteles",
+        image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+    },
+    {
+        title: "Franquicias",
+        description:
+            "Gestión centralizada de menú, reportes y precios para múltiples sucursales.",
+        href: "/industrias/franquicias",
+        image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+    },
+    {
+        title: "Retail y Tiendas",
+        description:
+            "Punto de venta robusto y rápido para cualquier entorno de compras.",
+        href: "/industrias/retail",
+        image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+    },
+];
+---
+
+<div
+    class="absolute top-full left-1/2 -translate-x-1/2 pt-4 w-[800px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50"
+>
+    <div
+        class="bg-card shadow-xl border border-border rounded-xl p-4 grid grid-cols-4 gap-4"
+    >
+        {
+            industries.map((industry) => (
+                <a
+                    href={industry.href}
+                    class="group/card block relative rounded-lg overflow-hidden"
+                >
+                    <div class="aspect-[4/3] w-full relative">
+                        <img
+                            src={industry.image}
+                            alt={industry.title}
+                            class="w-full h-full object-cover group-hover/card:scale-105 transition-transform duration-500"
+                        />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                    </div>
+                    <div class="absolute bottom-0 left-0 p-3 w-full">
+                        <h4 class="text-white font-medium text-sm mb-1">
+                            {industry.title}
+                        </h4>
+                        <p class="text-white/80 text-xs line-clamp-2">
+                            {industry.description}
+                        </p>
+                    </div>
+                </a>
+            ))
+        }
+    </div>
+</div>

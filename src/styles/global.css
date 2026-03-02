@@ -1,0 +1,104 @@
+@import "tailwindcss";
+
+@theme {
+  /* Azul Safiro Profundo */
+  --color-primary-50: #e6f0fa;
+  --color-primary-100: #cce1f5;
+  --color-primary-200: #99c2eb;
+  --color-primary-300: #66a3e0;
+  --color-primary-400: #3385d6;
+  --color-primary-500: #004b8d;
+  /* Base real */
+  --color-primary-600: #003c71;
+  --color-primary-700: #002d55;
+  --color-primary-800: #001e38;
+  --color-primary-900: #000f1c;
+
+  /* Rojo Oracle */
+  --color-secondary-50: #fee6e6;
+  --color-secondary-100: #fdcdcd;
+  --color-secondary-200: #fa9b9b;
+  --color-secondary-300: #f86969;
+  --color-secondary-400: #f53737;
+  --color-secondary-500: #f80000;
+  /* Acento real */
+  --color-secondary-600: #c60000;
+  --color-secondary-700: #950000;
+  --color-secondary-800: #630000;
+  --color-secondary-900: #320000;
+
+  /* Dorado de Valor */
+  --color-accent-50: #f7f4ef;
+  --color-accent-100: #eee9df;
+  --color-accent-200: #ddd3be;
+  --color-accent-300: #ccbd9d;
+  --color-accent-400: #bba77d;
+  --color-accent-500: #a68966;
+  /* Dorado real */
+  --color-accent-600: #856e52;
+  --color-accent-700: #64523d;
+  --color-accent-800: #423729;
+  --color-accent-900: #211b14;
+
+  /* Backgrounds & Text */
+  --color-background: #f0f0f0;
+  /* Gris Nube */
+  --color-foreground: #313131;
+  /* Grafito Tecnológico */
+
+  --color-muted: #e4e4e7;
+  --color-muted-foreground: #606060;
+
+  --color-card: #ffffff;
+  --color-card-foreground: #313131;
+
+  --color-border: #d4d4d8;
+
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-heading: 'Outfit', ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  :root {
+    --background: var(--color-background);
+    --foreground: var(--color-foreground);
+    --muted: var(--color-muted);
+    --muted-foreground: var(--color-muted-foreground);
+    --card: var(--color-card);
+    --card-foreground: var(--color-card-foreground);
+    --border: var(--color-border);
+  }
+
+  /* Assuming a purely light/corporate theme for now to match the style */
+  .dark {
+    --background: #202020;
+    --foreground: #f0f0f0;
+    --muted: #313131;
+    --muted-foreground: #a1a1aa;
+    --card: #2a2a2a;
+    --card-foreground: #f0f0f0;
+    --border: #3f3f46;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading tracking-tight;
+  }
+}
+
+@layer utilities {
+  /* Corporate Clean Utilities reserved for future use */
+}

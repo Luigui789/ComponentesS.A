@@ -1,0 +1,129 @@
+---
+import Container from "../ui/Container.astro";
+
+const faqs = [
+    {
+        question: "¿Cuánto tiempo toma la implementación de Oracle Simphony?",
+        answer: "El tiempo de implementación varía según la complejidad y el tamaño del negocio. Para un restaurante individual, puede tomar entre 2 a 4 semanas. Para cadenas grandes, desarrollamos un cronograma por fases para asegurar una transición suave.",
+    },
+    {
+        question: "¿Safiro FEL se integra con mi sistema contable actual?",
+        answer: "Sí, Safiro está diseñado con una API robusta y conectores pre-construidos para integrarse fluidamente con los ERP y sistemas contables más populares del mercado, garantizando que tu flujo financiero no se interrumpa.",
+    },
+    {
+        question: "¿Qué tipo de soporte técnico ofrecen post-instalación?",
+        answer: "Ofrecemos soporte técnico 24/7/365. Nuestro equipo está disponible vía telefónica, chat y sistema de tickets. Además, realizamos monitoreo proactivo para prevenir caídas de sistema antes de que ocurran.",
+    },
+    {
+        question: "¿El hardware tiene garantía local?",
+        answer: "Completamente. Todo el equipamiento suministrado cuenta con garantía oficial del fabricante, y nosotros gestionamos cualquier RMA de forma local, además de ofrecer equipos de respaldo para que tu operación nunca se detenga.",
+    },
+    {
+        question:
+            "¿Puedo ver información de mis ventas en tiempo real desde mi celular?",
+        answer: "Absolutamente. Oracle Simphony incluye aplicaciones móviles gerenciales (InMotion) que te permiten monitorear ventas, labor, y alertas operativas en tiempo real desde cualquier dispositivo iOS o Android.",
+    },
+];
+---
+
+<section class="py-24 bg-background">
+    <Container>
+        <div class="grid lg:grid-cols-12 gap-12">
+            <div class="lg:col-span-5">
+                <h2
+                    class="text-primary-600 font-bold tracking-wide uppercase text-sm mb-3"
+                >
+                    Soporte y Dudas
+                </h2>
+                <h3
+                    class="text-4xl font-heading font-bold text-foreground mb-6"
+                >
+                    Preguntas Frecuentes
+                </h3>
+                <p class="text-lg text-muted-foreground mb-8">
+                    Encuentra respuestas rápidas a las consultas más comunes que
+                    tienen nuestros clientes sobre la implementación y
+                    funcionamiento de nuestros sistemas.
+                </p>
+                <div
+                    class="p-6 bg-primary-50 rounded-2xl border border-primary-100"
+                >
+                    <h4 class="font-bold text-lg mb-2 text-primary-900">
+                        ¿Tienes otra pregunta?
+                    </h4>
+                    <p class="text-primary-700 mb-4">
+                        Nuestro equipo de expertos está listo para asesorarte en
+                        tu proyecto.
+                    </p>
+                    <a
+                        href="/contacto"
+                        class="inline-flex items-center text-primary-600 font-bold hover:text-primary-700 transition-colors"
+                    >
+                        Contactar Soporte
+                        <svg
+                            class="w-5 h-5 ml-2"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            ><path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg
+                        >
+                    </a>
+                </div>
+            </div>
+
+            <div class="lg:col-span-7">
+                <div class="space-y-4">
+                    {
+                        faqs.map((faq, index) => (
+                            <details class="group bg-card rounded-2xl border border-border shadow-sm [&_summary::-webkit-details-marker]:hidden">
+                                <summary class="flex cursor-pointer items-center justify-between gap-1.5 p-6 text-foreground font-bold text-lg">
+                                    {faq.question}
+
+                                    <span class="relative h-5 w-5 shrink-0 text-primary-600">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            class="absolute inset-0 h-5 w-5 opacity-100 group-open:opacity-0 transition-opacity duration-200"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke="currentColor"
+                                            stroke-width="2"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                d="M12 4v16m8-8H4"
+                                            />
+                                        </svg>
+
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            class="absolute inset-0 h-5 w-5 opacity-0 group-open:opacity-100 transition-opacity duration-200"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke="currentColor"
+                                            stroke-width="2"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                d="M20 12H4"
+                                            />
+                                        </svg>
+                                    </span>
+                                </summary>
+
+                                <div class="px-6 pb-6 pt-0 text-muted-foreground leading-relaxed">
+                                    <p>{faq.answer}</p>
+                                </div>
+                            </details>
+                        ))
+                    }
+                </div>
+            </div>
+        </div>
+    </Container>
+</section>

@@ -1,0 +1,18 @@
+---
+interface Props {
+    className?: string;
+    variant?: "default" | "glass" | "bordered";
+}
+
+const { className = "", variant = "default" } = Astro.props;
+
+const variants = {
+    default: "bg-card text-card-foreground shadow-sm border border-border",
+    glass: "glass",
+    bordered: "border-2 border-border bg-transparent",
+};
+---
+
+<div class={`rounded-xl overflow-hidden ${variants[variant]} ${className}`}>
+    <slot />
+</div>
