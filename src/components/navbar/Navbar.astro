@@ -77,10 +77,10 @@ import MegaMenuIndustries from "./MegaMenuIndustries.astro";
             <!-- CTA -->
             <div class="hidden md:flex items-center gap-4">
                 <a
-                    href="tel:+50212345678"
+                    href="tel:+50522707918"
                     class="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
                 >
-                    Ventas: +502 1234 5678
+                    Ventas: +505 2270-7918
                 </a>
                 <Button href="/contacto" variant="primary" size="sm">
                     Cotizar Ahora
@@ -127,7 +127,7 @@ import MegaMenuIndustries from "./MegaMenuIndustries.astro";
     <!-- Mobile Menu Overlay -->
     <div
         id="mobile-menu"
-        class="hidden fixed inset-x-0 top-20 bottom-0 bg-background z-40 overflow-y-auto border-t border-border/50"
+        class="fixed inset-x-0 top-20 bottom-0 bg-background z-40 overflow-y-auto border-t border-border/50 opacity-0 pointer-events-none -translate-y-4 transition-all duration-300 ease-in-out"
     >
         <div class="p-6 flex flex-col gap-6 w-full max-w-md mx-auto h-full">
             <a
@@ -248,8 +248,12 @@ import MegaMenuIndustries from "./MegaMenuIndustries.astro";
                 const isExpanded = btn.getAttribute("aria-expanded") === "true";
                 btn.setAttribute("aria-expanded", String(!isExpanded));
 
-                menu.classList.toggle("hidden");
-                menu.classList.toggle("flex");
+                menu.classList.toggle("opacity-0");
+                menu.classList.toggle("pointer-events-none");
+                menu.classList.toggle("-translate-y-4");
+                menu.classList.toggle("opacity-100");
+                menu.classList.toggle("pointer-events-auto");
+                menu.classList.toggle("translate-y-0");
 
                 iconOpen.classList.toggle("hidden");
                 iconOpen.classList.toggle("block");
@@ -275,8 +279,16 @@ import MegaMenuIndustries from "./MegaMenuIndustries.astro";
 
         if (btn && menu && iconOpen && iconClose) {
             // Ensure menu is closed on new page load
-            menu.classList.add("hidden");
-            menu.classList.remove("flex");
+            menu.classList.add(
+                "opacity-0",
+                "pointer-events-none",
+                "-translate-y-4",
+            );
+            menu.classList.remove(
+                "opacity-100",
+                "pointer-events-auto",
+                "translate-y-0",
+            );
             iconOpen.classList.remove("hidden");
             iconOpen.classList.add("block");
             iconClose.classList.add("hidden");
@@ -288,8 +300,12 @@ import MegaMenuIndustries from "./MegaMenuIndustries.astro";
                 const isExpanded = btn.getAttribute("aria-expanded") === "true";
                 btn.setAttribute("aria-expanded", String(!isExpanded));
 
-                menu.classList.toggle("hidden");
-                menu.classList.toggle("flex");
+                menu.classList.toggle("opacity-0");
+                menu.classList.toggle("pointer-events-none");
+                menu.classList.toggle("-translate-y-4");
+                menu.classList.toggle("opacity-100");
+                menu.classList.toggle("pointer-events-auto");
+                menu.classList.toggle("translate-y-0");
 
                 iconOpen.classList.toggle("hidden");
                 iconOpen.classList.toggle("block");

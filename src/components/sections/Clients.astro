@@ -1,75 +1,54 @@
 ---
 import Container from "../ui/Container.astro";
-import Button from "../ui/Button.astro";
 
 const clients = [
     {
         name: "Starbucks",
-        logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Hilton_logo.svg/512px-Hilton_logo.svg.png",
+        logo: "/public/starbucks.png",
     },
     {
         name: "Burger King",
-        logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Burger_King_2020.svg/512px-Burger_King_2020.svg.png",
+        logo: "/public/burger-king.png",
     },
     {
         name: "Hotel Four Seasons",
-        logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Logo_CEMACO.png/512px-Logo_CEMACO.png",
+        logo: "/public/four-seasons.png",
     },
     {
         name: "Marriott",
-        logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Cerveza_Gallo_logo.png/512px-Cerveza_Gallo_logo.png",
-    },
-    {
-        name: "Pharaos Casinos",
-        logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Pollo_Campero_Logo.svg/512px-Pollo_Campero_Logo.svg.png",
-    },
-    {
-        name: "Starbucks",
-        logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Hilton_logo.svg/512px-Hilton_logo.svg.png",
-    },
-    {
-        name: "Burger King",
-        logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Burger_King_2020.svg/512px-Burger_King_2020.svg.png",
-    },
-    {
-        name: "Hotel Four Seasons",
-        logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Logo_CEMACO.png/512px-Logo_CEMACO.png",
-    },
-    {
-        name: "Marriott",
-        logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Cerveza_Gallo_logo.png/512px-Cerveza_Gallo_logo.png",
-    },
-    {
-        name: "Pharaos Casinos",
-        logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Pollo_Campero_Logo.svg/512px-Pollo_Campero_Logo.svg.png",
-    },
-    {
-        name: "Molino Coffee Shop",
-        logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Hilton_logo.svg/512px-Hilton_logo.svg.png",
-    },
-    {
-        name: "Guacalito Nicaragua",
-        logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Burger_King_2020.svg/512px-Burger_King_2020.svg.png",
-    },
-    {
-        name: "Rancho Santana",
-        logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Logo_CEMACO.png/512px-Logo_CEMACO.png",
+        logo: "/public/marriott.png",
     },
     {
         name: "HYATT Place",
-        logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Cerveza_Gallo_logo.png/512px-Cerveza_Gallo_logo.png",
+        logo: "/public/Hyatt-Place.jpg",
     },
     {
-        name: "Porter House Steak",
-        logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Pollo_Campero_Logo.svg/512px-Pollo_Campero_Logo.svg.png",
+        name: "Intercontinental",
+        logo: "/public/intercontinental.webp",
+    },
+    {
+        name: "Pharaos Casinos",
+        logo: "/public/pharaos.webp",
+    },
+    {
+        name: "Molino Coffee",
+        logo: "/public/molino-coffe.jpg",
+    },
+    {
+        name: "Guacalito Nicaragua",
+        logo: "/public/guacalito.webp",
+    },
+    {
+        name: "Rancho Santana",
+        logo: "/public/rancho_santana.webp",
+    },
+    {
+        name: "Porter House",
+        logo: "/public/porter-house.png",
     },
     {
         name: "ZacateLimon",
-        logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Hilton_logo.svg/512px-Hilton_logo.svg.png",
-    },
-    {
-        name: "Real Intercontinental Metrocentro",
-        logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Burger_King_2020.svg/512px-Burger_King_2020.svg.png",
+        logo: "/public/zacate-limon.webp",
     },
 ];
 ---
@@ -123,24 +102,30 @@ const clients = [
                 </div>
 
                 <div
-                    class="flex items-center gap-14 opacity-60 grayscale hover:grayscale-0 transition-all duration-500 animate-scroll"
+                    class="flex items-center gap-14 opacity-60 grayscale hover:grayscale-0 transition-all duration-500 animate-scroll hover:opacity-100 cursor-pointer"
                 >
                     {
                         clients.map((client) => (
                             <div class="flex-shrink-0 w-32 h-20 flex items-center justify-center">
-                                <span class="text-lg font-bold text-muted-foreground">
-                                    {client.name}
-                                </span>
+                                <img
+                                    src={client.logo}
+                                    alt={client.name}
+                                    class="max-w-[120px] max-h-[60px] object-contain"
+                                    title={client.name}
+                                />
                             </div>
                         ))
                     }
                     {/* Duplicate for infinite effect */}
                     {
                         clients.map((client) => (
-                            <div class="flex-shrink-0 w-32 h-16 flex items-center justify-center">
-                                <span class="text-lg font-bold text-muted-foreground">
-                                    {client.name}
-                                </span>
+                            <div class="flex-shrink-0 w-32 h-20 flex items-center justify-center">
+                                <img
+                                    src={client.logo}
+                                    alt={client.name}
+                                    class="max-w-[120px] max-h-[60px] object-contain"
+                                    title={client.name}
+                                />
                             </div>
                         ))
                     }
@@ -155,6 +140,11 @@ const clients = [
         display: flex;
         width: max-content;
         animation: scroll 20s linear infinite;
+    }
+
+    /* Pause animation on hover for better user experience */
+    .animate-scroll:hover {
+        animation-play-state: paused;
     }
 
     @keyframes scroll {

@@ -54,11 +54,11 @@ const benefits = [
                 <div class="space-y-8">
                     {
                         benefits.map((benefit) => (
-                            <div class="flex gap-4">
+                            <div class="flex gap-4 group cursor-default">
                                 <div class="flex-shrink-0 mt-1">
-                                    <div class="w-12 h-12 rounded border border-border bg-muted flex items-center justify-center">
+                                    <div class="w-12 h-12 rounded border border-border bg-muted flex items-center justify-center transition-colors duration-300 group-hover:bg-primary-50 group-hover:border-primary-200">
                                         <div
-                                            class="text-primary-600 w-6 h-6 flex items-center justify-center [&>svg]:w-full [&>svg]:h-full"
+                                            class="text-primary-600 w-6 h-6 flex items-center justify-center transition-transform duration-300 group-hover:scale-110 [&>svg]:w-full [&>svg]:h-full"
                                             set:html={benefit.icon.replace(
                                                 "text-white",
                                                 "currentColor",
