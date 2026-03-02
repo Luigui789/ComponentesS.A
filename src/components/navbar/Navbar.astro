@@ -246,7 +246,7 @@ import MegaMenuIndustries from "./MegaMenuIndustries.astro";
         if (btn && menu && iconOpen && iconClose) {
             btn.addEventListener("click", () => {
                 const isExpanded = btn.getAttribute("aria-expanded") === "true";
-                btn.setAttribute("aria-expanded", !isExpanded);
+                btn.setAttribute("aria-expanded", String(!isExpanded));
 
                 menu.classList.toggle("hidden");
                 menu.classList.toggle("flex");
@@ -286,7 +286,7 @@ import MegaMenuIndustries from "./MegaMenuIndustries.astro";
 
             btn.addEventListener("click", () => {
                 const isExpanded = btn.getAttribute("aria-expanded") === "true";
-                btn.setAttribute("aria-expanded", !isExpanded);
+                btn.setAttribute("aria-expanded", String(!isExpanded));
 
                 menu.classList.toggle("hidden");
                 menu.classList.toggle("flex");
