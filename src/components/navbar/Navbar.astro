@@ -88,9 +88,15 @@ import MegaMenuIndustries from "./MegaMenuIndustries.astro";
             </div>
 
             <!-- Mobile menu button -->
-            <button class="md:hidden p-2 text-foreground" aria-label="Menu">
+            <button
+                id="mobile-menu-btn"
+                class="md:hidden p-2 text-foreground"
+                aria-label="Menu"
+                aria-expanded="false"
+            >
                 <svg
-                    class="w-6 h-6"
+                    id="icon-open"
+                    class="w-6 h-6 block"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -101,7 +107,202 @@ import MegaMenuIndustries from "./MegaMenuIndustries.astro";
                         stroke-width="2"
                         d="M4 6h16M4 12h16M4 18h16"></path>
                 </svg>
+                <svg
+                    id="icon-close"
+                    class="w-6 h-6 hidden"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
             </button>
         </div>
     </Container>
+
+    <!-- Mobile Menu Overlay -->
+    <div
+        id="mobile-menu"
+        class="hidden fixed inset-x-0 top-20 bottom-0 bg-background z-40 overflow-y-auto border-t border-border/50"
+    >
+        <div class="p-6 flex flex-col gap-6 w-full max-w-md mx-auto h-full">
+            <a
+                href="/"
+                class="text-lg font-bold text-foreground py-2 border-b border-border/50"
+                >Inicio</a
+            >
+
+            <div class="flex flex-col gap-3">
+                <span
+                    class="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-2"
+                    >Soluciones</span
+                >
+                <a
+                    href="/soluciones/pos"
+                    class="text-base font-medium text-foreground py-1 flex items-center gap-2"
+                >
+                    <span class="w-1.5 h-1.5 rounded-full bg-primary-500"
+                    ></span> Oracle Simphony POS
+                </a>
+                <a
+                    href="/soluciones/facturacion"
+                    class="text-base font-medium text-foreground py-1 flex items-center gap-2"
+                >
+                    <span class="w-1.5 h-1.5 rounded-full bg-primary-500"
+                    ></span> Safiro FEL
+                </a>
+                <a
+                    href="/soluciones/hotelero"
+                    class="text-base font-medium text-foreground py-1 flex items-center gap-2"
+                >
+                    <span class="w-1.5 h-1.5 rounded-full bg-primary-500"
+                    ></span> Safiro Hotelero
+                </a>
+                <a
+                    href="/soluciones/hardware"
+                    class="text-base font-medium text-foreground py-1 flex items-center gap-2"
+                >
+                    <span class="w-1.5 h-1.5 rounded-full bg-primary-500"
+                    ></span> Hardware & Equipos
+                </a>
+            </div>
+
+            <div class="flex flex-col gap-3">
+                <span
+                    class="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-2 mt-4"
+                    >Industrias</span
+                >
+                <a
+                    href="/industrias/restaurantes"
+                    class="text-base font-medium text-foreground py-1 flex items-center gap-2"
+                >
+                    <span class="w-1.5 h-1.5 rounded-full bg-secondary-500"
+                    ></span> Restaurantes & Bares
+                </a>
+                <a
+                    href="/industrias/hoteles"
+                    class="text-base font-medium text-foreground py-1 flex items-center gap-2"
+                >
+                    <span class="w-1.5 h-1.5 rounded-full bg-secondary-500"
+                    ></span> Hoteles & Resorts
+                </a>
+                <a
+                    href="/industrias/retail"
+                    class="text-base font-medium text-foreground py-1 flex items-center gap-2"
+                >
+                    <span class="w-1.5 h-1.5 rounded-full bg-secondary-500"
+                    ></span> Retail Comercial
+                </a>
+                <a
+                    href="/industrias/franquicias"
+                    class="text-base font-medium text-foreground py-1 flex items-center gap-2"
+                >
+                    <span class="w-1.5 h-1.5 rounded-full bg-secondary-500"
+                    ></span> Cadenas de Franquicias
+                </a>
+            </div>
+
+            <a
+                href="/servicios"
+                class="text-lg font-bold text-foreground py-2 border-b border-t border-border/50 mt-4"
+                >Servicios</a
+            >
+            <a
+                href="/contacto"
+                class="text-lg font-bold text-foreground py-2 border-b border-border/50"
+                >Contacto</a
+            >
+
+            <div class="mt-auto pt-8">
+                <a
+                    href="tel:+50212345678"
+                    class="text-lg font-bold text-primary-600 mb-4 block text-center"
+                    >Ventas: +502 1234 5678</a
+                >
+                <Button
+                    href="/contacto"
+                    variant="primary"
+                    className="w-full justify-center">Cotizar Ahora</Button
+                >
+            </div>
+
+            <!-- Padding at the bottom for scroll space -->
+            <div class="h-8"></div>
+        </div>
+    </div>
 </header>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const btn = document.getElementById("mobile-menu-btn");
+        const menu = document.getElementById("mobile-menu");
+        const iconOpen = document.getElementById("icon-open");
+        const iconClose = document.getElementById("icon-close");
+
+        if (btn && menu && iconOpen && iconClose) {
+            btn.addEventListener("click", () => {
+                const isExpanded = btn.getAttribute("aria-expanded") === "true";
+                btn.setAttribute("aria-expanded", !isExpanded);
+
+                menu.classList.toggle("hidden");
+                menu.classList.toggle("flex");
+
+                iconOpen.classList.toggle("hidden");
+                iconOpen.classList.toggle("block");
+
+                iconClose.classList.toggle("hidden");
+                iconClose.classList.toggle("block");
+
+                if (!isExpanded) {
+                    document.body.style.overflow = "hidden";
+                } else {
+                    document.body.style.overflow = "";
+                }
+            });
+        }
+    });
+
+    // Handle view transitions for Astro
+    document.addEventListener("astro:page-load", () => {
+        const btn = document.getElementById("mobile-menu-btn");
+        const menu = document.getElementById("mobile-menu");
+        const iconOpen = document.getElementById("icon-open");
+        const iconClose = document.getElementById("icon-close");
+
+        if (btn && menu && iconOpen && iconClose) {
+            // Ensure menu is closed on new page load
+            menu.classList.add("hidden");
+            menu.classList.remove("flex");
+            iconOpen.classList.remove("hidden");
+            iconOpen.classList.add("block");
+            iconClose.classList.add("hidden");
+            iconClose.classList.remove("block");
+            document.body.style.overflow = "";
+            btn.setAttribute("aria-expanded", "false");
+
+            btn.addEventListener("click", () => {
+                const isExpanded = btn.getAttribute("aria-expanded") === "true";
+                btn.setAttribute("aria-expanded", !isExpanded);
+
+                menu.classList.toggle("hidden");
+                menu.classList.toggle("flex");
+
+                iconOpen.classList.toggle("hidden");
+                iconOpen.classList.toggle("block");
+
+                iconClose.classList.toggle("hidden");
+                iconClose.classList.toggle("block");
+
+                if (!isExpanded) {
+                    document.body.style.overflow = "hidden";
+                } else {
+                    document.body.style.overflow = "";
+                }
+            });
+        }
+    });
+</script>
