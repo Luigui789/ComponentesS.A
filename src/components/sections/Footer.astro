@@ -1,5 +1,7 @@
 ---
 import Container from "../ui/Container.astro";
+import { Image } from "astro:assets";
+import logo from "../../assets/clients/logo-componentes.jpeg";
 ---
 
 <footer
@@ -13,8 +15,8 @@ import Container from "../ui/Container.astro";
             <div class="space-y-6">
                 <a href="/" class="flex flex-row items-center gap-4">
                     <div class="bg-white p-1.5 rounded inline-block">
-                        <img
-                            src="/logo-componentes.jpeg"
+                        <Image
+                            src={logo}
                             alt="Componentes S.A. Logo"
                             class="h-8 w-auto object-contain"
                         />
@@ -124,13 +126,6 @@ import Container from "../ui/Container.astro";
                             href="/industrias/hoteles"
                             class="text-primary-200 hover:text-white transition-colors text-sm"
                             >Hoteles & Resorts</a
-                        >
-                    </li>
-                    <li>
-                        <a
-                            href="/industrias/retail"
-                            class="text-primary-200 hover:text-white transition-colors text-sm"
-                            >Retail</a
                         >
                     </li>
                     <li>

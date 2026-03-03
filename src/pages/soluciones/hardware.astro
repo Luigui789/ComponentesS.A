@@ -2,6 +2,12 @@
 import MainLayout from "../../layouts/MainLayout.astro";
 import Container from "../../components/ui/Container.astro";
 import CTA from "../../components/sections/CTA.astro";
+import { Image } from "astro:assets";
+
+import termImg from "../../assets/hardware/ws655.png";
+import kdsImg from "../../assets/hardware/tablet micros 700.png";
+import printerImg from "../../assets/hardware/epson-tmu-220.png";
+import oracleImg from "../../assets/hardware/oracle-post-integrations.png";
 ---
 
 <MainLayout
@@ -9,55 +15,495 @@ import CTA from "../../components/sections/CTA.astro";
     description="Terminales, impresoras, y periféricos certificados de alta durabilidad."
 >
     <section
-        class="pt-32 pb-24 bg-slate-900 text-white relative overflow-hidden"
+        class="pt-32 pb-24 bg-slate-900 border-b border-primary-800 relative overflow-hidden"
     >
+        <div class="absolute inset-0 z-0">
+            <svg
+                class="absolute w-full h-full opacity-10"
+                xmlns="http://www.w3.org/2000/svg"
+            >
+                <defs>
+                    <pattern
+                        id="grid-pattern-pos"
+                        x="0"
+                        y="0"
+                        width="40"
+                        height="40"
+                        patternUnits="userSpaceOnUse"
+                    >
+                        <path
+                            d="M 40 0 L 0 0 0 40"
+                            fill="none"
+                            stroke="white"
+                            stroke-width="1"></path>
+                    </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#grid-pattern-pos)"
+                ></rect>
+            </svg>
+        </div>
         <Container className="relative z-10 text-center max-w-4xl">
-            <h1 class="text-5xl md:text-6xl font-black mb-6">
+            <h1 class="text-5xl md:text-6xl font-black mb-6 text-white">
                 Equipamiento Industrial
             </h1>
-            <p class="text-xl text-slate-300 max-w-2xl mx-auto mb-8">
-                Hardware de grado comercial certificado por Oracle para soportar
-                las condiciones más exigentes en cocinas y áreas de alto
-                tráfico.
+            <h2 class="text-2xl text-secondary-400 font-bold mb-6">
+                Infraestructura confiable para operaciones de alto volumen.
+            </h2>
+            <p
+                class="text-xl text-slate-300 max-w-3xl mx-auto mb-8 font-medium leading-relaxed"
+            >
+                Solución robusta que combina hardware especializado con software
+                de gestión para facturación continua y control operativo.
             </p>
         </Container>
     </section>
 
-    <section class="py-24 bg-background">
+    <section class="py-24 bg-background border-b border-border">
         <Container>
-            <div class="grid md:grid-cols-2 gap-12">
-                <div
-                    class="border border-border rounded-2xl p-8 hover:shadow-lg transition-shadow bg-card"
-                >
-                    <img
-                        src="https://images.unsplash.com/photo-1591405018659-1fde0cce508b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-                        alt="Terminal POS WS5A"
-                        class="w-full h-64 object-cover rounded-xl mb-6"
-                    />
-                    <h3 class="text-2xl font-bold mb-4">Terminales WS5A</h3>
-                    <p class="text-muted-foreground">
-                        Hardware de alta gama y robusto con múltiples puertos de
-                        conectividad para periféricos. Diseñado específicamente
-                        para resistir las condiciones intensas del punto de
-                        venta.
-                    </p>
+            <div class="grid lg:grid-cols-2 gap-16 items-start">
+                <div class="space-y-12">
+                    <div>
+                        <h2
+                            class="text-xs font-bold text-secondary-500 uppercase tracking-widest mb-2 block"
+                        >
+                            ¿Qué ofrece?
+                        </h2>
+                        <h3
+                            class="text-3xl font-heading font-black text-foreground mb-4"
+                        >
+                            Hardware y Gestión Integrada
+                        </h3>
+                        <ul class="space-y-4 text-muted-foreground text-lg">
+                            {
+                                [
+                                    "Terminales certificadas",
+                                    "Impresoras fiscales integradas",
+                                    "Control de inventario",
+                                    "Gestión de caja",
+                                    "Reportes operativos",
+                                ].map((item) => (
+                                    <li class="flex items-center gap-3">
+                                        <svg
+                                            class="w-5 h-5 text-primary-600 shrink-0"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke="currentColor"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                                            />
+                                        </svg>
+                                        <span class="font-medium text-foreground">
+                                            {item}
+                                        </span>
+                                    </li>
+                                ))
+                            }
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 class="text-2xl font-bold text-foreground mb-6">
+                            Ventajas Competitivas
+                        </h3>
+                        <ul class="space-y-4">
+                            {
+                                [
+                                    "Estabilidad comprobada en producción",
+                                    "Integración nativa hardware/software",
+                                    "Soporte técnico y reparación especializada local",
+                                    "Clasificación Enterprise para entornos exigentes",
+                                ].map((item) => (
+                                    <li class="flex items-start gap-3">
+                                        <svg
+                                            class="w-6 h-6 text-primary-500 shrink-0 mt-0.5"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke="currentColor"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M5 13l4 4L19 7"
+                                            />
+                                        </svg>
+                                        <span class="text-foreground font-medium">
+                                            {item}
+                                        </span>
+                                    </li>
+                                ))
+                            }
+                        </ul>
+                    </div>
                 </div>
-                <div
-                    class="border border-border rounded-2xl p-8 hover:shadow-lg transition-shadow bg-card"
-                >
-                    <img
-                        src="https://images.unsplash.com/photo-1524143878510-ce596f2a246d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-                        alt="Impresoras Micros"
-                        class="w-full h-64 object-cover rounded-xl mb-6"
+
+                <div class="space-y-12">
+                    <Image
+                        src={oracleImg}
+                        alt="Terminales de punto de venta Micros en restaurante"
+                        class="w-full h-110 object-cover rounded-xl shadow-lg border border-border"
                     />
-                    <h3 class="text-2xl font-bold mb-4">
-                        Impresoras de Tickets Micros
-                    </h3>
-                    <p class="text-muted-foreground">
-                        Integración nativa e impecable con impresoras de la
-                        marca Micros, asegurando una comunicación instantánea y
-                        una generación de tickets o comandas ininterrumpida.
-                    </p>
+
+                    <div
+                        class="bg-primary-50 p-8 rounded-xl border border-primary-100"
+                    >
+                        <h3 class="text-2xl font-bold text-primary-900 mb-6">
+                            Ideal para:
+                        </h3>
+                        <div class="flex flex-wrap gap-3">
+                            {
+                                [
+                                    "Restaurantes de alto tráfico",
+                                    "Hoteles",
+                                    "Operaciones con múltiples puntos de venta",
+                                ].map((segment) => (
+                                    <span class="px-4 py-2 bg-white text-primary-800 font-semibold rounded-md border border-primary-200 shadow-sm cursor-default hover:bg-primary-100 transition-colors">
+                                        {segment}
+                                    </span>
+                                ))
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </Container>
+    </section>
+
+    <!-- Hardward Catalog Section -->
+    <section class="py-24 bg-muted/30">
+        <Container>
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2
+                    class="text-primary-600 font-bold tracking-wide uppercase text-sm mb-3"
+                >
+                    Catálogo Especializado
+                </h2>
+                <h3
+                    class="text-4xl font-heading font-black text-foreground mb-6"
+                >
+                    Equipamiento Certificado Micros
+                </h3>
+                <p class="text-lg text-muted-foreground">
+                    Encuentra el hardware exacto que tu operación necesita.
+                    Diseñado para resistir derrames, calor extremo y uso
+                    continuo.
+                </p>
+            </div>
+
+            <div class="space-y-24">
+                <!-- Producto 1: Terminales -->
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="order-2 md:order-1 space-y-6">
+                        <div
+                            class="inline-flex items-center justify-center p-3 bg-primary-100 text-primary-700 rounded-xl mb-2"
+                        >
+                            <svg
+                                class="w-6 h-6"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                ><path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                                ></path></svg
+                            >
+                        </div>
+                        <h4 class="text-3xl font-bold text-foreground">
+                            Terminales POS / Workstation
+                        </h4>
+                        <p
+                            class="text-muted-foreground text-lg leading-relaxed"
+                        >
+                            Hardware de grado comercial con pantallas táctiles
+                            selladas anti-derrames y amplio poder de
+                            procesamiento para despachar comandas a máxima
+                            velocidad.
+                        </p>
+                        <ul class="space-y-3 mb-8">
+                            <li
+                                class="flex items-center gap-2 text-foreground font-medium"
+                            >
+                                <svg
+                                    class="w-5 h-5 text-secondary-500"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                    ><path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path></svg
+                                > Pantalla anti-reflejante Full HD
+                            </li>
+                            <li
+                                class="flex items-center gap-2 text-foreground font-medium"
+                            >
+                                <svg
+                                    class="w-5 h-5 text-secondary-500"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                    ><path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path></svg
+                                > Chasis metálico para disipación de calor
+                            </li>
+                            <li
+                                class="flex items-center gap-2 text-foreground font-medium"
+                            >
+                                <svg
+                                    class="w-5 h-5 text-secondary-500"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                    ><path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path></svg
+                                > Múltiples puertos COM / USB industriales
+                            </li>
+                        </ul>
+                        <a
+                            href="/contacto?producto=Terminales%20POS"
+                            class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white text-primary-700 border-2 border-primary-200 hover:border-primary-600 hover:bg-primary-50 rounded-lg font-bold transition-all w-full sm:w-auto"
+                        >
+                            <span>Cotizar Terminales</span>
+                            <svg
+                                class="w-5 h-5"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                ><path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg
+                            >
+                        </a>
+                    </div>
+                    <div class="order-1 md:order-2">
+                        <Image
+                            src={termImg}
+                            alt="Terminales POS"
+                            class="w-full h-[400px] object-contain bg-white p-8 rounded-2xl shadow-xl border border-border"
+                        />
+                    </div>
+                </div>
+
+                <!-- Producto 2: Kitchen Display -->
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="order-1 md:order-1">
+                        <Image
+                            src={kdsImg}
+                            alt="Kitchen Display System"
+                            class="w-full h-[400px] object-contain bg-white p-8 rounded-2xl shadow-xl border border-border"
+                        />
+                    </div>
+                    <div class="order-2 md:order-2 space-y-6">
+                        <div
+                            class="inline-flex items-center justify-center p-3 bg-primary-100 text-primary-700 rounded-xl mb-2"
+                        >
+                            <svg
+                                class="w-6 h-6"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                ><path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M6 18L18 6M6 6l12 12"></path></svg
+                            >
+                            <!-- Placeholder icon -->
+                        </div>
+                        <h4 class="text-3xl font-bold text-foreground">
+                            Kitchen Display Systems (KDS)
+                        </h4>
+                        <p
+                            class="text-muted-foreground text-lg leading-relaxed"
+                        >
+                            Monitores de despacho directo para cocinas y áreas
+                            de preparación. Elimina el papel, controla tiempos
+                            de cocción y prioriza órdenes automáticamente.
+                        </p>
+                        <ul class="space-y-3 mb-8">
+                            <li
+                                class="flex items-center gap-2 text-foreground font-medium"
+                            >
+                                <svg
+                                    class="w-5 h-5 text-secondary-500"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                    ><path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path></svg
+                                > Resistente a vapores y grasas de cocina
+                            </li>
+                            <li
+                                class="flex items-center gap-2 text-foreground font-medium"
+                            >
+                                <svg
+                                    class="w-5 h-5 text-secondary-500"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                    ><path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path></svg
+                                > Alertas visuales de retraso de órdenes
+                            </li>
+                            <li
+                                class="flex items-center gap-2 text-foreground font-medium"
+                            >
+                                <svg
+                                    class="w-5 h-5 text-secondary-500"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                    ><path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path></svg
+                                > Panel de mandos y botoneras de acero templado
+                            </li>
+                        </ul>
+                        <a
+                            href="/contacto?producto=Monitores%20KDS"
+                            class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white text-primary-700 border-2 border-primary-200 hover:border-primary-600 hover:bg-primary-50 rounded-lg font-bold transition-all w-full sm:w-auto"
+                        >
+                            <span>Cotizar KDS</span>
+                            <svg
+                                class="w-5 h-5"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                ><path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg
+                            >
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Producto 3: Impresoras -->
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="order-2 md:order-1 space-y-6">
+                        <div
+                            class="inline-flex items-center justify-center p-3 bg-primary-100 text-primary-700 rounded-xl mb-2"
+                        >
+                            <svg
+                                class="w-6 h-6"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                ><path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"
+                                ></path></svg
+                            >
+                        </div>
+                        <h4 class="text-3xl font-bold text-foreground">
+                            Impresoras Térmicas y de Impacto
+                        </h4>
+                        <p
+                            class="text-muted-foreground text-lg leading-relaxed"
+                        >
+                            Impresión ininterrumpida de tickets para clientes e
+                            impresoras de impacto diseñadas para no perder
+                            comandas en ambientes de alta humedad y calor
+                            (cocinas calientes).
+                        </p>
+                        <ul class="space-y-3 mb-8">
+                            <li
+                                class="flex items-center gap-2 text-foreground font-medium"
+                            >
+                                <svg
+                                    class="w-5 h-5 text-secondary-500"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                    ><path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path></svg
+                                > Velocidad ultrarrápida de impresión
+                            </li>
+                            <li
+                                class="flex items-center gap-2 text-foreground font-medium"
+                            >
+                                <svg
+                                    class="w-5 h-5 text-secondary-500"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                    ><path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path></svg
+                                > Conectividad Ethernet / Inalámbrica
+                            </li>
+                            <li
+                                class="flex items-center gap-2 text-foreground font-medium"
+                            >
+                                <svg
+                                    class="w-5 h-5 text-secondary-500"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                    ><path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path></svg
+                                > Campanilla de aviso y corte automático
+                            </li>
+                        </ul>
+                        <a
+                            href="/contacto?producto=Impresoras"
+                            class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white text-primary-700 border-2 border-primary-200 hover:border-primary-600 hover:bg-primary-50 rounded-lg font-bold transition-all w-full sm:w-auto"
+                        >
+                            <span>Cotizar Impresoras</span>
+                            <svg
+                                class="w-5 h-5"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                ><path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg
+                            >
+                        </a>
+                    </div>
+                    <div class="order-1 md:order-2">
+                        <Image
+                            src={printerImg}
+                            alt="Impresoras Térmicas"
+                            class="w-full h-[400px] object-contain bg-white p-8 rounded-2xl shadow-xl border border-border"
+                        />
+                    </div>
                 </div>
             </div>
         </Container>

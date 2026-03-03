@@ -1,54 +1,68 @@
 ---
 import Container from "../ui/Container.astro";
+import { Image } from "astro:assets";
+
+import pharaos from "../../assets/clients/pharaos.webp";
+import guacalito from "../../assets/clients/guacalito.webp";
+import zacateLimon from "../../assets/clients/zacate-limon.webp";
+import ranchoSantana from "../../assets/clients/rancho_santana.webp";
+import intercontinental from "../../assets/clients/intercontinental.webp";
+import marriott from "../../assets/clients/marriott.png";
+import fourSeasons from "../../assets/clients/four-seasons.png";
+import hyattPlace from "../../assets/clients/Hyatt-place.jpg";
+import molinoCoffee from "../../assets/clients/molino-coffe.jpg";
+import porterHouse from "../../assets/clients/porter-house.png";
+import starbucks from "../../assets/clients/starbucks.png";
+import burgerKing from "../../assets/clients/burger-king.png";
 
 const clients = [
     {
         name: "Starbucks",
-        logo: "/starbucks.png",
+        logo: starbucks,
     },
     {
         name: "Burger King",
-        logo: "/burger-king.png",
+        logo: burgerKing,
     },
     {
         name: "Hotel Four Seasons",
-        logo: "/four-seasons.png",
+        logo: fourSeasons,
     },
     {
         name: "Marriott",
-        logo: "/marriott.png",
+        logo: marriott,
     },
     {
         name: "HYATT Place",
-        logo: "/Hyatt-place.jpg",
+        logo: hyattPlace,
     },
     {
         name: "Intercontinental",
-        logo: "/intercontinental.webp",
+        logo: intercontinental,
     },
     {
         name: "Pharaos Casinos",
-        logo: "/pharaos.webp",
+        logo: pharaos,
     },
     {
         name: "Molino Coffee",
-        logo: "/molino-coffe.jpg",
+        logo: molinoCoffee,
     },
     {
         name: "Guacalito Nicaragua",
-        logo: "/guacalito.webp",
+        logo: guacalito,
     },
     {
         name: "Rancho Santana",
-        logo: "/rancho_santana.webp",
+        logo: ranchoSantana,
     },
     {
         name: "Porter House",
-        logo: "/porter-house.png",
+        logo: porterHouse,
     },
     {
         name: "ZacateLimon",
-        logo: "/zacate-limon.webp",
+        logo: zacateLimon,
     },
 ];
 ---
@@ -107,7 +121,7 @@ const clients = [
                     {
                         clients.map((client) => (
                             <div class="flex-shrink-0 w-32 h-20 flex items-center justify-center">
-                                <img
+                                <Image
                                     src={client.logo}
                                     alt={client.name}
                                     class="max-w-[120px] max-h-[60px] object-contain"
@@ -120,7 +134,7 @@ const clients = [
                     {
                         clients.map((client) => (
                             <div class="flex-shrink-0 w-32 h-20 flex items-center justify-center">
-                                <img
+                                <Image
                                     src={client.logo}
                                     alt={client.name}
                                     class="max-w-[120px] max-h-[60px] object-contain"
