@@ -2,23 +2,297 @@
 import MainLayout from "../layouts/MainLayout.astro";
 import Container from "../components/ui/Container.astro";
 import CTA from "../components/sections/CTA.astro";
+
+const valores = [
+    {
+        icon: `<svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>`,
+        color: "bg-primary-100 text-primary-700",
+        title: "Excelencia",
+        desc: "Estándares de calidad en cada instalación, configuración y servicio postventa.",
+    },
+    {
+        icon: `<svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>`,
+        color: "bg-secondary-100 text-secondary-700",
+        title: "Confianza",
+        desc: "Construimos relaciones a largo plazo basadas en transparencia y resultados reales.",
+    },
+    {
+        icon: `<svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>`,
+        color: "bg-green-100 text-green-700",
+        title: "Innovación",
+        desc: "Tecnología actualizada y de vanguardia para que tu negocio siempre esté a la delantera.",
+    },
+    {
+        icon: `<svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"/></svg>`,
+        color: "bg-orange-100 text-orange-700",
+        title: "Compromiso",
+        desc: "Soporte técnico dedicado antes, durante y después de cada implementación.",
+    },
+];
+
+const localClients = [
+    "TGIF",
+    "Corporación Rostipollos",
+    "La Casa del Café",
+    "Hotel Crowne Plaza",
+    "Hotel La Gran Francia",
+    "Hotel Darío",
+    "Hotel Pelican Eyes",
+    "Hotel Victoriano",
+    "Parque Marítimo El Coco",
+    "Restaurante Santa Fe",
+    "Pharaohs Casino",
+    "Pizza Hut",
+    "Burger King",
+];
+
+const stats = [
+    { value: "27+", label: "Años de experiencia" },
+    { value: "30+", label: "Clientes activos" },
+    { value: "24/7", label: "Soporte técnico" },
+];
 ---
 
 <MainLayout
-    title="Sobre Nosotros"
-    description="Conoce nuestra historia y propósito."
+    title="Sobre Nosotros | Componentes S.A."
+    description="Conoce quiénes somos, nuestra misión, visión y el equipo detrás de Componentes S.A."
 >
-    <section class="pt-32 pb-24 bg-card border-b border-border">
-        <Container className="text-center max-w-4xl">
-            <h1 class="text-5xl md:text-6xl font-black mb-6 text-foreground">
+    <!-- HERO -->
+    <section
+        class="pt-32 pb-24 bg-primary-900 relative overflow-hidden border-b border-primary-800"
+    >
+        <div class="absolute inset-0 z-0 opacity-10">
+            <svg
+                class="absolute w-full h-full"
+                xmlns="http://www.w3.org/2000/svg"
+            >
+                <defs>
+                    <pattern
+                        id="grid-nos"
+                        x="0"
+                        y="0"
+                        width="40"
+                        height="40"
+                        patternUnits="userSpaceOnUse"
+                    >
+                        <path
+                            d="M 40 0 L 0 0 0 40"
+                            fill="none"
+                            stroke="white"
+                            stroke-width="1"></path>
+                    </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#grid-nos)"></rect>
+            </svg>
+        </div>
+        <Container className="relative z-10 text-center max-w-4xl">
+            <span
+                class="text-secondary-400 font-bold uppercase tracking-widest text-sm mb-4 block"
+                >Quiénes somos</span
+            >
+            <h1
+                class="text-5xl md:text-6xl font-heading font-black text-white mb-6"
+            >
                 Componentes S.A.
             </h1>
-            <p class="text-xl text-muted-foreground mx-auto">
-                Somos pioneros en la digitalización y modernización del
-                ecosistema HORECA y Retail en la región. Llevamos tecnología de
-                clase mundial a negocios en crecimiento.
+            <p class="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
+                Empresa nicaragüense pionera en la distribución e implementación
+                de tecnología para la industria de hospitalidad, restauración y
+                franquicias. Llevamos más de 27 años conectando negocios con
+                soluciones de clase mundial.
             </p>
         </Container>
     </section>
+
+    <!-- ESTADÍSTICAS -->
+    <section class="py-14 bg-primary-800 border-b border-primary-700">
+        <Container>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-8 text-center">
+                {
+                    stats.map((s) => (
+                        <div>
+                            <div class="text-4xl font-black text-white mb-1">
+                                {s.value}
+                            </div>
+                            <div class="text-primary-300 font-medium text-sm uppercase tracking-wide">
+                                {s.label}
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </Container>
+    </section>
+
+    <!-- MISIÓN Y VISIÓN -->
+    <section class="py-20 bg-background border-b border-border">
+        <Container className="max-w-5xl">
+            <div class="text-center mb-14">
+                <h2
+                    class="text-primary-600 font-bold tracking-wide uppercase text-sm mb-3"
+                >
+                    Nuestra identidad
+                </h2>
+                <h3 class="text-4xl font-heading font-black text-foreground">
+                    Misión y Visión
+                </h3>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div
+                    class="bg-card border border-border rounded-2xl p-10 hover:border-primary-300 transition-colors"
+                >
+                    <div
+                        class="w-14 h-14 bg-primary-100 text-primary-700 rounded-xl flex items-center justify-center mb-6"
+                    >
+                        <svg
+                            class="w-7 h-7"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                            ></path>
+                        </svg>
+                    </div>
+                    <h4 class="text-2xl font-bold text-foreground mb-4">
+                        Nuestra Misión
+                    </h4>
+                    <p class="text-muted-foreground leading-relaxed text-lg">
+                        Proveer soluciones tecnológicas de clase mundial a
+                        restaurantes, hoteles y empresas de Nicaragua,
+                        potenciando su eficiencia operativa y control financiero
+                        con productos Oracle Simphony y Safiro ERP, respaldados
+                        por servicio técnico de excelencia.
+                    </p>
+                </div>
+                <div
+                    class="bg-card border border-border rounded-2xl p-10 hover:border-primary-300 transition-colors"
+                >
+                    <div
+                        class="w-14 h-14 bg-secondary-100 text-secondary-700 rounded-xl flex items-center justify-center mb-6"
+                    >
+                        <svg
+                            class="w-7 h-7"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                            ></path>
+                        </svg>
+                    </div>
+                    <h4 class="text-2xl font-bold text-foreground mb-4">
+                        Nuestra Visión
+                    </h4>
+                    <p class="text-muted-foreground leading-relaxed text-lg">
+                        Ser la empresa líder en distribución e implementación de
+                        tecnología para la industria HORECA y Retail en
+                        Centroamérica, reconocida por la calidad de nuestras
+                        soluciones y el impacto positivo en la digitalización
+                        empresarial de la región.
+                    </p>
+                </div>
+            </div>
+        </Container>
+    </section>
+
+    <!-- VALORES -->
+    <section class="py-20 bg-muted/30 border-b border-border">
+        <Container>
+            <div class="text-center mb-14">
+                <h2
+                    class="text-primary-600 font-bold tracking-wide uppercase text-sm mb-3"
+                >
+                    Lo que nos define
+                </h2>
+                <h3 class="text-4xl font-heading font-black text-foreground">
+                    Nuestros Valores
+                </h3>
+            </div>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                {
+                    valores.map((v) => (
+                        <div class="bg-card border border-border rounded-2xl p-8 hover:border-primary-300 transition-colors text-center">
+                            <div
+                                class={`w-14 h-14 ${v.color} rounded-xl flex items-center justify-center mb-5 mx-auto`}
+                                set:html={v.icon}
+                            />
+                            <h4 class="text-lg font-bold text-foreground mb-2">
+                                {v.title}
+                            </h4>
+                            <p class="text-muted-foreground text-sm leading-relaxed">
+                                {v.desc}
+                            </p>
+                        </div>
+                    ))
+                }
+            </div>
+        </Container>
+    </section>
+
+    <!-- CLIENTES LOCALES -->
+    <section class="py-20 bg-background border-b border-border">
+        <Container className="max-w-4xl text-center">
+            <h2
+                class="text-primary-600 font-bold tracking-wide uppercase text-sm mb-3"
+            >
+                Presencia local
+            </h2>
+            <h3 class="text-4xl font-heading font-black text-foreground mb-4">
+                Empresas que confían en nosotros
+            </h3>
+            <p class="text-muted-foreground text-lg mb-10 max-w-2xl mx-auto">
+                Negocios de Nicaragua que ya operan con las soluciones de
+                Componentes S.A.:
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                {
+                    localClients.map((c) => (
+                        <span class="px-5 py-2.5 bg-card border border-border text-foreground font-semibold rounded-xl hover:bg-primary-50 hover:border-primary-200 transition-colors cursor-default shadow-sm">
+                            {c}
+                        </span>
+                    ))
+                }
+            </div>
+            <div
+                class="mt-12 inline-block bg-primary-50 border border-primary-100 rounded-2xl px-8 py-6 text-center"
+            >
+                <p class="text-primary-800 font-medium">
+                    ¿Querés ser parte de este grupo?
+                </p>
+                <a
+                    href="/contacto"
+                    class="inline-flex items-center gap-2 mt-3 text-primary-600 font-bold hover:text-primary-700 transition-colors"
+                >
+                    Conversemos hoy
+                    <svg
+                        class="w-5 h-5"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        ><path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg
+                    >
+                </a>
+            </div>
+        </Container>
+    </section>
+
     <CTA />
 </MainLayout>

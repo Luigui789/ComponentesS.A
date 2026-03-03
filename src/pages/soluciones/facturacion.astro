@@ -2,6 +2,10 @@
 import MainLayout from "../../layouts/MainLayout.astro";
 import Container from "../../components/ui/Container.astro";
 import CTA from "../../components/sections/CTA.astro";
+
+import { Image } from "astro:assets";
+
+import Safiro from "../../assets/img_body/safiro.jpg";
 ---
 
 <MainLayout
@@ -139,8 +143,8 @@ import CTA from "../../components/sections/CTA.astro";
                 </div>
 
                 <div class="space-y-12">
-                    <img
-                        src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                    <Image
+                        src={Safiro}
                         alt="Dashboard y gráficos de Safiro ERP"
                         class="w-full h-80 object-cover rounded-xl shadow-lg border border-border"
                     />

@@ -80,7 +80,14 @@ import Button from "../components/ui/Button.astro";
                 <div
                     class="bg-card shadow-xl border border-border rounded-3xl p-8"
                 >
-                    <form class="space-y-6">
+                    <form
+                        action="https://formsubmit.co/yaderisaiasgutierrezruiz@gmail.com"
+                        method="POST"
+                        class="space-y-6"
+                    >
+                        <!-- Evita el captcha para una experiencia de usuario mas rapida -->
+                        <input type="hidden" name="_captcha" value="false" />
+
                         <div class="grid grid-cols-2 gap-6">
                             <div class="space-y-2">
                                 <label
@@ -89,6 +96,8 @@ import Button from "../components/ui/Button.astro";
                                 >
                                 <input
                                     type="text"
+                                    name="nombre"
+                                    required
                                     class="w-full bg-background border border-border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary-500"
                                     placeholder="Tu nombre"
                                 />
@@ -100,6 +109,7 @@ import Button from "../components/ui/Button.astro";
                                 >
                                 <input
                                     type="text"
+                                    name="empresa"
                                     class="w-full bg-background border border-border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary-500"
                                     placeholder="Nombre de tu negocio"
                                 />
@@ -111,23 +121,31 @@ import Button from "../components/ui/Button.astro";
                             >
                             <input
                                 type="email"
+                                name="email"
+                                required
                                 class="w-full bg-background border border-border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary-500"
                                 placeholder="tucorreo@empresa.com"
                             />
                         </div>
                         <div class="space-y-2">
                             <label class="font-medium text-sm text-foreground"
-                                >Mensaje</label
+                                >Mensaje / Producto de Interés</label
                             >
                             <textarea
+                                name="mensaje"
+                                required
                                 rows="4"
                                 class="w-full bg-background border border-border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary-500"
                                 placeholder="¿Cómo podemos ayudarte?"
                             ></textarea>
                         </div>
-                        <Button variant="primary" className="w-full">
+
+                        <button
+                            type="submit"
+                            class="w-full inline-flex items-center justify-center gap-2 px-6 py-3 bg-secondary-500 text-white border border-secondary-600 hover:bg-secondary-600 rounded-lg font-bold transition-all shadow-md"
+                        >
                             Enviar Mensaje
-                        </Button>
+                        </button>
                     </form>
                 </div>
             </div>
