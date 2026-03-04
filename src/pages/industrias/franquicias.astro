@@ -2,23 +2,352 @@
 import MainLayout from "../../layouts/MainLayout.astro";
 import Container from "../../components/ui/Container.astro";
 import CTA from "../../components/sections/CTA.astro";
+
+const problems = [
+    {
+        icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>`,
+        problem: "Inconsistencia entre sucursales",
+        solution:
+            "Menú, precios y promociones centralizados — se actualizan en todas las sucursales desde un solo panel.",
+    },
+    {
+        icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>`,
+        problem: "Reportes dispersos por sucursal",
+        solution:
+            "Dashboard corporativo unificado con métricas de ventas, costos y personal por ubicación.",
+    },
+    {
+        icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>`,
+        problem: "Inventario sin control multi-sede",
+        solution:
+            "Gestión de stock centralizada con alertas de reposición automáticas por sucursal.",
+    },
+    {
+        icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197"/></svg>`,
+        problem: "Control de personal difícil",
+        solution:
+            "Roles, accesos y auditoría por empleado con reportes de productividad por sucursal.",
+    },
+];
+
+const benefits = [
+    {
+        title: "Control centralizado de menú",
+        desc: "Actualiza precios, recetas y promociones en todas tus sucursales simultáneamente desde la oficina corporativa.",
+    },
+    {
+        title: "Reportes multi-sucursal",
+        desc: "Compara ventas, costos y márgenes entre ubicaciones. Identifica las sucursales más y menos rentables.",
+    },
+    {
+        title: "Estandarización de procesos",
+        desc: "Garantiza la misma experiencia de cliente en cada sucursal con flujos operativos idénticos.",
+    },
+    {
+        title: "Escalabilidad sin límites",
+        desc: "Desde 2 hasta cientos de sucursales — Oracle Simphony Cloud crece contigo sin cambiar de plataforma.",
+    },
+];
+
+const useCases = [
+    "Cadenas de comida rápida",
+    "Restaurantes con múltiples locales",
+    "Tiendas de conveniencia",
+    "Hoteles con varios outlets",
+    "Panadería y cafetería en cadena",
+    "Franquicias internacionales",
+];
 ---
 
 <MainLayout
-    title="Soluciones para Franquicias"
-    description="Gestión centralizada de menú, reportes y precios para múltiples sucursales."
+    title="Soluciones para Franquicias y Cadenas | Componentes S.A."
+    description="Oracle Simphony para franquicias: control centralizado de menú, reportes multi-sucursal y estandarización de operaciones."
 >
-    <section class="pt-32 pb-24 bg-card border-b border-border">
-        <Container className="text-center max-w-4xl">
-            <h1 class="text-5xl md:text-6xl font-black mb-6 text-foreground">
-                Cadenas y Franquicias
-            </h1>
-            <p class="text-xl text-muted-foreground mx-auto">
-                Estandariza tu marca. Mantén un control absoluto de precios,
-                promociones, recetarios e inventarios sobre decenas o cientos de
-                franquicias geográficamente dispersas.
-            </p>
+    <!-- HERO -->
+    <section
+        class="pt-32 pb-24 bg-slate-800 border-b border-slate-900 relative overflow-hidden"
+    >
+        <div class="absolute inset-0 z-0 opacity-10">
+            <svg
+                class="absolute w-full h-full"
+                xmlns="http://www.w3.org/2000/svg"
+            >
+                <defs
+                    ><pattern
+                        id="grid-franc"
+                        x="0"
+                        y="0"
+                        width="40"
+                        height="40"
+                        patternUnits="userSpaceOnUse"
+                        ><path
+                            d="M 40 0 L 0 0 0 40"
+                            fill="none"
+                            stroke="white"
+                            stroke-width="1"></path></pattern
+                    ></defs
+                >
+                <rect width="100%" height="100%" fill="url(#grid-franc)"></rect>
+            </svg>
+        </div>
+        <Container className="relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <span
+                        class="inline-block bg-white/10 text-white text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-6 border border-white/20"
+                        >Industria — Franquicias & Cadenas</span
+                    >
+                    <h1
+                        class="text-5xl md:text-6xl font-heading font-black text-white mb-6 leading-tight"
+                    >
+                        Control total desde cualquier sucursal.
+                    </h1>
+                    <p
+                        class="text-xl text-white/80 max-w-2xl mb-10 leading-relaxed"
+                    >
+                        Estandariza tu marca, controla precios, menú e
+                        inventario en decenas de sucursales desde un solo panel.
+                        La solución que usan Starbucks y Burger King a nivel
+                        global.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <a
+                            href="/contacto"
+                            class="inline-flex items-center gap-2 px-6 py-3 bg-white text-slate-800 font-bold rounded-lg hover:bg-slate-100 transition-all shadow-lg"
+                        >
+                            Solicitar demostración
+                            <svg
+                                class="w-5 h-5"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                ><path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg
+                            >
+                        </a>
+                        <a
+                            href="/soluciones/pos"
+                            class="inline-flex items-center gap-2 px-6 py-3 bg-transparent text-white border border-white/40 font-bold rounded-lg hover:bg-white/10 transition-all"
+                        >
+                            Ver Oracle Simphony
+                        </a>
+                    </div>
+                </div>
+                <div class="hidden lg:block">
+                    <img
+                        src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80"
+                        alt="Cadena de restaurantes con múltiples sucursales"
+                        class="w-full h-[420px] object-cover rounded-2xl shadow-2xl border border-white/10 opacity-90"
+                        loading="lazy"
+                    />
+                </div>
+            </div>
         </Container>
     </section>
+
+    <!-- PROBLEMAS -->
+    <section class="py-20 bg-background border-b border-border">
+        <Container>
+            <div class="text-center mb-12">
+                <h2
+                    class="text-primary-600 font-bold tracking-wide uppercase text-sm mb-3"
+                >
+                    Problemas que resolvemos
+                </h2>
+                <h3 class="text-3xl font-heading font-black text-foreground">
+                    Los mayores dolores de una franquicia, solucionados
+                </h3>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                {
+                    problems.map((p) => (
+                        <div class="bg-card border border-border rounded-2xl p-6 hover:border-primary-300 transition-colors">
+                            <div
+                                class="w-11 h-11 bg-red-50 text-red-500 rounded-xl flex items-center justify-center mb-4"
+                                set:html={p.icon}
+                            />
+                            <h4 class="font-bold text-foreground mb-2">
+                                {p.problem}
+                            </h4>
+                            <p class="text-muted-foreground text-sm leading-relaxed">
+                                {p.solution}
+                            </p>
+                        </div>
+                    ))
+                }
+            </div>
+        </Container>
+    </section>
+
+    <!-- BENEFICIOS -->
+    <section class="py-20 bg-muted/30 border-b border-border">
+        <Container>
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2
+                        class="text-primary-600 font-bold tracking-wide uppercase text-sm mb-3"
+                    >
+                        Beneficios Clave
+                    </h2>
+                    <h3
+                        class="text-3xl font-heading font-black text-foreground mb-8"
+                    >
+                        Gestiona cientos de locales como si fueran uno
+                    </h3>
+                    <div class="space-y-5">
+                        {
+                            benefits.map((b) => (
+                                <div class="flex items-start gap-4 p-5 bg-card border border-border rounded-xl">
+                                    <svg
+                                        class="w-5 h-5 text-primary-500 shrink-0 mt-0.5"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M5 13l4 4L19 7"
+                                        />
+                                    </svg>
+                                    <div>
+                                        <h4 class="font-bold text-foreground mb-0.5">
+                                            {b.title}
+                                        </h4>
+                                        <p class="text-muted-foreground text-sm">
+                                            {b.desc}
+                                        </p>
+                                    </div>
+                                </div>
+                            ))
+                        }
+                    </div>
+                    <div class="mt-8 flex gap-3 flex-wrap">
+                        <a
+                            href="/contacto"
+                            class="inline-flex items-center gap-2 px-5 py-2.5 bg-primary-600 text-white font-bold rounded-lg hover:bg-primary-700 transition-all"
+                        >
+                            Cotizar para mi cadena
+                        </a>
+                    </div>
+                </div>
+                <div class="space-y-6">
+                    <img
+                        src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                        alt="Cadena de restaurantes usando POS centralizado"
+                        class="w-full h-64 object-cover rounded-2xl shadow-lg border border-border"
+                        loading="lazy"
+                    />
+                    <div
+                        class="bg-primary-50 border border-primary-100 rounded-2xl p-6"
+                    >
+                        <h4 class="font-bold text-primary-900 mb-3">
+                            Ideal para:
+                        </h4>
+                        <div class="flex flex-wrap gap-2">
+                            {
+                                useCases.map((u) => (
+                                    <span class="px-3 py-1.5 bg-white text-primary-800 font-semibold rounded-md border border-primary-200 text-sm hover:bg-primary-100 transition-colors cursor-default">
+                                        {u}
+                                    </span>
+                                ))
+                            }
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-primary-200">
+                            <p class="text-xs text-primary-700 font-medium">
+                                🌟 Clientes globales: <strong
+                                    >Starbucks, Burger King, McDonald's</strong
+                                > y más de 500 marcas usan Oracle Simphony.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </Container>
+    </section>
+
+    <!-- SOLUCIONES RELACIONADAS -->
+    <section class="py-16 bg-card border-b border-border">
+        <Container>
+            <div class="text-center mb-10">
+                <h2 class="text-2xl font-heading font-black text-foreground">
+                    Soluciones recomendadas para tu cadena
+                </h2>
+            </div>
+            <div class="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+                <a
+                    href="/soluciones/pos"
+                    aria-label="Oracle Simphony POS"
+                    class="flex items-start gap-4 p-6 bg-background border border-border rounded-2xl hover:border-primary-400 hover:shadow-md transition-all group"
+                >
+                    <div
+                        class="w-12 h-12 bg-secondary-100 text-secondary-600 rounded-xl flex items-center justify-center shrink-0"
+                    >
+                        <svg
+                            class="w-6 h-6"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            ><path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
+                            ></path></svg
+                        >
+                    </div>
+                    <div>
+                        <h4
+                            class="font-bold text-foreground mb-1 group-hover:text-primary-600 transition-colors"
+                        >
+                            Oracle Simphony POS
+                        </h4>
+                        <p class="text-muted-foreground text-sm">
+                            POS en la nube escalable para toda tu cadena desde
+                            un panel central.
+                        </p>
+                    </div>
+                </a>
+                <a
+                    href="/soluciones/facturacion"
+                    aria-label="Safiro ERP"
+                    class="flex items-start gap-4 p-6 bg-background border border-border rounded-2xl hover:border-primary-400 hover:shadow-md transition-all group"
+                >
+                    <div
+                        class="w-12 h-12 bg-primary-100 text-primary-600 rounded-xl flex items-center justify-center shrink-0"
+                    >
+                        <svg
+                            class="w-6 h-6"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            ><path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                            ></path></svg
+                        >
+                    </div>
+                    <div>
+                        <h4
+                            class="font-bold text-foreground mb-1 group-hover:text-primary-600 transition-colors"
+                        >
+                            Safiro ERP
+                        </h4>
+                        <p class="text-muted-foreground text-sm">
+                            Contabilidad, inventario y facturación electrónica
+                            unificada para toda la cadena.
+                        </p>
+                    </div>
+                </a>
+            </div>
+        </Container>
+    </section>
+
     <CTA />
 </MainLayout>

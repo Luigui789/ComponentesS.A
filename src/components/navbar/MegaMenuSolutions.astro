@@ -41,10 +41,12 @@ const menuItems = [
             menuItems.map((item) => (
                 <a
                     href={item.href}
+                    aria-label={item.title}
                     class="flex items-start gap-4 p-3 rounded-lg hover:bg-muted transition-colors group/item"
                 >
                     <div
                         class="p-2 bg-primary-50 rounded-lg group-hover/item:bg-white transition-colors"
+                        aria-hidden="true"
                         set:html={item.icon}
                     />
                     <div>

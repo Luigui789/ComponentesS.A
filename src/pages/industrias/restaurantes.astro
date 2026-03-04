@@ -2,23 +2,356 @@
 import MainLayout from "../../layouts/MainLayout.astro";
 import Container from "../../components/ui/Container.astro";
 import CTA from "../../components/sections/CTA.astro";
+
+const problems = [
+    {
+        icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>`,
+        problem: "Tiempos de espera elevados",
+        solution:
+            "Pedidos móviles en mesa y quioscos de autoservicio que agilizan el flujo sin aumentar personal.",
+    },
+    {
+        icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>`,
+        problem: "Errores en pedidos y cocina",
+        solution:
+            "KDS (Kitchen Display System) elimina comandas en papel y reduce errores de preparación en tiempo real.",
+    },
+    {
+        icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>`,
+        problem: "Desperdicio e inventario fuera de control",
+        solution:
+            "Control de materia prima y recetas con previsión en tiempo real para mantener stock óptimo.",
+    },
+    {
+        icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>`,
+        problem: "Falta de reportes de ventas claros",
+        solution:
+            "Analítica avanzada en tiempo real: ticket promedio, platos más vendidos, horas pico y más.",
+    },
+];
+
+const benefits = [
+    {
+        title: "Gestión de mesas en tiempo real",
+        desc: "Visualiza el estado de cada mesa, tiempo de ocupación y etapa del servicio desde cualquier dispositivo.",
+    },
+    {
+        title: "Comandas móviles",
+        desc: "Meseros toman pedidos desde tablets o smartphones y se envían directo a cocina al instante.",
+    },
+    {
+        title: "Integración de delivery",
+        desc: "Conecta con Uber Eats, DoorDash y apps propias en un solo dashboard sin duplicar operaciones.",
+    },
+    {
+        title: "Control de turnos y personal",
+        desc: "Asigna roles, controla accesos y audita operaciones por empleado con huella dactilar.",
+    },
+];
+
+const useCases = [
+    "Restaurantes de alta cocina",
+    "Cafeterías y coffee shops",
+    "Bares y cantinas",
+    "Dark kitchens",
+    "Buffetes y comedores",
+    "Cadenas de comida rápida",
+];
 ---
 
 <MainLayout
-    title="Soluciones para Restaurantes"
-    description="Agiliza la toma de pedidos y controla el inventario en tiempo real."
+    title="Soluciones para Restaurantes y Bares | Componentes S.A."
+    description="Oracle Simphony POS para restaurantes: gestión de mesas, comandas móviles, KDS y control de inventario en tiempo real."
 >
-    <section class="pt-32 pb-24 bg-card border-b border-border">
-        <Container className="text-center max-w-4xl">
-            <h1 class="text-5xl md:text-6xl font-black mb-6 text-foreground">
-                Restaurantes y Bares
-            </h1>
-            <p class="text-xl text-muted-foreground mx-auto">
-                Desde cafeterías boutique hasta restaurantes de alta cocina,
-                proveemos la plataforma Oracle Simphony para que ofrezcas
-                experiencias memorables a tus comensales.
-            </p>
+    <!-- HERO -->
+    <section
+        class="pt-32 pb-24 bg-secondary-800 border-b border-secondary-900 relative overflow-hidden"
+    >
+        <div class="absolute inset-0 z-0 opacity-10">
+            <svg
+                class="absolute w-full h-full"
+                xmlns="http://www.w3.org/2000/svg"
+            >
+                <defs
+                    ><pattern
+                        id="grid-rest"
+                        x="0"
+                        y="0"
+                        width="40"
+                        height="40"
+                        patternUnits="userSpaceOnUse"
+                        ><path
+                            d="M 40 0 L 0 0 0 40"
+                            fill="none"
+                            stroke="white"
+                            stroke-width="1"></path></pattern
+                    ></defs
+                >
+                <rect width="100%" height="100%" fill="url(#grid-rest)"></rect>
+            </svg>
+        </div>
+        <Container className="relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <span
+                        class="inline-block bg-white/10 text-white text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-6 border border-white/20"
+                        >Industria — Restaurantes & Bares</span
+                    >
+                    <h1
+                        class="text-5xl md:text-6xl font-heading font-black text-white mb-6 leading-tight"
+                    >
+                        Más mesas atendidas. Menos errores. Mayor ganancia.
+                    </h1>
+                    <p
+                        class="text-xl text-white/80 max-w-2xl mb-10 leading-relaxed"
+                    >
+                        Desde cafeterías boutique hasta cadenas de alta cocina —
+                        Oracle Simphony centraliza pedidos, cocina, pagos e
+                        inventario en una sola plataforma en la nube.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <a
+                            href="/contacto"
+                            class="inline-flex items-center gap-2 px-6 py-3 bg-white text-secondary-800 font-bold rounded-lg hover:bg-secondary-50 transition-all shadow-lg"
+                        >
+                            Solicitar demostración
+                            <svg
+                                class="w-5 h-5"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                ><path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg
+                            >
+                        </a>
+                        <a
+                            href="/soluciones/pos"
+                            class="inline-flex items-center gap-2 px-6 py-3 bg-transparent text-white border border-white/40 font-bold rounded-lg hover:bg-white/10 transition-all"
+                        >
+                            Ver Oracle Simphony
+                        </a>
+                    </div>
+                </div>
+                <div class="hidden lg:block">
+                    <img
+                        src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80"
+                        alt="Restaurante moderno con tecnología POS"
+                        class="w-full h-[420px] object-cover rounded-2xl shadow-2xl border border-white/10 opacity-90"
+                        loading="lazy"
+                    />
+                </div>
+            </div>
         </Container>
     </section>
+
+    <!-- PROBLEMAS -->
+    <section class="py-20 bg-background border-b border-border">
+        <Container>
+            <div class="text-center mb-12">
+                <h2
+                    class="text-primary-600 font-bold tracking-wide uppercase text-sm mb-3"
+                >
+                    Problemas que resolvemos
+                </h2>
+                <h3 class="text-3xl font-heading font-black text-foreground">
+                    Los retos diarios de tu operación, resueltos
+                </h3>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                {
+                    problems.map((p) => (
+                        <div class="bg-card border border-border rounded-2xl p-6 hover:border-primary-300 transition-colors">
+                            <div
+                                class="w-11 h-11 bg-red-50 text-red-500 rounded-xl flex items-center justify-center mb-4"
+                                set:html={p.icon}
+                            />
+                            <h4 class="font-bold text-foreground mb-2">
+                                {p.problem}
+                            </h4>
+                            <p class="text-muted-foreground text-sm leading-relaxed">
+                                {p.solution}
+                            </p>
+                        </div>
+                    ))
+                }
+            </div>
+        </Container>
+    </section>
+
+    <!-- BENEFICIOS -->
+    <section class="py-20 bg-muted/30 border-b border-border">
+        <Container>
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2
+                        class="text-primary-600 font-bold tracking-wide uppercase text-sm mb-3"
+                    >
+                        Beneficios Clave
+                    </h2>
+                    <h3
+                        class="text-3xl font-heading font-black text-foreground mb-8"
+                    >
+                        Tecnología pensada para restaurantes
+                    </h3>
+                    <div class="space-y-5">
+                        {
+                            benefits.map((b) => (
+                                <div class="flex items-start gap-4 p-5 bg-card border border-border rounded-xl">
+                                    <svg
+                                        class="w-5 h-5 text-primary-500 shrink-0 mt-0.5"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M5 13l4 4L19 7"
+                                        />
+                                    </svg>
+                                    <div>
+                                        <h4 class="font-bold text-foreground mb-0.5">
+                                            {b.title}
+                                        </h4>
+                                        <p class="text-muted-foreground text-sm">
+                                            {b.desc}
+                                        </p>
+                                    </div>
+                                </div>
+                            ))
+                        }
+                    </div>
+                </div>
+                <div class="space-y-6">
+                    <img
+                        src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                        alt="Cocina con tecnología KDS"
+                        class="w-full h-64 object-cover rounded-2xl shadow-lg border border-border"
+                        loading="lazy"
+                    />
+                    <div
+                        class="bg-primary-50 border border-primary-100 rounded-2xl p-6"
+                    >
+                        <h4 class="font-bold text-primary-900 mb-3">
+                            Ideal para:
+                        </h4>
+                        <div class="flex flex-wrap gap-2">
+                            {
+                                useCases.map((u) => (
+                                    <span class="px-3 py-1.5 bg-white text-primary-800 font-semibold rounded-md border border-primary-200 text-sm hover:bg-primary-100 transition-colors cursor-default">
+                                        {u}
+                                    </span>
+                                ))
+                            }
+                        </div>
+                        <div class="mt-5 pt-4 border-t border-primary-200">
+                            <a
+                                href="/contacto"
+                                class="inline-flex items-center gap-2 px-5 py-2.5 bg-primary-600 text-white font-bold rounded-lg hover:bg-primary-700 transition-all text-sm"
+                            >
+                                Hablar con un especialista
+                                <svg
+                                    class="w-4 h-4"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                    ><path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M14 5l7 7m0 0l-7 7m7-7H3"
+                                    ></path></svg
+                                >
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </Container>
+    </section>
+
+    <!-- SOLUCIONES RELACIONADAS -->
+    <section class="py-16 bg-card border-b border-border">
+        <Container>
+            <div class="text-center mb-10">
+                <h2 class="text-2xl font-heading font-black text-foreground">
+                    Soluciones recomendadas para tu restaurante
+                </h2>
+            </div>
+            <div class="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+                <a
+                    href="/soluciones/pos"
+                    aria-label="Oracle Simphony POS"
+                    class="flex items-start gap-4 p-6 bg-background border border-border rounded-2xl hover:border-primary-400 hover:shadow-md transition-all group"
+                >
+                    <div
+                        class="w-12 h-12 bg-secondary-100 text-secondary-600 rounded-xl flex items-center justify-center shrink-0"
+                    >
+                        <svg
+                            class="w-6 h-6"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            ><path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
+                            ></path></svg
+                        >
+                    </div>
+                    <div>
+                        <h4
+                            class="font-bold text-foreground mb-1 group-hover:text-primary-600 transition-colors"
+                        >
+                            Oracle Simphony POS
+                        </h4>
+                        <p class="text-muted-foreground text-sm">
+                            Punto de venta líder mundial para restaurantes y
+                            hospitalidad.
+                        </p>
+                    </div>
+                </a>
+                <a
+                    href="/soluciones/hardware"
+                    aria-label="Hardware Industrial"
+                    class="flex items-start gap-4 p-6 bg-background border border-border rounded-2xl hover:border-primary-400 hover:shadow-md transition-all group"
+                >
+                    <div
+                        class="w-12 h-12 bg-primary-100 text-primary-600 rounded-xl flex items-center justify-center shrink-0"
+                    >
+                        <svg
+                            class="w-6 h-6"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            ><path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                            ></path></svg
+                        >
+                    </div>
+                    <div>
+                        <h4
+                            class="font-bold text-foreground mb-1 group-hover:text-primary-600 transition-colors"
+                        >
+                            Hardware Industrial
+                        </h4>
+                        <p class="text-muted-foreground text-sm">
+                            Terminales, KDS e impresoras certificadas para
+                            cocinas y barras.
+                        </p>
+                    </div>
+                </a>
+            </div>
+        </Container>
+    </section>
+
     <CTA />
 </MainLayout>

@@ -6,6 +6,7 @@ import CTA from "../../components/sections/CTA.astro";
 import { Image } from "astro:assets";
 
 import opera_hotel from "../../assets/industries/opera/opera_simphony.jpg";
+import hotel from "../../assets/industries/opera/hotel.jpg";
 
 const problems = [
     {
@@ -291,8 +292,8 @@ const clients = ["Marriott", "Hilton", "Four Seasons", "IHG", "Starwood"];
                 </div>
 
                 <div class="flex flex-col items-center">
-                    <img
-                        src="https://images.unsplash.com/photo-1562438668-bcf0ca6578f0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                    <Image
+                        src={hotel}
                         alt="Recepción de hotel con Opera PMS"
                         class="w-full h-64 object-cover rounded-2xl shadow-lg border border-border mb-6"
                     />
