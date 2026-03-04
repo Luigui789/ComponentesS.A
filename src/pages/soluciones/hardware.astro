@@ -42,31 +42,277 @@ import oracleImg from "../../assets/hardware/oracle-post-integrations.png";
                 ></rect>
             </svg>
         </div>
-        <Container className="relative z-10 text-center max-w-4xl">
-            <h1 class="text-5xl md:text-6xl font-black mb-6 text-white">
-                Equipamiento Industrial
-            </h1>
-            <h2 class="text-2xl text-secondary-400 font-bold mb-6">
-                Infraestructura confiable para operaciones de alto volumen.
-            </h2>
-            <p
-                class="text-xl text-slate-300 max-w-3xl mx-auto mb-8 font-medium leading-relaxed"
+        <Container className="relative z-10">
+            <div class="max-w-3xl">
+                <span
+                    class="inline-block bg-white/10 text-white text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-6 border border-white/20"
+                    >Hardware Industrial & Periféricos</span
+                >
+                <h1
+                    class="text-5xl md:text-6xl font-black mb-6 text-white leading-tight"
+                >
+                    Equipamiento certificado para el ritmo de tu operación.
+                </h1>
+                <p
+                    class="text-xl text-slate-300 max-w-2xl mb-10 font-medium leading-relaxed"
+                >
+                    Tecnología de alto rendimiento diseñada para trabajar en
+                    armonía con el software de gestión, bajo una API abierta y
+                    segura sobre Microsoft Windows u Oracle Linux.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a
+                        href="/contacto"
+                        class="inline-flex items-center gap-2 px-6 py-3 bg-white text-slate-800 font-bold rounded-lg hover:bg-slate-100 transition-all shadow-lg"
+                    >
+                        Cotizar equipos
+                        <svg
+                            class="w-5 h-5"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            ><path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg
+                        >
+                    </a>
+                    <a
+                        href="/manuales/hardware-micros.pdf"
+                        download
+                        class="inline-flex items-center gap-2 px-6 py-3 bg-transparent text-white border border-white/40 font-bold rounded-lg hover:bg-white/10 transition-all"
+                    >
+                        <svg
+                            class="w-5 h-5"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            ><path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                            ></path></svg
+                        >
+                        Descargar Catálogo
+                    </a>
+                </div>
+            </div>
+        </Container>
+    </section>
+
+    <!-- QUE ES -->
+    <section class="py-16 bg-card border-b border-border">
+        <Container className="max-w-4xl text-center">
+            <h2
+                class="text-primary-600 font-bold tracking-wide uppercase text-sm mb-3"
             >
-                Solución robusta que combina hardware especializado con software
-                de gestión para facturación continua y control operativo.
+                ¿Qué es?
+            </h2>
+            <h3 class="text-3xl font-heading font-black text-foreground mb-5">
+                Hardware de Grado Industrial
+            </h3>
+            <p class="text-lg text-muted-foreground leading-relaxed">
+                Equipamiento tecnológico de <strong class="text-foreground"
+                    >alto rendimiento</strong
+                > diseñado para entornos de alta demanda en el sector hospitalidad
+                y retail. Todos los periféricos operan bajo una API abierta y segura,
+                compatible con Microsoft Windows u Oracle Linux, garantizando compatibilidad
+                total con el software de gestión.
             </p>
         </Container>
     </section>
 
-    <section class="py-24 bg-background border-b border-border">
+    <!-- PROBLEMAS Y BENEFICIOS -->
+    <section class="py-20 bg-background border-b border-border">
         <Container>
             <div class="grid lg:grid-cols-2 gap-16 items-start">
+                <div class="space-y-10">
+                    <div>
+                        <h2
+                            class="text-primary-600 font-bold tracking-wide uppercase text-sm mb-3"
+                        >
+                            Problemas que resuelve
+                        </h2>
+                        <h3
+                            class="text-3xl font-heading font-black text-foreground mb-6"
+                        >
+                            Equipos que aguantan el ritmo
+                        </h3>
+                        <div class="space-y-5">
+                            <div
+                                class="flex items-start gap-4 p-5 bg-card border border-border rounded-xl"
+                            >
+                                <div
+                                    class="w-10 h-10 bg-red-50 text-red-500 rounded-lg flex items-center justify-center shrink-0"
+                                >
+                                    <svg
+                                        class="w-5 h-5"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor"
+                                        ><path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+                                        ></path></svg
+                                    >
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-foreground mb-1">
+                                        Equipos domésticos poco resistentes
+                                    </h4>
+                                    <p class="text-muted-foreground text-sm">
+                                        Hardware diseñado para el ritmo del
+                                        sector hospitalidad: pantallas táctiles
+                                        de cocina, terminales POS y displays
+                                        sellados contra derrames.
+                                    </p>
+                                </div>
+                            </div>
+                            <div
+                                class="flex items-start gap-4 p-5 bg-card border border-border rounded-xl"
+                            >
+                                <div
+                                    class="w-10 h-10 bg-red-50 text-red-500 rounded-lg flex items-center justify-center shrink-0"
+                                >
+                                    <svg
+                                        class="w-5 h-5"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor"
+                                        ><path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                                        ></path></svg
+                                    >
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-foreground mb-1">
+                                        Incompatibilidad técnica
+                                    </h4>
+                                    <p class="text-muted-foreground text-sm">
+                                        Todos los periféricos funcionan bajo una
+                                        API abierta y segura sobre Microsoft
+                                        Windows u Oracle Linux, listos para
+                                        integrar con Oracle Simphony.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="text-xl font-bold text-foreground mb-4">
+                            Beneficios Clave
+                        </h3>
+                        <div class="space-y-3">
+                            <div class="flex items-start gap-3">
+                                <svg
+                                    class="w-5 h-5 text-primary-500 shrink-0 mt-0.5"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                    ><path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path></svg
+                                >
+                                <div>
+                                    <span class="font-bold text-foreground"
+                                        >Ecosistema Completo:
+                                    </span><span
+                                        class="text-muted-foreground text-sm"
+                                        >Estaciones táctiles, lectores EMV,
+                                        impresoras de recibos, básculas y
+                                        lectores de códigos de barras.</span>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <svg
+                                    class="w-5 h-5 text-primary-500 shrink-0 mt-0.5"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                    ><path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path></svg
+                                >
+                                <div>
+                                    <span class="font-bold text-foreground"
+                                        >Seguridad y Control:
+                                    </span><span
+                                        class="text-muted-foreground text-sm"
+                                        >Lectores de huellas dactilares para un
+                                        manejo riguroso de seguridad y auditoría
+                                        del personal.</span>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <svg
+                                    class="w-5 h-5 text-primary-500 shrink-0 mt-0.5"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                    ><path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path></svg
+                                >
+                                <div>
+                                    <span class="font-bold text-foreground"
+                                        >Soporte Local:
+                                    </span><span
+                                        class="text-muted-foreground text-sm"
+                                        >Técnicos certificados en Nicaragua.
+                                        Garantía oficial y equipos de respaldo
+                                        para cero tiempo muerto.</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-8 flex gap-3 flex-wrap">
+                            <a
+                                href="/contacto"
+                                class="inline-flex items-center gap-2 px-5 py-2.5 bg-primary-600 text-white font-bold rounded-lg hover:bg-primary-700 transition-all"
+                                >Cotizar equipos</a
+                            >
+                            <a
+                                href="/manuales/hardware-micros.pdf"
+                                download
+                                class="inline-flex items-center gap-2 px-5 py-2.5 bg-white text-primary-700 border border-primary-200 font-bold rounded-lg hover:bg-primary-50 transition-all"
+                            >
+                                <svg
+                                    class="w-4 h-4"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                    ><path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                                    ></path></svg
+                                >
+                                Descargar Catálogo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="space-y-12">
                     <div>
                         <h2
                             class="text-xs font-bold text-secondary-500 uppercase tracking-widest mb-2 block"
                         >
-                            ¿Qué ofrece?
+                            Ventajas Competitivas
                         </h2>
                         <h3
                             class="text-3xl font-heading font-black text-foreground mb-4"

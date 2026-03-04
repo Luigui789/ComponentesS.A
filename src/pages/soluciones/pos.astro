@@ -2,150 +2,286 @@
 import MainLayout from "../../layouts/MainLayout.astro";
 import Container from "../../components/ui/Container.astro";
 import CTA from "../../components/sections/CTA.astro";
+
+const problems = [
+    {
+        icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>`,
+        problem: "Filas y tiempos de espera",
+        solution:
+            "Implementa quioscos de autoservicio y pedidos móviles para agilizar el flujo de clientes.",
+    },
+    {
+        icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>`,
+        problem: "Errores en cocina",
+        solution:
+            "El KDS (Kitchen Display System) reduce errores, mejora la calidad y optimiza la velocidad del servicio.",
+    },
+    {
+        icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>`,
+        problem: "Desperdicio y falta de stock",
+        solution:
+            "Usa datos de previsión en tiempo real para mantener niveles óptimos de existencias.",
+    },
+];
+
+const benefits = [
+    {
+        title: "Omnicanalidad",
+        desc: "Pedidos desde meseros, quioscos, sitios web, apps móviles y plataformas de delivery en un solo sistema.",
+        icon: `<svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>`,
+    },
+    {
+        title: "Pagos Globales",
+        desc: "Acepta tarjetas de crédito, débito, Apple Pay, Samsung Pay y Google Pay desde un dashboard integrado.",
+        icon: `<svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>`,
+    },
+    {
+        title: "Gestión de Mesas",
+        desc: "Visualiza la etapa de cada experiencia gastronómica y el tiempo que los comensales llevan en cada mesa.",
+        icon: `<svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2"/></svg>`,
+    },
+];
 ---
 
 <MainLayout
-    title="POS Oracle Simphony"
-    description="Punto de venta líder mundial para gestionar restaurantes de cualquier tamaño."
+    title="Oracle Simphony Cloud POS | Componentes S.A."
+    description="Plataforma de punto de venta en la nube líder mundial para restaurantes, hoteles y empresas de hospitalidad."
 >
+    <!-- HERO -->
     <section
-        class="pt-32 pb-24 bg-secondary-800 border-b border-primary-800 relative overflow-hidden"
+        class="pt-32 pb-24 bg-secondary-800 border-b border-secondary-900 relative overflow-hidden"
     >
-        <!-- Subtle Corporate Grid Background -->
-        <div class="absolute inset-0 z-0">
+        <div class="absolute inset-0 z-0 opacity-10">
             <svg
-                class="absolute w-full h-full opacity-10"
+                class="absolute w-full h-full"
                 xmlns="http://www.w3.org/2000/svg"
             >
-                <defs>
-                    <pattern
-                        id="grid-pattern-pos"
+                <defs
+                    ><pattern
+                        id="grid-pos"
                         x="0"
                         y="0"
                         width="40"
                         height="40"
                         patternUnits="userSpaceOnUse"
-                    >
-                        <path
+                        ><path
                             d="M 40 0 L 0 0 0 40"
                             fill="none"
                             stroke="white"
-                            stroke-width="1"></path>
-                    </pattern>
-                </defs>
-                <rect width="100%" height="100%" fill="url(#grid-pattern-pos)"
-                ></rect>
+                            stroke-width="1"></path></pattern
+                    ></defs
+                >
+                <rect width="100%" height="100%" fill="url(#grid-pos)"></rect>
             </svg>
         </div>
+        <Container className="relative z-10">
+            <div class="max-w-3xl">
+                <span
+                    class="inline-block bg-white/10 text-white text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-6 border border-white/20"
+                    >Oracle Simphony Cloud POS</span
+                >
+                <h1
+                    class="text-5xl md:text-6xl font-heading font-black text-white mb-6 leading-tight"
+                >
+                    El POS que se adapta a tu negocio.
+                </h1>
+                <p
+                    class="text-xl text-white/80 max-w-2xl mb-10 leading-relaxed"
+                >
+                    La plataforma en la nube líder mundial para restaurantes y
+                    hospitalidad. Diseñada para integrarse naturalmente en la
+                    operación diaria de tu equipo.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a
+                        href="/contacto"
+                        class="inline-flex items-center gap-2 px-6 py-3 bg-white text-secondary-800 font-bold rounded-lg hover:bg-secondary-50 transition-all shadow-lg"
+                    >
+                        Solicitar demostración
+                        <svg
+                            class="w-5 h-5"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            ><path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg
+                        >
+                    </a>
+                    <a
+                        href="/manuales/simphony-pos.pdf"
+                        download
+                        class="inline-flex items-center gap-2 px-6 py-3 bg-transparent text-white border border-white/40 font-bold rounded-lg hover:bg-white/10 transition-all"
+                    >
+                        <svg
+                            class="w-5 h-5"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            ><path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                            ></path></svg
+                        >
+                        Descargar Manual
+                    </a>
+                </div>
+            </div>
+        </Container>
+    </section>
 
-        <Container className="relative z-10 text-center max-w-4xl">
-            <h1
-                class="text-5xl md:text-6xl font-heading font-black text-white mb-6"
+    <!-- QUÉ ES -->
+    <section class="py-16 bg-card border-b border-border">
+        <Container className="max-w-4xl text-center">
+            <h2
+                class="text-primary-600 font-bold tracking-wide uppercase text-sm mb-3"
             >
-                Oracle Simphony POS
-            </h1>
-            <h2 class="text-2xl text-secondary-400 font-bold mb-6">
-                Plataforma líder mundial en gestión de restaurantes y
-                hospitalidad.
+                ¿Qué es?
             </h2>
-            <p
-                class="text-xl text-white/90 max-w-3xl mx-auto mb-8 font-medium leading-relaxed"
-            >
-                Sistema en la nube diseñado para optimizar operaciones, mejorar
-                la experiencia del cliente y escalar múltiples sucursales con
-                control total.
+            <h3 class="text-3xl font-heading font-black text-foreground mb-5">
+                Solución POS Empresarial en la Nube
+            </h3>
+            <p class="text-lg text-muted-foreground leading-relaxed">
+                Oracle Simphony™ es la plataforma de punto de venta en la nube <strong
+                    class="text-foreground">líder mundial</strong
+                > para la gestión integral de empresas de hospitalidad. Centraliza
+                ventas, reservas, inventario y reportes en una sola plataforma segura
+                y escalable — diseñada para integrarse naturalmente en la operación
+                diaria del personal.
             </p>
         </Container>
     </section>
 
-    <section class="py-24 bg-background border-b border-border">
+    <!-- PROBLEMAS QUE RESUELVE -->
+    <section class="py-20 bg-background border-b border-border">
         <Container>
-            <div class="grid lg:grid-cols-2 gap-16 items-start">
-                <div class="space-y-12">
-                    <div>
-                        <h2
-                            class="text-xs font-bold text-secondary-500 uppercase tracking-widest mb-2 block"
-                        >
-                            ¿Qué es?
-                        </h2>
-                        <h3
-                            class="text-3xl font-heading font-black text-foreground mb-4"
-                        >
-                            Solución Empresarial Integral
-                        </h3>
-                        <p
-                            class="text-muted-foreground text-lg leading-relaxed"
-                        >
-                            Simphony es una solución POS empresarial que
-                            centraliza ventas, reservas, inventario y reportes
-                            en una sola plataforma segura y escalable.
-                        </p>
-                    </div>
+            <div class="text-center mb-12">
+                <h2
+                    class="text-primary-600 font-bold tracking-wide uppercase text-sm mb-3"
+                >
+                    Problemas que resuelve
+                </h2>
+                <h3 class="text-3xl font-heading font-black text-foreground">
+                    ¿Te suena familiar alguno de estos?
+                </h3>
+            </div>
+            <div class="grid md:grid-cols-3 gap-6">
+                {
+                    problems.map((p) => (
+                        <div class="bg-card border border-border rounded-2xl p-8 hover:border-primary-300 transition-colors">
+                            <div
+                                class="w-12 h-12 bg-red-50 text-red-500 rounded-xl flex items-center justify-center mb-5"
+                                set:html={p.icon}
+                            />
+                            <h4 class="font-bold text-foreground text-lg mb-2">
+                                {p.problem}
+                            </h4>
+                            <p class="text-muted-foreground leading-relaxed">
+                                {p.solution}
+                            </p>
+                        </div>
+                    ))
+                }
+            </div>
+        </Container>
+    </section>
 
-                    <div>
-                        <h3 class="text-2xl font-bold text-foreground mb-6">
-                            Beneficios
-                        </h3>
-                        <ul class="space-y-4">
-                            {
-                                [
-                                    "Gestión centralizada multi-sucursal",
-                                    "Operación 100% en la nube",
-                                    "Integración con inventario y contabilidad",
-                                    "Analítica avanzada en tiempo real",
-                                    "Alta disponibilidad y seguridad empresarial",
-                                ].map((item) => (
-                                    <li class="flex items-start gap-3">
-                                        <svg
-                                            class="w-6 h-6 text-primary-500 shrink-0 mt-0.5"
-                                            fill="none"
-                                            viewBox="0 0 24 24"
-                                            stroke="currentColor"
-                                        >
-                                            <path
-                                                stroke-linecap="round"
-                                                stroke-linejoin="round"
-                                                stroke-width="2"
-                                                d="M5 13l4 4L19 7"
-                                            />
-                                        </svg>
-                                        <span class="text-foreground font-medium">
-                                            {item}
-                                        </span>
-                                    </li>
-                                ))
-                            }
-                        </ul>
+    <!-- BENEFICIOS CLAVE -->
+    <section class="py-20 bg-muted/30 border-b border-border">
+        <Container>
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2
+                        class="text-primary-600 font-bold tracking-wide uppercase text-sm mb-3"
+                    >
+                        Beneficios Clave
+                    </h2>
+                    <h3
+                        class="text-3xl font-heading font-black text-foreground mb-8"
+                    >
+                        Tecnología que trabaja para ti
+                    </h3>
+                    <div class="space-y-6">
+                        {
+                            benefits.map((b) => (
+                                <div class="flex items-start gap-4">
+                                    <div
+                                        class="w-10 h-10 bg-primary-100 text-primary-700 rounded-lg flex items-center justify-center shrink-0 mt-0.5"
+                                        set:html={b.icon}
+                                    />
+                                    <div>
+                                        <h4 class="font-bold text-foreground mb-1">
+                                            {b.title}
+                                        </h4>
+                                        <p class="text-muted-foreground">
+                                            {b.desc}
+                                        </p>
+                                    </div>
+                                </div>
+                            ))
+                        }
                     </div>
                 </div>
-
-                <div class="space-y-12">
+                <div class="space-y-5">
                     <img
                         src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                        alt="Oracle Simphony POS en acción"
-                        class="w-full h-80 object-cover rounded-xl shadow-lg border border-border"
+                        alt="Oracle Simphony POS en restaurante"
+                        class="w-full h-64 object-cover rounded-2xl shadow-lg border border-border"
                     />
-
                     <div
-                        class="bg-primary-50 p-8 rounded-xl border border-primary-100"
+                        class="bg-primary-50 border border-primary-100 rounded-2xl p-6"
                     >
-                        <h3 class="text-2xl font-bold text-primary-900 mb-6">
+                        <h4 class="font-bold text-primary-900 mb-3">
                             Ideal para:
-                        </h3>
-                        <div class="flex flex-wrap gap-3">
+                        </h4>
+                        <div class="flex flex-wrap gap-2">
                             {
                                 [
                                     "Restaurantes",
-                                    "Cadenas de comida rápida",
                                     "Hoteles",
+                                    "Cadenas de comida rápida",
                                     "Casinos",
                                     "Franquicias",
-                                ].map((segment) => (
-                                    <span class="px-4 py-2 bg-white text-primary-800 font-semibold rounded-md border border-primary-200 shadow-sm cursor-default hover:bg-primary-100 transition-colors">
-                                        {segment}
+                                    "Resorts",
+                                ].map((s) => (
+                                    <span class="px-3 py-1.5 bg-white text-primary-800 font-semibold rounded-md border border-primary-200 text-sm hover:bg-primary-100 transition-colors cursor-default">
+                                        {s}
                                     </span>
                                 ))
                             }
+                        </div>
+                        <div
+                            class="mt-6 pt-5 border-t border-primary-200 flex gap-3 flex-wrap"
+                        >
+                            <a
+                                href="/contacto"
+                                class="inline-flex items-center gap-2 px-5 py-2.5 bg-primary-600 text-white font-bold rounded-lg hover:bg-primary-700 transition-all text-sm"
+                            >
+                                Solicitar demo
+                            </a>
+                            <a
+                                href="/manuales/simphony-pos.pdf"
+                                download
+                                class="inline-flex items-center gap-2 px-5 py-2.5 bg-white text-primary-700 border border-primary-200 font-bold rounded-lg hover:bg-primary-50 transition-all text-sm"
+                            >
+                                <svg
+                                    class="w-4 h-4"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                    ><path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                                    ></path></svg
+                                >
+                                Descargar Manual
+                            </a>
                         </div>
                     </div>
                 </div>

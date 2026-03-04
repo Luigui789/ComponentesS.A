@@ -2,90 +2,294 @@
 import MainLayout from "../../layouts/MainLayout.astro";
 import Container from "../../components/ui/Container.astro";
 import CTA from "../../components/sections/CTA.astro";
-
 import { Image } from "astro:assets";
+import Safiro from "../../assets/img_body/safiro.jpg";
 
-import Safiro from "../../assets/img_body/Safiro.jpg";
+const problems = [
+    {
+        icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>`,
+        problem: "Desconexión departamental",
+        solution:
+            "Integra contabilidad con compras, inventarios, tesorería y activos fijos de forma inmediata y centralizada.",
+    },
+    {
+        icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"/></svg>`,
+        problem: "Complejidad en divisas",
+        solution:
+            "Registra documentos en su moneda original con cálculo automático del tipo de cambio en moneda local y extranjera (Bimoneda).",
+    },
+    {
+        icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>`,
+        problem: "Falta de visibilidad financiera",
+        solution:
+            "Excluye del catálogo contable las Unidades Estratégicas de Negocio (UEN) para analizarlas como dimensiones adicionales de desempeño.",
+    },
+];
+
+const benefits = [
+    {
+        title: "Multicompañía",
+        desc: "Registra un número ilimitado de empresas en la misma instalación con seguridad integrada por compañía.",
+    },
+    {
+        title: "Control de Activos",
+        desc: "Manejo detallado de ubicaciones, responsables y categorías con cálculo automático de depreciación.",
+    },
+    {
+        title: "Gestión de Inventarios",
+        desc: "Incluye manejo de recetas, transformación de productos y transferencias entre bodegas.",
+    },
+];
+
+const modules = [
+    "Contabilidad general y presupuesto",
+    "Cuentas por cobrar y pagar",
+    "Tesorería y activos fijos",
+    "Control de inventarios multi-bodega",
+    "Facturación electrónica integrada",
+    "Reportes financieros inmediatos",
+];
 ---
 
 <MainLayout
-    title="Facturación Electrónica Safiro ERP"
-    description="Emite facturas electrónicas de forma rápida, segura y cumpliendo la normativa."
+    title="Safiro ERP | Sistema Administrativo Financiero | Componentes S.A."
+    description="Sistema ERP contable de alta eficiencia diseñado para el control financiero total de empresas bajo normativa local."
 >
+    <!-- HERO -->
     <section
-        class="pt-32 pb-24 bg-primary-800 border-b border-primary-800 relative overflow-hidden"
+        class="pt-32 pb-24 bg-primary-800 border-b border-primary-900 relative overflow-hidden"
     >
-        <div class="absolute inset-0 z-0">
+        <div class="absolute inset-0 z-0 opacity-10">
             <svg
-                class="absolute w-full h-full opacity-10"
+                class="absolute w-full h-full"
                 xmlns="http://www.w3.org/2000/svg"
             >
-                <defs>
-                    <pattern
-                        id="grid-pattern-pos"
+                <defs
+                    ><pattern
+                        id="grid-saf"
                         x="0"
                         y="0"
                         width="40"
                         height="40"
                         patternUnits="userSpaceOnUse"
-                    >
-                        <path
+                        ><path
                             d="M 40 0 L 0 0 0 40"
                             fill="none"
                             stroke="white"
-                            stroke-width="1"></path>
-                    </pattern>
-                </defs>
-                <rect width="100%" height="100%" fill="url(#grid-pattern-pos)"
-                ></rect>
+                            stroke-width="1"></path></pattern
+                    ></defs
+                >
+                <rect width="100%" height="100%" fill="url(#grid-saf)"></rect>
             </svg>
         </div>
-        <Container className="relative z-10 text-center max-w-4xl">
-            <h1
-                class="text-5xl md:text-6xl font-heading font-black text-white mb-6"
+        <Container className="relative z-10">
+            <div class="max-w-3xl">
+                <span
+                    class="inline-block bg-white/10 text-white text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-6 border border-white/20"
+                    >Safiro ERP</span
+                >
+                <h1
+                    class="text-5xl md:text-6xl font-heading font-black text-white mb-6 leading-tight"
+                >
+                    Control financiero total. Sin brechas.
+                </h1>
+                <p
+                    class="text-xl text-white/80 max-w-2xl mb-10 leading-relaxed"
+                >
+                    Sistema de planificación de recursos empresariales robusto,
+                    diseñado bajo las mejores prácticas de negocio para el
+                    manejo eficiente de la información financiero-contable
+                    adaptado a las prácticas locales.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a
+                        href="/contacto"
+                        class="inline-flex items-center gap-2 px-6 py-3 bg-white text-primary-800 font-bold rounded-lg hover:bg-primary-50 transition-all shadow-lg"
+                    >
+                        Solicitar demostración
+                        <svg
+                            class="w-5 h-5"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            ><path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg
+                        >
+                    </a>
+                    <a
+                        href="/manuales/safiro-erp.pdf"
+                        download
+                        class="inline-flex items-center gap-2 px-6 py-3 bg-transparent text-white border border-white/40 font-bold rounded-lg hover:bg-white/10 transition-all"
+                    >
+                        <svg
+                            class="w-5 h-5"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            ><path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                            ></path></svg
+                        >
+                        Descargar Manual
+                    </a>
+                </div>
+            </div>
+        </Container>
+    </section>
+
+    <!-- QUÉ ES -->
+    <section class="py-16 bg-card border-b border-border">
+        <Container className="max-w-4xl text-center">
+            <h2
+                class="text-primary-600 font-bold tracking-wide uppercase text-sm mb-3"
             >
-                Safiro ERP
-            </h1>
-            <h2 class="text-2xl text-secondary-400 font-bold mb-6">
-                Sistema contable nacional diseñado para control financiero
-                total.
+                ¿Qué es?
             </h2>
-            <p
-                class="text-xl text-white/90 max-w-3xl mx-auto mb-8 font-medium leading-relaxed"
-            >
-                Plataforma integral que centraliza contabilidad, inventarios y
-                facturación electrónica bajo estricta normativa nacional.
+            <h3 class="text-3xl font-heading font-black text-foreground mb-5">
+                Sistema Contable y Financiero Empresarial
+            </h3>
+            <p class="text-lg text-muted-foreground leading-relaxed">
+                Safiro es un <strong class="text-foreground"
+                    >sistema ERP contable</strong
+                > diseñado para administrar y controlar las operaciones financieras
+                de las empresas de forma segura, eficiente y confiable. Cubre desde
+                la contabilidad general hasta la facturación electrónica, adaptado
+                a las prácticas y normativa contable local.
             </p>
         </Container>
     </section>
 
-    <section class="py-24 bg-background border-b border-border">
+    <!-- PROBLEMAS QUE RESUELVE -->
+    <section class="py-20 bg-background border-b border-border">
+        <Container>
+            <div class="text-center mb-12">
+                <h2
+                    class="text-primary-600 font-bold tracking-wide uppercase text-sm mb-3"
+                >
+                    Problemas que resuelve
+                </h2>
+                <h3 class="text-3xl font-heading font-black text-foreground">
+                    ¿Te identificas con alguno de estos?
+                </h3>
+            </div>
+            <div class="grid md:grid-cols-3 gap-6">
+                {
+                    problems.map((p) => (
+                        <div class="bg-card border border-border rounded-2xl p-8 hover:border-primary-300 transition-colors">
+                            <div
+                                class="w-12 h-12 bg-red-50 text-red-500 rounded-xl flex items-center justify-center mb-5"
+                                set:html={p.icon}
+                            />
+                            <h4 class="font-bold text-foreground text-lg mb-2">
+                                {p.problem}
+                            </h4>
+                            <p class="text-muted-foreground leading-relaxed">
+                                {p.solution}
+                            </p>
+                        </div>
+                    ))
+                }
+            </div>
+        </Container>
+    </section>
+
+    <!-- BENEFICIOS Y MÓDULOS -->
+    <section class="py-20 bg-muted/30 border-b border-border">
         <Container>
             <div class="grid lg:grid-cols-2 gap-16 items-start">
-                <div class="space-y-12">
-                    <div>
-                        <h2
-                            class="text-xs font-bold text-secondary-500 uppercase tracking-widest mb-2 block"
+                <div>
+                    <h2
+                        class="text-primary-600 font-bold tracking-wide uppercase text-sm mb-3"
+                    >
+                        Beneficios Clave
+                    </h2>
+                    <h3
+                        class="text-3xl font-heading font-black text-foreground mb-8"
+                    >
+                        Diseñado para la realidad de tu empresa
+                    </h3>
+                    <div class="space-y-5 mb-10">
+                        {
+                            benefits.map((b) => (
+                                <div class="flex items-start gap-4 p-5 bg-card border border-border rounded-xl">
+                                    <svg
+                                        class="w-6 h-6 text-primary-500 shrink-0 mt-0.5"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M5 13l4 4L19 7"
+                                        />
+                                    </svg>
+                                    <div>
+                                        <h4 class="font-bold text-foreground mb-0.5">
+                                            {b.title}
+                                        </h4>
+                                        <p class="text-muted-foreground text-sm">
+                                            {b.desc}
+                                        </p>
+                                    </div>
+                                </div>
+                            ))
+                        }
+                    </div>
+                    <div class="flex gap-3 flex-wrap">
+                        <a
+                            href="/contacto"
+                            class="inline-flex items-center gap-2 px-5 py-2.5 bg-primary-600 text-white font-bold rounded-lg hover:bg-primary-700 transition-all"
                         >
-                            Módulos Principales
-                        </h2>
-                        <h3
-                            class="text-3xl font-heading font-black text-foreground mb-4"
+                            Solicitar demo
+                        </a>
+                        <a
+                            href="/manuales/safiro-erp.pdf"
+                            download
+                            class="inline-flex items-center gap-2 px-5 py-2.5 bg-white text-primary-700 border border-primary-200 font-bold rounded-lg hover:bg-primary-50 transition-all"
                         >
-                            Arquitectura Modular
-                        </h3>
-                        <ul class="space-y-4 text-muted-foreground text-lg">
+                            <svg
+                                class="w-4 h-4"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                ><path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                                ></path></svg
+                            >
+                            Descargar Manual
+                        </a>
+                    </div>
+                </div>
+
+                <div class="space-y-8">
+                    <Image
+                        src={Safiro}
+                        alt="Safiro ERP dashboard financiero"
+                        class="w-full h-64 object-cover rounded-2xl shadow-lg border border-border"
+                    />
+                    <div
+                        class="bg-primary-50 border border-primary-100 rounded-2xl p-6"
+                    >
+                        <h4 class="font-bold text-primary-900 mb-4">
+                            Módulos incluidos:
+                        </h4>
+                        <ul class="space-y-2">
                             {
-                                [
-                                    "Contabilidad general",
-                                    "Presupuesto",
-                                    "Cuentas por cobrar y pagar",
-                                    "Inventarios",
-                                    "Facturación electrónica",
-                                ].map((item) => (
-                                    <li class="flex items-center gap-3">
+                                modules.map((m) => (
+                                    <li class="flex items-center gap-2 text-sm text-primary-800 font-medium">
                                         <svg
-                                            class="w-5 h-5 text-primary-600 shrink-0"
+                                            class="w-4 h-4 text-primary-500 shrink-0"
                                             fill="none"
                                             viewBox="0 0 24 24"
                                             stroke="currentColor"
@@ -97,77 +301,11 @@ import Safiro from "../../assets/img_body/Safiro.jpg";
                                                 d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
                                             />
                                         </svg>
-                                        <span class="font-medium text-foreground">
-                                            {item}
-                                        </span>
+                                        {m}
                                     </li>
                                 ))
                             }
                         </ul>
-                    </div>
-
-                    <div>
-                        <h3 class="text-2xl font-bold text-foreground mb-6">
-                            Beneficios Operativos
-                        </h3>
-                        <ul class="space-y-4">
-                            {
-                                [
-                                    "Cumplimiento fiscal nacional garantizado",
-                                    "Control financiero en tiempo real",
-                                    "Información corporativa centralizada",
-                                    "Reportes estratégicos para toma de decisiones",
-                                ].map((item) => (
-                                    <li class="flex items-start gap-3">
-                                        <svg
-                                            class="w-6 h-6 text-primary-500 shrink-0 mt-0.5"
-                                            fill="none"
-                                            viewBox="0 0 24 24"
-                                            stroke="currentColor"
-                                        >
-                                            <path
-                                                stroke-linecap="round"
-                                                stroke-linejoin="round"
-                                                stroke-width="2"
-                                                d="M5 13l4 4L19 7"
-                                            />
-                                        </svg>
-                                        <span class="text-foreground font-medium">
-                                            {item}
-                                        </span>
-                                    </li>
-                                ))
-                            }
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="space-y-12">
-                    <Image
-                        src={Safiro}
-                        alt="Dashboard y gráficos de Safiro ERP"
-                        class="w-full h-80 object-cover rounded-xl shadow-lg border border-border"
-                    />
-
-                    <div
-                        class="bg-primary-50 p-8 rounded-xl border border-primary-100"
-                    >
-                        <h3 class="text-2xl font-bold text-primary-900 mb-6">
-                            Ideal para:
-                        </h3>
-                        <div class="flex flex-wrap gap-3">
-                            {
-                                [
-                                    "Empresas medianas y grandes",
-                                    "Negocios con múltiples sucursales",
-                                    "Organizaciones con cumplimiento fiscal estricto",
-                                ].map((segment) => (
-                                    <span class="px-4 py-2 bg-white text-primary-800 font-semibold rounded-md border border-primary-200 shadow-sm cursor-default hover:bg-primary-100 transition-colors">
-                                        {segment}
-                                    </span>
-                                ))
-                            }
-                        </div>
                     </div>
                 </div>
             </div>
