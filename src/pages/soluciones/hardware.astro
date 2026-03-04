@@ -4,10 +4,10 @@ import Container from "../../components/ui/Container.astro";
 import CTA from "../../components/sections/CTA.astro";
 import { Image } from "astro:assets";
 
-import termImg from "../../assets/hardware/ws655.png";
-import kdsImg from "../../assets/hardware/tablet micros 700.png";
-import printerImg from "../../assets/hardware/epson-tmu-220.png";
-import oracleImg from "../../assets/hardware/oracle-post-integrations.png";
+import termImg from "../../assets/industries/hardware/ws655.png";
+import kdsImg from "../../assets/industries/hardware/tablet micros 700.png";
+import printerImg from "../../assets/industries/hardware/epson-tmu-220.png";
+import oracleImg from "../../assets/industries/hardware/oracle-post-integrations.png";
 ---
 
 <MainLayout
@@ -230,7 +230,8 @@ import oracleImg from "../../assets/hardware/oracle-post-integrations.png";
                                         class="text-muted-foreground text-sm"
                                         >Estaciones táctiles, lectores EMV,
                                         impresoras de recibos, básculas y
-                                        lectores de códigos de barras.</span>
+                                        lectores de códigos de barras.</span
+                                    >
                                 </div>
                             </div>
                             <div class="flex items-start gap-3">
@@ -252,7 +253,8 @@ import oracleImg from "../../assets/hardware/oracle-post-integrations.png";
                                         class="text-muted-foreground text-sm"
                                         >Lectores de huellas dactilares para un
                                         manejo riguroso de seguridad y auditoría
-                                        del personal.</span>
+                                        del personal.</span
+                                    >
                                 </div>
                             </div>
                             <div class="flex items-start gap-3">
@@ -274,7 +276,8 @@ import oracleImg from "../../assets/hardware/oracle-post-integrations.png";
                                         class="text-muted-foreground text-sm"
                                         >Técnicos certificados en Nicaragua.
                                         Garantía oficial y equipos de respaldo
-                                        para cero tiempo muerto.</span>
+                                        para cero tiempo muerto.</span
+                                    >
                                 </div>
                             </div>
                         </div>
@@ -386,33 +389,65 @@ import oracleImg from "../../assets/hardware/oracle-post-integrations.png";
                         </ul>
                     </div>
                 </div>
+            </div>
+        </Container>
+    </section>
 
-                <div class="space-y-12">
+    <!-- Oracle Image + Ideal Para -->
+    <section class="py-16 bg-card border-b border-border">
+        <Container>
+            <div
+                class="grid md:grid-cols-2 gap-12 items-center max-w-4xl mx-auto"
+            >
+                <!-- Imagen -->
+                <div class="flex justify-center">
                     <Image
                         src={oracleImg}
-                        alt="Terminales de punto de venta Micros en restaurante"
-                        class="w-full h-110 object-cover rounded-xl shadow-lg border border-border"
+                        alt="Sistema Oracle Simphony en operación"
+                        class="w-full max-w-sm h-auto object-contain rounded-2xl shadow-lg border border-border bg-white p-6"
                     />
-
-                    <div
-                        class="bg-primary-50 p-8 rounded-xl border border-primary-100"
-                    >
-                        <h3 class="text-2xl font-bold text-primary-900 mb-6">
-                            Ideal para:
-                        </h3>
-                        <div class="flex flex-wrap gap-3">
-                            {
-                                [
-                                    "Restaurantes de alto tráfico",
-                                    "Hoteles",
-                                    "Operaciones con múltiples puntos de venta",
-                                ].map((segment) => (
-                                    <span class="px-4 py-2 bg-white text-primary-800 font-semibold rounded-md border border-primary-200 shadow-sm cursor-default hover:bg-primary-100 transition-colors">
-                                        {segment}
-                                    </span>
-                                ))
-                            }
-                        </div>
+                </div>
+                <!-- Ideal para -->
+                <div
+                    class="bg-primary-50 p-8 rounded-2xl border border-primary-100"
+                >
+                    <h3 class="text-2xl font-bold text-primary-900 mb-2">
+                        Ideal para:
+                    </h3>
+                    <p class="text-primary-700 text-sm mb-5">
+                        Soluciones pensadas para entornos de alta demanda.
+                    </p>
+                    <div class="flex flex-wrap gap-3">
+                        {
+                            [
+                                "Restaurantes de alto tráfico",
+                                "Hoteles",
+                                "Operaciones con múltiples puntos de venta",
+                            ].map((segment) => (
+                                <span class="px-4 py-2 bg-white text-primary-800 font-semibold rounded-lg border border-primary-200 shadow-sm cursor-default hover:bg-primary-100 transition-colors text-sm">
+                                    {segment}
+                                </span>
+                            ))
+                        }
+                    </div>
+                    <div class="mt-6 pt-5 border-t border-primary-200">
+                        <a
+                            href="/contacto"
+                            class="inline-flex items-center gap-2 px-5 py-2.5 bg-primary-600 text-white font-bold rounded-lg hover:bg-primary-700 transition-all text-sm"
+                        >
+                            Cotizar equipos
+                            <svg
+                                class="w-4 h-4"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                ><path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg
+                            >
+                        </a>
                     </div>
                 </div>
             </div>

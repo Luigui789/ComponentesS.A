@@ -3,7 +3,9 @@ import MainLayout from "../../layouts/MainLayout.astro";
 import Container from "../../components/ui/Container.astro";
 import CTA from "../../components/sections/CTA.astro";
 import { Image } from "astro:assets";
-import Safiro from "../../assets/img_body/safiro.jpg";
+
+import kikos from "../../assets/industries/Safiro/kiko's.png";
+import Safiro from "../../assets/industries/Safiro/Safiro.png";
 
 const problems = [
     {
@@ -83,61 +85,71 @@ const modules = [
             </svg>
         </div>
         <Container className="relative z-10">
-            <div class="max-w-3xl">
-                <span
-                    class="inline-block bg-white/10 text-white text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-6 border border-white/20"
-                    >Safiro ERP</span
-                >
-                <h1
-                    class="text-5xl md:text-6xl font-heading font-black text-white mb-6 leading-tight"
-                >
-                    Control financiero total. Sin brechas.
-                </h1>
-                <p
-                    class="text-xl text-white/80 max-w-2xl mb-10 leading-relaxed"
-                >
-                    Sistema de planificación de recursos empresariales robusto,
-                    diseñado bajo las mejores prácticas de negocio para el
-                    manejo eficiente de la información financiero-contable
-                    adaptado a las prácticas locales.
-                </p>
-                <div class="flex flex-wrap gap-4">
-                    <a
-                        href="/contacto"
-                        class="inline-flex items-center gap-2 px-6 py-3 bg-white text-primary-800 font-bold rounded-lg hover:bg-primary-50 transition-all shadow-lg"
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <span
+                        class="inline-block bg-white/10 text-white text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-6 border border-white/20"
+                        >Safiro ERP</span
                     >
-                        Solicitar demostración
-                        <svg
-                            class="w-5 h-5"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            ><path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg
-                        >
-                    </a>
-                    <a
-                        href="/manuales/safiro-erp.pdf"
-                        download
-                        class="inline-flex items-center gap-2 px-6 py-3 bg-transparent text-white border border-white/40 font-bold rounded-lg hover:bg-white/10 transition-all"
+                    <h1
+                        class="text-5xl md:text-6xl font-heading font-black text-white mb-6 leading-tight"
                     >
-                        <svg
-                            class="w-5 h-5"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            ><path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
-                            ></path></svg
+                        Control financiero total. Sin brechas.
+                    </h1>
+                    <p
+                        class="text-xl text-white/80 max-w-2xl mb-10 leading-relaxed"
+                    >
+                        Sistema de planificación de recursos empresariales
+                        robusto, diseñado bajo las mejores prácticas de negocio
+                        para el manejo eficiente de la información
+                        financiero-contable adaptado a las prácticas locales.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <a
+                            href="/contacto"
+                            class="inline-flex items-center gap-2 px-6 py-3 bg-white text-primary-800 font-bold rounded-lg hover:bg-primary-50 transition-all shadow-lg"
                         >
-                        Descargar Manual
-                    </a>
+                            Solicitar demostración
+                            <svg
+                                class="w-5 h-5"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                ><path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg
+                            >
+                        </a>
+                        <a
+                            href="/manuales/safiro-erp.pdf"
+                            download
+                            class="inline-flex items-center gap-2 px-6 py-3 bg-transparent text-white border border-white/40 font-bold rounded-lg hover:bg-white/10 transition-all"
+                        >
+                            <svg
+                                class="w-5 h-5"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                ><path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                                ></path></svg
+                            >
+                            Descargar Manual
+                        </a>
+                    </div>
+                </div>
+                <!-- Imagen representativa a la derecha -->
+                <div class="hidden lg:block">
+                    <Image
+                        src={Safiro}
+                        alt="Safiro ERP — Panel de control financiero"
+                        class="w-full h-[420px] object-cover rounded-2xl shadow-2xl border border-white/10 opacity-90"
+                    />
                 </div>
             </div>
         </Container>
@@ -274,9 +286,9 @@ const modules = [
 
                 <div class="space-y-8">
                     <Image
-                        src={Safiro}
-                        alt="Safiro ERP dashboard financiero"
-                        class="w-full h-64 object-cover rounded-2xl shadow-lg border border-border"
+                        src={kikos}
+                        alt="Safiro ERP dashboard financiero kikos"
+                        class="w-full h-120 object-cover object-top rounded-2xl shadow-lg border border-border"
                     />
                     <div
                         class="bg-primary-50 border border-primary-100 rounded-2xl p-6"
