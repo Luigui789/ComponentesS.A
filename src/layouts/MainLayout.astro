@@ -3,6 +3,8 @@ import "../styles/global.css";
 import Navbar from "../components/navbar/Navbar.astro";
 import Footer from "../components/sections/Footer.astro";
 
+import logo from "../assets/logo-componentes.jpeg";
+
 interface Props {
     title: string;
     description?: string;
@@ -10,7 +12,7 @@ interface Props {
 
 const {
     title,
-    description = "Safiro: Solución tecnológica integral de Inversiones Arguello Tercero, S.A. Automatiza tu administración con Oracle Simphony.",
+    description = "Safiro: Solución tecnológica integral de Componentes S.A. Automatiza tu administración con Oracle Simphony.",
 } = Astro.props;
 ---
 
@@ -20,7 +22,7 @@ const {
         <meta charset="UTF-8" />
         <meta name="description" content={description} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="icon" type="image/svg+xml" href={logo.src} />
         <meta name="generator" content={Astro.generator} />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

@@ -43,8 +43,13 @@ import Button from "../components/ui/Button.astro";
                                 <p class="font-bold text-foreground">
                                     Ventas y Soporte
                                 </p>
-                                <p class="text-muted-foreground">
+                                <p class="text-muted-foreground pb-2">
                                     +505 2270-7918
+                                </p>
+                                <p class="text-muted-foreground">
+                                    <a href="https://wa.me/50578266955"
+                                        >+505 7826-6955</a
+                                    >
                                 </p>
                             </div>
                         </div>
@@ -80,13 +85,18 @@ import Button from "../components/ui/Button.astro";
                 <div
                     class="bg-card shadow-xl border border-border rounded-3xl p-8"
                 >
-                    <form
-                        action="https://formsubmit.co/yaderisaiasgutierrezruiz@gmail.com"
-                        method="POST"
-                        class="space-y-6"
-                    >
-                        <!-- Evita el captcha para una experiencia de usuario mas rapida -->
-                        <input type="hidden" name="_captcha" value="false" />
+                    <form action="/api/contact" method="POST" class="space-y-6">
+                        <!-- ✔ Honeypot anti-spam: oculto para humanos, visible para bots -->
+                        <div style="display:none;" aria-hidden="true">
+                            <label for="website">No llenar</label>
+                            <input
+                                type="text"
+                                id="website"
+                                name="website"
+                                tabindex="-1"
+                                autocomplete="off"
+                            />
+                        </div>
 
                         <div class="grid grid-cols-2 gap-6">
                             <div class="space-y-2">
@@ -151,4 +161,25 @@ import Button from "../components/ui/Button.astro";
             </div>
         </Container>
     </section>
+
+    <!-- Toast notificaciones -->
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        if (params.get("enviado") === "1") {
+            const t = document.createElement("div");
+            t.className =
+                "fixed bottom-6 right-6 z-50 bg-green-600 text-white px-6 py-4 rounded-xl shadow-lg font-bold text-sm flex items-center gap-2";
+            t.innerHTML = "✅ ¡Mensaje enviado! Te contactaremos pronto.";
+            document.body.appendChild(t);
+            setTimeout(() => t.remove(), 5000);
+        }
+        if (params.get("error") === "1") {
+            const t = document.createElement("div");
+            t.className =
+                "fixed bottom-6 right-6 z-50 bg-red-600 text-white px-6 py-4 rounded-xl shadow-lg font-bold text-sm flex items-center gap-2";
+            t.innerHTML = "❌ Ocurrió un error al enviar. Intenta de nuevo.";
+            document.body.appendChild(t);
+            setTimeout(() => t.remove(), 5000);
+        }
+    </script>
 </MainLayout>
