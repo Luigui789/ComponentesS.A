@@ -2,6 +2,11 @@
 import MainLayout from "../layouts/MainLayout.astro";
 import Container from "../components/ui/Container.astro";
 import CTA from "../components/sections/CTA.astro";
+import { Image } from "astro:assets";
+
+import nos1 from "../assets/nosotros/chemita.jpg";
+import nos2 from "../assets/nosotros/DonJose.jpg";
+import nos3 from "../assets/nosotros/mostro.jpg";
 
 const valores = [
     {
@@ -27,6 +32,21 @@ const valores = [
         color: "bg-orange-100 text-orange-700",
         title: "Compromiso",
         desc: "Soporte técnico dedicado antes, durante y después de cada implementación.",
+    },
+];
+
+const slides = [
+    {
+        src: nos2,
+        alt: "Equipo Componentes S.A.",
+    },
+    {
+        src: nos1,
+        alt: "Instalación de sistemas",
+    },
+    {
+        src: nos3,
+        alt: "Clientes de Componentes S.A.",
     },
 ];
 
@@ -85,24 +105,186 @@ const stats = [
                 <rect width="100%" height="100%" fill="url(#grid-nos)"></rect>
             </svg>
         </div>
-        <Container className="relative z-10 text-center max-w-4xl">
-            <span
-                class="text-secondary-400 font-bold uppercase tracking-widest text-sm mb-4 block"
-                >Quiénes somos</span
-            >
-            <h1
-                class="text-5xl md:text-6xl font-heading font-black text-white mb-6"
-            >
-                Componentes S.A.
-            </h1>
-            <p class="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-                Empresa nicaragüense pionera en la distribución e implementación
-                de tecnología para la industria de hoteles, restaurantes y
-                franquicias. Llevamos más de 27 años conectando negocios con
-                soluciones de clase mundial.
-            </p>
+
+        <Container className="relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Texto izquierda -->
+                <div>
+                    <span
+                        class="text-secondary-400 font-bold uppercase tracking-widest text-sm mb-4 block"
+                    >
+                        Quiénes somos
+                    </span>
+                    <h1
+                        class="text-5xl md:text-6xl font-heading font-black text-white mb-6 leading-tight"
+                    >
+                        Componentes S.A.
+                    </h1>
+                    <p class="text-xl text-slate-300 leading-relaxed mb-8">
+                        Empresa nicaragüense pionera en la distribución e
+                        implementación de tecnología para la industria de
+                        hoteles, restaurantes y franquicias. Llevamos más de 27
+                        años conectando negocios con soluciones de clase
+                        mundial.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <a
+                            href="/contacto"
+                            class="inline-flex items-center gap-2 px-6 py-3 bg-white text-primary-900 font-bold rounded-lg hover:bg-primary-50 transition-all shadow-lg"
+                        >
+                            Cotizar Ahora
+                            <svg
+                                class="w-4 h-4"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                ><path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg
+                            >
+                        </a>
+                        <a
+                            href="/soluciones/pos"
+                            class="inline-flex items-center gap-2 px-6 py-3 border border-white/40 text-white font-bold rounded-lg hover:bg-white/10 transition-all"
+                        >
+                            Ver Soluciones
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Carrusel derecha -->
+                <div class="relative hidden lg:block" id="nos-carousel">
+                    <div
+                        class="relative overflow-hidden rounded-2xl shadow-2xl border border-white/10 aspect-[4/3]"
+                    >
+                        {
+                            slides.map((slide, i) => (
+                                <div
+                                    class="nos-slide absolute inset-0 transition-opacity duration-700"
+                                    class:list={[
+                                        i === 0 ? "opacity-100" : "opacity-0",
+                                    ]}
+                                    data-index={i}
+                                >
+                                    <Image
+                                        src={slide.src}
+                                        alt={slide.alt}
+                                        class="w-full h-full object-cover"
+                                        loading={i === 0 ? "eager" : "lazy"}
+                                    />
+                                    <div class="absolute inset-0 bg-gradient-to-t from-primary-900/60 to-transparent" />
+                                </div>
+                            ))
+                        }
+                    </div>
+
+                    <!-- Prev / Next -->
+                    <button
+                        id="nos-prev"
+                        aria-label="Anterior"
+                        class="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 bg-white/20 hover:bg-white/40 text-white rounded-full flex items-center justify-center shadow-md transition-all z-10"
+                    >
+                        <svg
+                            class="w-4 h-4"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            ><path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2.5"
+                                d="M15 19l-7-7 7-7"></path></svg
+                        >
+                    </button>
+                    <button
+                        id="nos-next"
+                        aria-label="Siguiente"
+                        class="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 bg-white/20 hover:bg-white/40 text-white rounded-full flex items-center justify-center shadow-md transition-all z-10"
+                    >
+                        <svg
+                            class="w-4 h-4"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            ><path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2.5"
+                                d="M9 5l7 7-7 7"></path></svg
+                        >
+                    </button>
+
+                    <!-- Dots -->
+                    <div
+                        class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 z-10"
+                    >
+                        {
+                            [0, 1, 2].map((i) => (
+                                <button
+                                    class="nos-dot w-2 h-2 rounded-full transition-all duration-300"
+                                    class:list={[
+                                        i === 0
+                                            ? "bg-white scale-125"
+                                            : "bg-white/40",
+                                    ]}
+                                    data-index={i}
+                                    aria-label={`Imagen ${i + 1}`}
+                                />
+                            ))
+                        }
+                    </div>
+                </div>
+            </div>
         </Container>
     </section>
+
+    <script>
+        (function () {
+            const slides = document.querySelectorAll<HTMLElement>(".nos-slide");
+            const dots = document.querySelectorAll<HTMLElement>(".nos-dot");
+            const prev = document.getElementById("nos-prev");
+            const next = document.getElementById("nos-next");
+            if (!slides.length) return;
+            let current = 0;
+            let timer: ReturnType<typeof setInterval>;
+
+            function goTo(index: number) {
+                slides[current].classList.replace("opacity-100", "opacity-0");
+                dots[current].classList.remove("bg-white", "scale-125");
+                dots[current].classList.add("bg-white/40");
+                current = (index + slides.length) % slides.length;
+                slides[current].classList.replace("opacity-0", "opacity-100");
+                dots[current].classList.remove("bg-white/40");
+                dots[current].classList.add("bg-white", "scale-125");
+            }
+
+            function start() {
+                timer = setInterval(() => goTo(current + 1), 4500);
+            }
+            function reset() {
+                clearInterval(timer);
+                start();
+            }
+
+            prev?.addEventListener("click", () => {
+                goTo(current - 1);
+                reset();
+            });
+            next?.addEventListener("click", () => {
+                goTo(current + 1);
+                reset();
+            });
+            dots.forEach((d) =>
+                d.addEventListener("click", () => {
+                    goTo(Number(d.dataset.index));
+                    reset();
+                }),
+            );
+            start();
+        })();
+    </script>
 
     <!-- ESTADÍSTICAS -->
     <section class="py-14 bg-primary-800 border-b border-primary-700">
@@ -256,7 +438,7 @@ const stats = [
             </h3>
             <p class="text-muted-foreground text-lg mb-10 max-w-2xl mx-auto">
                 Negocios de Nicaragua que ya operan con las soluciones de
-                Componentes S.A.:
+                Componentes S.A.
             </p>
             <div class="flex flex-wrap justify-center gap-4">
                 {
