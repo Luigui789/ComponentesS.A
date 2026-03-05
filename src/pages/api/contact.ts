@@ -61,7 +61,7 @@ export const POST: APIRoute = async ({ request }) => {
 
         // ✔ Email al negocio
         const { error: errorNegocio } = await resend.emails.send({
-            from: "Contacto <[EMAIL_ADDRESS]>",
+            from: fromAddress,
             to: [destinatario],
             replyTo: email,
             subject: `📩 Nuevo contacto de ${nombre} — Componentes S.A.`,
