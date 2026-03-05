@@ -6,6 +6,9 @@ import vercel from '@astrojs/vercel';
 // https://astro.build/config
 export default defineConfig({
   adapter: vercel(),
+  security: {
+    checkOrigin: false, // El formulario de contacto es nuestro propio dominio
+  },
   vite: {
     plugins: [tailwindcss()]
   }
