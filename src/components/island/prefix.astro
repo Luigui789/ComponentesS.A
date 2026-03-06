@@ -1,0 +1,203 @@
+---
+// Island: PhonePrefix
+// Uso: <PhoneField /> dentro de un <form>
+// Emite: input[name="prefijo"] + input[name="telefono"]
+---
+
+<div class="space-y-1.5">
+  <label class="font-medium text-sm text-foreground">Número de Teléfono</label>
+
+  <div class="flex gap-2">
+    <!-- ── Botón dropdown de prefijo ─────────────── -->
+    <div class="relative" id="prefix-wrapper">
+      <button
+        type="button"
+        id="prefix-btn"
+        aria-haspopup="listbox"
+        aria-expanded="false"
+        class="flex items-center gap-2 h-full px-3 py-3 bg-background border border-border rounded-lg text-sm font-medium text-foreground hover:bg-muted focus:outline-none focus:ring-2 focus:ring-primary-500 transition-all whitespace-nowrap min-w-[105px] justify-between"
+      >
+        <span id="prefix-display" class="flex items-center gap-1.5">
+          <span id="prefix-flag" class="text-lg">🇳🇮</span>
+          <span id="prefix-code" class="font-bold">+505</span>
+        </span>
+        <svg
+          class="w-3.5 h-3.5 text-muted-foreground flex-shrink-0 transition-transform duration-200"
+          id="prefix-chevron"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2.5"
+            d="M19 9l-7 7-7-7"></path>
+        </svg>
+      </button>
+
+      <!-- Dropdown -->
+      <div
+        id="prefix-dropdown"
+        role="listbox"
+        class="absolute left-0 top-[calc(100%+6px)] z-50 hidden w-72 bg-white border border-border rounded-xl shadow-xl overflow-hidden"
+      >
+        <!-- Search -->
+        <div class="p-2 border-b border-border">
+          <input
+            type="text"
+            id="prefix-search"
+            placeholder="Buscar país..."
+            autocomplete="off"
+            class="w-full px-3 py-2 text-sm bg-muted rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 border-none"
+          />
+        </div>
+        <!-- Lista -->
+        <ul id="prefix-list" class="max-h-60 overflow-y-auto py-1 text-sm">
+          <!-- Generada por JS -->
+        </ul>
+      </div>
+    </div>
+
+    <!-- ── Número ─────────────────────────────────── -->
+    <input
+      type="tel"
+      id="phone-number"
+      name="telefono"
+      placeholder="8888-8888"
+      autocomplete="tel-national"
+      class="flex-1 bg-background border border-border rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 transition-all"
+    />
+  </div>
+
+  <!-- Hidden: guarda el prefijo seleccionado -->
+  <input type="hidden" name="prefijo" id="prefix-hidden" value="+505" />
+
+  <p id="prefix-error" class="text-xs text-red-500 hidden">
+    Ingresa un número válido.
+  </p>
+</div>
+
+<script>
+  // ── Datos de países ────────────────────────────────────────────────────
+  const COUNTRIES: { flag: string; name: string; code: string }[] = [
+    { flag: "🇦🇷", name: "Argentina", code: "+54" },
+    { flag: "🇧🇴", name: "Bolivia", code: "+591" },
+    { flag: "🇧🇷", name: "Brasil", code: "+55" },
+    { flag: "🇨🇱", name: "Chile", code: "+56" },
+    { flag: "🇨🇴", name: "Colombia", code: "+57" },
+    { flag: "🇨🇷", name: "Costa Rica", code: "+506" },
+    { flag: "🇨🇺", name: "Cuba", code: "+53" },
+    { flag: "🇩🇴", name: "Rep. Dominicana", code: "+1809" },
+    { flag: "🇪🇨", name: "Ecuador", code: "+593" },
+    { flag: "🇸🇻", name: "El Salvador", code: "+503" },
+    { flag: "🇬🇹", name: "Guatemala", code: "+502" },
+    { flag: "🇭🇳", name: "Honduras", code: "+504" },
+    { flag: "🇲🇽", name: "México", code: "+52" },
+    { flag: "🇳🇮", name: "Nicaragua", code: "+505" },
+    { flag: "🇵🇦", name: "Panamá", code: "+507" },
+    { flag: "🇵🇾", name: "Paraguay", code: "+595" },
+    { flag: "🇵🇪", name: "Perú", code: "+51" },
+    { flag: "🇵🇷", name: "Puerto Rico", code: "+1787" },
+    { flag: "🇺🇾", name: "Uruguay", code: "+598" },
+    { flag: "🇻🇪", name: "Venezuela", code: "+58" },
+    { flag: "🇺🇸", name: "Estados Unidos", code: "+1" },
+    { flag: "🇨🇦", name: "Canadá", code: "+1" },
+    { flag: "🇪🇸", name: "España", code: "+34" },
+    { flag: "🇬🇧", name: "Reino Unido", code: "+44" },
+    { flag: "🇩🇪", name: "Alemania", code: "+49" },
+    { flag: "🇫🇷", name: "Francia", code: "+33" },
+    { flag: "🇮🇹", name: "Italia", code: "+39" },
+    { flag: "🇵🇹", name: "Portugal", code: "+351" },
+    { flag: "🇯🇵", name: "Japón", code: "+81" },
+    { flag: "🇨🇳", name: "China", code: "+86" },
+    { flag: "🇦🇺", name: "Australia", code: "+61" },
+  ];
+
+  // ── Referencias DOM ────────────────────────────────────────────────────
+  const btn = document.getElementById("prefix-btn")!;
+  const dropdown = document.getElementById("prefix-dropdown")!;
+  const list = document.getElementById("prefix-list")!;
+  const search = document.getElementById("prefix-search") as HTMLInputElement;
+  const flagEl = document.getElementById("prefix-flag")!;
+  const codeEl = document.getElementById("prefix-code")!;
+  const hidden = document.getElementById("prefix-hidden") as HTMLInputElement;
+  const chevron = document.getElementById("prefix-chevron")!;
+
+  // ── Render lista ───────────────────────────────────────────────────────
+  function renderList(filter = "") {
+    const q = filter.toLowerCase();
+    const filtered = COUNTRIES.filter(
+      (c) => c.name.toLowerCase().includes(q) || c.code.includes(q),
+    );
+    list.innerHTML = filtered.length
+      ? filtered
+          .map(
+            (c) => `
+                <li
+                    role="option"
+                    data-flag="${c.flag}"
+                    data-code="${c.code}"
+                    class="flex items-center gap-3 px-4 py-2.5 cursor-pointer hover:bg-primary-50 transition-colors select-none"
+                >
+                    <span class="text-xl">${c.flag}</span>
+                    <span class="flex-1 text-sm text-foreground">${c.name}</span>
+                    <span class="text-sm font-bold text-primary-600">${c.code}</span>
+                </li>`,
+          )
+          .join("")
+      : `<li class="px-4 py-3 text-sm text-muted-foreground text-center">Sin resultados</li>`;
+  }
+
+  // ── Abrir / cerrar ─────────────────────────────────────────────────────
+  function openDropdown() {
+    dropdown.classList.remove("hidden");
+    btn.setAttribute("aria-expanded", "true");
+    chevron.style.transform = "rotate(180deg)";
+    renderList();
+    search.value = "";
+    search.focus();
+  }
+
+  function closeDropdown() {
+    dropdown.classList.add("hidden");
+    btn.setAttribute("aria-expanded", "false");
+    chevron.style.transform = "";
+  }
+
+  btn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    dropdown.classList.contains("hidden") ? openDropdown() : closeDropdown();
+  });
+
+  document.addEventListener("click", (e) => {
+    if (
+      !document.getElementById("prefix-wrapper")!.contains(e.target as Node)
+    ) {
+      closeDropdown();
+    }
+  });
+
+  // ── Seleccionar país ───────────────────────────────────────────────────
+  list.addEventListener("click", (e) => {
+    const li = (e.target as HTMLElement).closest(
+      "li[data-code]",
+    ) as HTMLElement;
+    if (!li) return;
+    const flag = li.dataset.flag!;
+    const code = li.dataset.code!;
+    flagEl.textContent = flag;
+    codeEl.textContent = code;
+    hidden.value = code;
+    closeDropdown();
+  });
+
+  // ── Búsqueda ───────────────────────────────────────────────────────────
+  search.addEventListener("input", () => renderList(search.value));
+  search.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeDropdown();
+  });
+
+  // Inicializar
+  renderList();
+</script>

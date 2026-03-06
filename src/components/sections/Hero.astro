@@ -1,25 +1,16 @@
 ---
 import Button from "../ui/Button.astro";
 import Container from "../ui/Container.astro";
-import { Image } from "astro:assets";
+import Carousel from "../island/Carousel.astro";
 
 import img1 from "../../assets/hero/hero1.jpg";
 import img2 from "../../assets/hero/hero3.jpg";
 import img3 from "../../assets/hero/hero4.jpg";
 
-const slides = [
-    {
-        src: img1,
-        alt: "Restaurante con sistema Oracle Simphony",
-    },
-    {
-        src: img2,
-        alt: "Hotel moderno con tecnología de gestión",
-    },
-    {
-        src: img3,
-        alt: "Punto de venta en operación",
-    },
+const heroSlides = [
+    { src: img1.src, alt: "Restaurante con Oracle Simphony" },
+    { src: img2.src, alt: "Hotel moderno con sistema de gestión" },
+    { src: img3.src, alt: "Punto de venta en operación" },
 ];
 ---
 
@@ -103,111 +94,14 @@ const slides = [
                 </div>
             </div>
 
-            <!-- Carrusel derecha -->
-            <div class="relative w-full" id="hero-carousel">
-                <!-- Track de slides -->
-                <div
-                    class="relative overflow-hidden rounded-2xl shadow-2xl border border-border aspect-[4/3]"
-                >
-                    {
-                        slides.map((slides, i) => (
-                            <div
-                                class="hero-slide absolute inset-0 transition-opacity duration-700"
-                                class:list={[i === 0 ? "opacity-100" : "opacity-0"]}
-                                data-index={i}
-                            >
-                                <Image  
-                                    src={slides.src}
-                                    alt={slides.alt}
-                                    class="w-full h-full object-cover"
-                                    loading={i === 0 ? "eager" : "lazy"}
-                                />
-                                <!-- Overlay sutil -->
-                                <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
-                            </div>
-                        ))
-                    }
-                </div>
-
-                <!-- Controles: anterior / siguiente -->
-                <button
-                    id="hero-prev"
-                    aria-label="Imagen anterior"
-                    class="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 bg-white/80 hover:bg-white text-foreground rounded-full flex items-center justify-center shadow-md transition-all hover:scale-105 z-10"
-                >
-                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/>
-                    </svg>
-                </button>
-                <button
-                    id="hero-next"
-                    aria-label="Imagen siguiente"
-                    class="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 bg-white/80 hover:bg-white text-foreground rounded-full flex items-center justify-center shadow-md transition-all hover:scale-105 z-10"
-                >
-                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/>
-                    </svg>
-                </button>
-
-                <!-- Indicadores (dots) -->
-                <div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 z-10">
-                    {
-                        slides.map((_, i) => (
-                            <button
-                                class="hero-dot w-2 h-2 rounded-full transition-all duration-300"
-                                class:list={[i === 0 ? "bg-white scale-125" : "bg-white/50"]}
-                                data-index={i}
-                                aria-label={`Ir a imagen ${i + 1}`}
-                            />
-                        ))
-                    }
-                </div>
-            </div>
+            <!-- Carrusel derecha — Island -->
+            <Carousel
+                id="hero-carousel"
+                slides={heroSlides}
+                height="h-[440px]"
+                theme="light"
+                interval={4000}
+            />
         </div>
     </Container>
 </section>
-
-<script>
-    (function () {
-        const slides = document.querySelectorAll<HTMLElement>(".hero-slide");
-        const dots   = document.querySelectorAll<HTMLElement>(".hero-dot");
-        const prev   = document.getElementById("hero-prev");
-        const next   = document.getElementById("hero-next");
-        let current  = 0;
-        let timer: ReturnType<typeof setInterval>;
-
-        function goTo(index: number) {
-            slides[current].classList.remove("opacity-100");
-            slides[current].classList.add("opacity-0");
-            dots[current].classList.remove("bg-white", "scale-125");
-            dots[current].classList.add("bg-white/50");
-
-            current = (index + slides.length) % slides.length;
-
-            slides[current].classList.remove("opacity-0");
-            slides[current].classList.add("opacity-100");
-            dots[current].classList.remove("bg-white/50");
-            dots[current].classList.add("bg-white", "scale-125");
-        }
-
-        function startTimer() {
-            timer = setInterval(() => goTo(current + 1), 4000);
-        }
-
-        function resetTimer() {
-            clearInterval(timer);
-            startTimer();
-        }
-
-        prev?.addEventListener("click", () => { goTo(current - 1); resetTimer(); });
-        next?.addEventListener("click", () => { goTo(current + 1); resetTimer(); });
-        dots.forEach((dot) => {
-            dot.addEventListener("click", () => {
-                goTo(Number(dot.dataset.index));
-                resetTimer();
-            });
-        });
-
-        startTimer();
-    })();
-</script>

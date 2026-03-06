@@ -1,7 +1,7 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
 import Container from "../components/ui/Container.astro";
-import Button from "../components/ui/Button.astro";
+import PhoneField from "../components/island/prefix.astro";
 ---
 
 <MainLayout
@@ -125,6 +125,10 @@ import Button from "../components/ui/Button.astro";
                                 />
                             </div>
                         </div>
+
+                        <!-- Teléfono con prefijo (Island) -->
+                        <PhoneField />
+
                         <div class="space-y-2">
                             <label class="font-medium text-sm text-foreground"
                                 >Correo Electrónico</label

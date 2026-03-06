@@ -9,7 +9,7 @@ export const POST: APIRoute = async ({ request }) => {
         // ✔ Leer variables de entorno DENTRO del handler para que los errores sean capturables
         const apiKey = import.meta.env.RESEND_API_KEY;
         const destinatario = import.meta.env.EMAIL_ADDRESS;
-        const fromAddress = import.meta.env.FROM_ADDRESS;
+        const fromAddress = import.meta.env.FROM_ADDRESS ?? "[EMAIL_ADDRESS]";
 
         // ✔ Validar que las variables críticas estén configuradas en Vercel
         if (!apiKey || !destinatario) {
@@ -37,7 +37,10 @@ export const POST: APIRoute = async ({ request }) => {
         const nombre = formData.get("nombre")?.toString().trim() ?? "";
         const empresa = formData.get("empresa")?.toString().trim() ?? "—";
         const email = formData.get("email")?.toString().trim() ?? "";
+        const prefijo = formData.get("prefijo")?.toString().trim() ?? "";
+        const telefono = formData.get("telefono")?.toString().trim() ?? "";
         const mensaje = formData.get("mensaje")?.toString().trim() ?? "";
+        const telCompleto = (prefijo && telefono) ? `${prefijo} ${telefono}` : telefono || "—";
 
         // ✔ Validación backend robusta
         if (!nombre || nombre.length < 2) {
@@ -86,6 +89,10 @@ export const POST: APIRoute = async ({ request }) => {
                                 <td style="padding: 10px;"><a href="mailto:${email}" style="color: #1e40af;">${email}</a></td>
                             </tr>
                             <tr style="background: #f9fafb;">
+                                <td style="padding: 10px; font-weight: bold; color: #6b7280; font-size: 13px;">TELÉFONO</td>
+                                <td style="padding: 10px;"><a href="tel:${telCompleto}" style="color: #1e40af;">${telCompleto}</a></td>
+                            </tr>
+                            <tr>
                                 <td style="padding: 10px; font-weight: bold; color: #6b7280; font-size: 13px; vertical-align: top;">MENSAJE</td>
                                 <td style="padding: 10px; white-space: pre-line; line-height: 1.6;">${mensaje}</td>
                             </tr>

@@ -2,11 +2,17 @@
 import MainLayout from "../layouts/MainLayout.astro";
 import Container from "../components/ui/Container.astro";
 import CTA from "../components/sections/CTA.astro";
-import { Image } from "astro:assets";
+import Carousel from "../components/island/Carousel.astro";
 
 import nos1 from "../assets/nosotros/chemita.jpg";
 import nos2 from "../assets/nosotros/DonJose.jpg";
 import nos3 from "../assets/nosotros/mostro.jpg";
+
+const nosSlides = [
+    { src: nos2.src, alt: "Equipo de trabajo de Componentes S.A." },
+    { src: nos1.src, alt: "Instalación y puesta en marcha de sistemas" },
+    { src: nos3.src, alt: "Soporte técnico a clientes" },
+];
 
 const valores = [
     {
@@ -32,21 +38,6 @@ const valores = [
         color: "bg-orange-100 text-orange-700",
         title: "Compromiso",
         desc: "Soporte técnico dedicado antes, durante y después de cada implementación.",
-    },
-];
-
-const slides = [
-    {
-        src: nos2,
-        alt: "Equipo Componentes S.A.",
-    },
-    {
-        src: nos1,
-        alt: "Instalación de sistemas",
-    },
-    {
-        src: nos3,
-        alt: "Clientes de Componentes S.A.",
     },
 ];
 
@@ -154,137 +145,19 @@ const stats = [
                     </div>
                 </div>
 
-                <!-- Carrusel derecha -->
-                <div class="relative hidden lg:block" id="nos-carousel">
-                    <div
-                        class="relative overflow-hidden rounded-2xl shadow-2xl border border-white/10 aspect-[4/3]"
-                    >
-                        {
-                            slides.map((slide, i) => (
-                                <div
-                                    class="nos-slide absolute inset-0 transition-opacity duration-700"
-                                    class:list={[
-                                        i === 0 ? "opacity-100" : "opacity-0",
-                                    ]}
-                                    data-index={i}
-                                >
-                                    <Image
-                                        src={slide.src}
-                                        alt={slide.alt}
-                                        class="w-full h-full object-cover"
-                                        loading={i === 0 ? "eager" : "lazy"}
-                                    />
-                                    <div class="absolute inset-0 bg-gradient-to-t from-primary-900/60 to-transparent" />
-                                </div>
-                            ))
-                        }
-                    </div>
-
-                    <!-- Prev / Next -->
-                    <button
-                        id="nos-prev"
-                        aria-label="Anterior"
-                        class="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 bg-white/20 hover:bg-white/40 text-white rounded-full flex items-center justify-center shadow-md transition-all z-10"
-                    >
-                        <svg
-                            class="w-4 h-4"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            ><path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2.5"
-                                d="M15 19l-7-7 7-7"></path></svg
-                        >
-                    </button>
-                    <button
-                        id="nos-next"
-                        aria-label="Siguiente"
-                        class="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 bg-white/20 hover:bg-white/40 text-white rounded-full flex items-center justify-center shadow-md transition-all z-10"
-                    >
-                        <svg
-                            class="w-4 h-4"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            ><path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2.5"
-                                d="M9 5l7 7-7 7"></path></svg
-                        >
-                    </button>
-
-                    <!-- Dots -->
-                    <div
-                        class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 z-10"
-                    >
-                        {
-                            [0, 1, 2].map((i) => (
-                                <button
-                                    class="nos-dot w-2 h-2 rounded-full transition-all duration-300"
-                                    class:list={[
-                                        i === 0
-                                            ? "bg-white scale-125"
-                                            : "bg-white/40",
-                                    ]}
-                                    data-index={i}
-                                    aria-label={`Imagen ${i + 1}`}
-                                />
-                            ))
-                        }
-                    </div>
+                <!-- Carrusel derecha — Island -->
+                <div class="hidden lg:block">
+                    <Carousel
+                        id="nos-carousel"
+                        slides={nosSlides}
+                        height="h-[420px]"
+                        theme="dark"
+                        interval={4500}
+                    />
                 </div>
             </div>
         </Container>
     </section>
-
-    <script>
-        (function () {
-            const slides = document.querySelectorAll<HTMLElement>(".nos-slide");
-            const dots = document.querySelectorAll<HTMLElement>(".nos-dot");
-            const prev = document.getElementById("nos-prev");
-            const next = document.getElementById("nos-next");
-            if (!slides.length) return;
-            let current = 0;
-            let timer: ReturnType<typeof setInterval>;
-
-            function goTo(index: number) {
-                slides[current].classList.replace("opacity-100", "opacity-0");
-                dots[current].classList.remove("bg-white", "scale-125");
-                dots[current].classList.add("bg-white/40");
-                current = (index + slides.length) % slides.length;
-                slides[current].classList.replace("opacity-0", "opacity-100");
-                dots[current].classList.remove("bg-white/40");
-                dots[current].classList.add("bg-white", "scale-125");
-            }
-
-            function start() {
-                timer = setInterval(() => goTo(current + 1), 4500);
-            }
-            function reset() {
-                clearInterval(timer);
-                start();
-            }
-
-            prev?.addEventListener("click", () => {
-                goTo(current - 1);
-                reset();
-            });
-            next?.addEventListener("click", () => {
-                goTo(current + 1);
-                reset();
-            });
-            dots.forEach((d) =>
-                d.addEventListener("click", () => {
-                    goTo(Number(d.dataset.index));
-                    reset();
-                }),
-            );
-            start();
-        })();
-    </script>
 
     <!-- ESTADÍSTICAS -->
     <section class="py-14 bg-primary-800 border-b border-primary-700">
