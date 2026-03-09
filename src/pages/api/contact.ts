@@ -31,7 +31,7 @@ export const POST: APIRoute = async ({ request }) => {
 
         if (!apiKey || !destinatario || !fromAddress) {
             console.error("Faltan variables de entorno");
-            return Response.redirect("/contacto?error=1", 302);
+            return new Response(null, { status: 302, headers: { Location: "/contacto?error=1" } });
         }
 
         const resend = new Resend(apiKey);
@@ -41,7 +41,7 @@ export const POST: APIRoute = async ({ request }) => {
         // honeypot
         const honeypot = formData.get("website")?.toString();
         if (honeypot) {
-            return Response.redirect("/contacto?enviado=1", 302);
+            return new Response(null, { status: 302, headers: { Location: "/contacto?enviado=1" } });
         }
 
         // leer datos
@@ -57,22 +57,22 @@ export const POST: APIRoute = async ({ request }) => {
 
         // validación
         if (!nombre || nombre.length < 2) {
-            return Response.redirect("/contacto?error=nombre", 302);
+            return new Response(null, { status: 302, headers: { Location: "/contacto?error=nombre" } });
         }
 
         if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-            return Response.redirect("/contacto?error=email", 302);
+            return new Response(null, { status: 302, headers: { Location: "/contacto?error=email" } });
         }
 
         if (!mensaje || mensaje.length < 5) {
-            return Response.redirect("/contacto?error=mensaje", 302);
+            return new Response(null, { status: 302, headers: { Location: "/contacto?error=mensaje" } });
         }
 
         // filtro anti SEO spam
         const lowerMsg = mensaje.toLowerCase();
         if (spamWords.some(word => lowerMsg.includes(word))) {
             console.warn("Spam detectado:", email);
-            return Response.redirect("/contacto?enviado=1", 302);
+            return new Response(null, { status: 302, headers: { Location: "/contacto?enviado=1" } });
         }
 
         console.log("Nuevo contacto:", {
@@ -137,7 +137,7 @@ export const POST: APIRoute = async ({ request }) => {
 
         if (error) {
             console.error("Error enviando:", error);
-            return Response.redirect(new URL("/contacto?error=envio", request.url).href, 302);
+            return new Response(null, { status: 302, headers: { Location: "/contacto?error=envio" } });
         }
 
         // ── DISEÑO PREMIUM: Confirmación al cliente (Concierge Style) ──
@@ -185,10 +185,10 @@ export const POST: APIRoute = async ({ request }) => {
             `
         }).catch(() => { });
 
-        return Response.redirect(new URL("/contacto?enviado=1", request.url).href, 302);
+        return new Response(null, { status: 302, headers: { Location: "/contacto?enviado=1" } });
 
     } catch (error) {
         console.error("Error inesperado:", error);
-        return Response.redirect("/contacto?error=1", 302);
+        return new Response(null, { status: 302, headers: { Location: "/contacto?error=1" } });
     }
 };
