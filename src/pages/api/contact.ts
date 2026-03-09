@@ -1,158 +1,194 @@
 import type { APIRoute } from "astro";
 import { Resend } from "resend";
 
-// ✔ Ruta dinámica/serverless — NO prerenderizada
 export const prerender = false;
+
+// sanitizar texto
+function escapeHtml(str: string) {
+    return str
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
+
+// palabras típicas de spam SEO
+const spamWords = [
+    "seo",
+    "backlinks",
+    "google ranking",
+    "increase traffic",
+    "domain authority"
+];
 
 export const POST: APIRoute = async ({ request }) => {
     try {
-        // ✔ Leer variables de entorno DENTRO del handler para que los errores sean capturables
+
         const apiKey = import.meta.env.RESEND_API_KEY;
         const destinatario = import.meta.env.EMAIL_ADDRESS;
-        const fromAddress = import.meta.env.FROM_ADDRESS ?? "[EMAIL_ADDRESS]";
+        const fromAddress = import.meta.env.FROM_ADDRESS;
 
-        // ✔ Validar que las variables críticas estén configuradas en Vercel
-        if (!apiKey || !destinatario) {
-            console.error("Faltan variables de entorno: RESEND_API_KEY o EMAIL_ADDRESS");
-            return new Response(null, {
-                status: 302,
-                headers: { Location: "/contacto?error=1&msg=Error%20de%20configuración" },
-            });
+        if (!apiKey || !destinatario || !fromAddress) {
+            console.error("Faltan variables de entorno");
+            return Response.redirect("/contacto?error=1", 302);
         }
 
         const resend = new Resend(apiKey);
 
         const formData = await request.formData();
 
-        // ✔ Honeypot anti-spam
-        const honeypot = formData.get("website")?.toString() ?? "";
+        // honeypot
+        const honeypot = formData.get("website")?.toString();
         if (honeypot) {
-            return new Response(null, {
-                status: 302,
-                headers: { Location: "/contacto?enviado=1" },
-            });
+            return Response.redirect("/contacto?enviado=1", 302);
         }
 
-        // ✔ Leer campos
-        const nombre = formData.get("nombre")?.toString().trim() ?? "";
-        const empresa = formData.get("empresa")?.toString().trim() ?? "—";
-        const email = formData.get("email")?.toString().trim() ?? "";
+        // leer datos
+        const nombre = escapeHtml(formData.get("nombre")?.toString().trim() ?? "");
+        const empresa = escapeHtml(formData.get("empresa")?.toString().trim() ?? "—");
+        const email = escapeHtml(formData.get("email")?.toString().trim() ?? "");
         const prefijo = formData.get("prefijo")?.toString().trim() ?? "";
         const telefono = formData.get("telefono")?.toString().trim() ?? "";
-        const mensaje = formData.get("mensaje")?.toString().trim() ?? "";
-        const telCompleto = (prefijo && telefono) ? `${prefijo} ${telefono}` : telefono || "—";
+        const mensaje = escapeHtml(formData.get("mensaje")?.toString().trim() ?? "");
 
-        // ✔ Validación backend robusta
+        const telCompleto =
+            prefijo && telefono ? `${prefijo} ${telefono}` : telefono || "—";
+
+        // validación
         if (!nombre || nombre.length < 2) {
-            return new Response(null, {
-                status: 302,
-                headers: { Location: "/contacto?error=1&msg=Escribe%20tu%20nombre" },
-            });
-        }
-        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-            return new Response(null, {
-                status: 302,
-                headers: { Location: "/contacto?error=1&msg=Email%20inválido" },
-            });
-        }
-        if (!mensaje || mensaje.length < 5) {
-            return new Response(null, {
-                status: 302,
-                headers: { Location: "/contacto?error=1&msg=Escribe%20tu%20mensaje" },
-            });
+            return Response.redirect("/contacto?error=nombre", 302);
         }
 
-        // ✔ Email al negocio
-        const { error: errorNegocio } = await resend.emails.send({
-            from: fromAddress,
-            to: [destinatario],
-            replyTo: email,
-            subject: `📩 Nuevo contacto de ${nombre} — Componentes S.A.`,
-            html: `
-                <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-                    <div style="background: #1e40af; padding: 24px; border-radius: 8px 8px 0 0;">
-                        <h1 style="color: white; margin: 0; font-size: 20px;">📩 Nuevo mensaje desde la web</h1>
-                        <p style="color: rgba(255,255,255,0.8); margin: 4px 0 0; font-size: 13px;">Componentes S.A. — Formulario de contacto</p>
-                    </div>
-                    <div style="border: 1px solid #e5e7eb; border-top: none; padding: 24px; border-radius: 0 0 8px 8px;">
-                        <table style="width: 100%; border-collapse: collapse;">
-                            <tr>
-                                <td style="padding: 10px; font-weight: bold; width: 100px; color: #6b7280; font-size: 13px;">NOMBRE</td>
-                                <td style="padding: 10px; font-size: 15px;">${nombre}</td>
-                            </tr>
-                            <tr style="background: #f9fafb;">
-                                <td style="padding: 10px; font-weight: bold; color: #6b7280; font-size: 13px;">EMPRESA</td>
-                                <td style="padding: 10px; font-size: 15px;">${empresa}</td>
-                            </tr>
-                            <tr>
-                                <td style="padding: 10px; font-weight: bold; color: #6b7280; font-size: 13px;">EMAIL</td>
-                                <td style="padding: 10px;"><a href="mailto:${email}" style="color: #1e40af;">${email}</a></td>
-                            </tr>
-                            <tr style="background: #f9fafb;">
-                                <td style="padding: 10px; font-weight: bold; color: #6b7280; font-size: 13px;">TELÉFONO</td>
-                                <td style="padding: 10px;"><a href="tel:${telCompleto}" style="color: #1e40af;">${telCompleto}</a></td>
-                            </tr>
-                            <tr>
-                                <td style="padding: 10px; font-weight: bold; color: #6b7280; font-size: 13px; vertical-align: top;">MENSAJE</td>
-                                <td style="padding: 10px; white-space: pre-line; line-height: 1.6;">${mensaje}</td>
-                            </tr>
-                        </table>
-                        <div style="margin-top: 20px; padding: 12px; background: #eff6ff; border-left: 4px solid #1e40af; border-radius: 4px; font-size: 12px; color: #1e40af;">
-                            💡 Responde directamente a este correo para contactar a ${nombre}.
-                        </div>
-                    </div>
-                    <p style="text-align: center; font-size: 11px; color: #9ca3af; margin-top: 16px;">
-                        Enviado desde componentessa.com — ${new Date().toLocaleString("es-NI", { timeZone: "America/Managua" })}
-                    </p>
-                </div>`,
+        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            return Response.redirect("/contacto?error=email", 302);
+        }
+
+        if (!mensaje || mensaje.length < 5) {
+            return Response.redirect("/contacto?error=mensaje", 302);
+        }
+
+        // filtro anti SEO spam
+        const lowerMsg = mensaje.toLowerCase();
+        if (spamWords.some(word => lowerMsg.includes(word))) {
+            console.warn("Spam detectado:", email);
+            return Response.redirect("/contacto?enviado=1", 302);
+        }
+
+        console.log("Nuevo contacto:", {
+            nombre,
+            email,
+            empresa,
+            telefono: telCompleto
         });
 
-        if (errorNegocio) {
-            console.error("Error enviando al negocio:", errorNegocio);
-            return new Response(null, {
-                status: 302,
-                headers: { Location: "/contacto?error=1&msg=Error%20al%20enviar" },
-            });
+        // ── DISEÑO NEXT-GEN: Email al negocio (CRM Report Style) ──
+        const { error } = await resend.emails.send({
+            from: fromAddress,
+            to: [destinatario],
+            replyTo: `${nombre} <${email}>`,
+            subject: `Lead: ${nombre} — ${empresa}`,
+            html: `
+            <div style="background-color:#f1f5f9; padding: 50px 20px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+                <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 24px; overflow: hidden; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);">
+                    <div style="background-color: #1e40af; padding: 40px; text-align: left;">
+                        <h1 style="color: #ffffff; margin: 0; font-size: 24px; font-weight: 800; letter-spacing: -0.025em;">Notificación</h1>
+                        <p style="color: #bfdbfe; margin: 8px 0 0; font-size: 14px; font-weight: 500;">Entrada desde Formulario Web</p>
+                    </div>
+                    
+                    <div style="padding: 40px;">
+                        <div style="display: grid; gap: 20px;">
+                            <div style="border-bottom: 1px solid #f1f5f9; padding-bottom: 15px; margin-bottom: 15px;">
+                                <span style="font-size: 12px; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em;">Nombre Completo</span>
+                                <p style="font-size: 16px; font-weight: 600; color: #1e293b; margin: 4px 0 0;">${nombre}</p>
+                            </div>
+                            
+                            <div style="border-bottom: 1px solid #f1f5f9; padding-bottom: 15px; margin-bottom: 15px;">
+                                <span style="font-size: 12px; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em;">Empresa</span>
+                                <p style="font-size: 16px; font-weight: 600; color: #1e293b; margin: 4px 0 0;">${empresa}</p>
+                            </div>
+
+                            <div style="border-bottom: 1px solid #f1f5f9; padding-bottom: 15px; margin-bottom: 15px;">
+                                <span style="font-size: 12px; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em;">Datos de Contacto</span>
+                                <p style="font-size: 15px; font-weight: 500; color: #1e293b; margin: 4px 0 0;">
+                                    <a href="mailto:${email}" style="color: #1e40af; text-decoration: none;">${email}</a><br>
+                                    <a href="tel:${telCompleto}" style="color: #1e40af; text-decoration: none;">${telCompleto}</a>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 30px; background-color: #f8fafc; border-radius: 16px; padding: 30px; border: 1px dashed #cbd5e1;">
+                            <span style="font-size: 12px; font-weight: 700; color: #1e40af; text-transform: uppercase; letter-spacing: 0.05em;">Requerimiento / Mensaje</span>
+                            <p style="font-size: 15px; line-height: 1.6; color: #334155; margin: 12px 0 0; white-space: pre-line;">${mensaje}</p>
+                        </div>
+
+                        <div style="margin-top: 40px; text-align: center;">
+                            <a href="mailto:${email}" style="background-color: #1e40af; color: #ffffff; padding: 16px 32px; border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 15px; display: inline-block; transition: background-color 0.2s;">Abrir Respuesta Rápida</a>
+                        </div>
+                    </div>
+                    
+                    <div style="background-color: #f8fafc; padding: 25px; text-align: center; border-top: 1px solid #f1f5f9;">
+                        <p style="margin: 0; font-size: 12px; font-weight: 500; color: #94a3b8;">Timestamp: ${new Date().toLocaleString("es-NI", { timeZone: "America/Managua" })}</p>
+                    </div>
+                </div>
+            </div>
+            `
+        });
+
+        if (error) {
+            console.error("Error enviando:", error);
+            return Response.redirect(new URL("/contacto?error=envio", request.url).href, 302);
         }
 
-        // ✔ Confirmación automática al cliente (no bloquea si falla)
+        // ── DISEÑO PREMIUM: Confirmación al cliente (Concierge Style) ──
         resend.emails.send({
             from: fromAddress,
             to: [email],
-            subject: `✅ Recibimos tu mensaje — Componentes S.A.`,
+            subject: "Recibimos tu solicitud — Componentes S.A.",
             html: `
-                <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-                    <div style="background: #1e40af; padding: 24px; border-radius: 8px 8px 0 0; text-align: center;">
-                        <h1 style="color: white; margin: 0; font-size: 22px;">¡Gracias, ${nombre}!</h1>
-                        <p style="color: rgba(255,255,255,0.9); margin: 8px 0 0;">Recibimos tu mensaje correctamente.</p>
-                    </div>
-                    <div style="border: 1px solid #e5e7eb; border-top: none; padding: 32px; border-radius: 0 0 8px 8px; text-align: center;">
-                        <p style="color: #374151; font-size: 16px; line-height: 1.7; margin: 0 0 20px;">
-                            Nuestro equipo revisará tu consulta y te contactará en las próximas <strong>24 horas hábiles</strong>.
-                        </p>
-                        <a href="tel:+50522707918" style="display: inline-block; background: #1e40af; color: white; padding: 12px 28px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 15px;">
-                            📞 +505 2270-7918
-                        </a>
-                        <div style="margin-top: 32px; padding-top: 24px; border-top: 1px solid #e5e7eb;">
-                            <p style="color: #9ca3af; font-size: 12px; margin: 0;">
-                                — El equipo de Componentes S.A.<br>
-                                Especialistas en Oracle Simphony, Safiro ERP y Hardware POS
-                            </p>
+            <div style="background-color:#ffffff; padding: 60px 20px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #1e293b;">
+                <div style="max-width: 550px; margin: 0 auto;">
+                    <div style="margin-bottom: 40px;">
+                        <div style="background-color: #eff6ff; width: 64px; height: 64px; border-radius: 20px; display: flex; align-items: center; justify-content: center; margin: 0 auto;">
+                            <span style="font-size: 32px;">📩</span>
                         </div>
                     </div>
-                </div>`,
-        }).catch((e) => console.warn("Confirmación no enviada:", e));
 
-        return new Response(null, {
-            status: 302,
-            headers: { Location: "/contacto?enviado=1" },
-        });
+                    <h1 style="font-size: 32px; font-weight: 900; color: #1e293b; margin: 0 0 20px; letter-spacing: -0.04em; text-align: center;">¡Hola ${nombre}!</h1>
+                    <p style="font-size: 18px; line-height: 1.6; color: #475569; text-align: center; margin: 0 0 40px;">Gracias por confiar en nosotros. Hemos recibido tu mensaje y ya lo estamos revisando.</p>
+                    
+                    <div style="border: 1px solid #f1f5f9; border-radius: 24px; padding: 40px; margin-bottom: 40px;">
+                        <h2 style="font-size: 14px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: #1e40af; margin: 0 0 25px;">¿Qué sigue ahora?</h2>
+                        
+                        <div style="margin-bottom: 25px; display: flex;">
+                            <p style="margin: 0; font-size: 15px; line-height: 1.5;"><strong style="color: #1e293b; display: block;">1. Análisis de Requerimientos</strong> Nuestro equipo técnico evalúa tu solicitud.</p>
+                        </div>
+                        <div style="margin-bottom: 25px; display: flex;">
+                            <p style="margin: 0; font-size: 15px; line-height: 1.5;"><strong style="color: #1e293b; display: block;">2. Contacto Directo</strong> Un consultor experto te contactará en menos de 24h.</p>
+                        </div>
+                        <div style="display: flex;">
+                            <p style="margin: 0; font-size: 15px; line-height: 1.5;"><strong style="color: #1e293b; display: block;">3. Propuesta a Medida</strong> Crearemos una solución específica para tu negocio.</p>
+                        </div>
+                    </div>
+
+                    <div style="background-color: #1e293b; border-radius: 24px; padding: 35px; text-align: center; color: #ffffff;">
+                        <p style="margin: 0 0 10px; font-size: 14px; font-weight: 500; opacity: 0.8;">Para atención inmediata:</p>
+                        <a href="tel:+50578266955" style="font-size: 20px; font-weight: 800; color: #ffffff; text-decoration: none; display: block;">+505 7826-6955</a>
+                    </div>
+
+                    <div style="margin-top: 50px; text-align: center; border-top: 1px solid #f1f5f9; padding-top: 30px;">
+                        <p style="margin: 0; color: #94a3b8; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px;">Componentes S.A.</p>
+                        <p style="margin: 4px 0 0; color: #cbd5e1; font-size: 12px;">Soluciones tecnológicas de alto nivel para tu empresa.</p>
+                    </div>
+                </div>
+            </div>
+            `
+        }).catch(() => { });
+
+        return Response.redirect(new URL("/contacto?enviado=1", request.url).href, 302);
 
     } catch (error) {
         console.error("Error inesperado:", error);
-        return new Response(null, {
-            status: 302,
-            headers: { Location: "/contacto?error=1" },
-        });
+        return Response.redirect("/contacto?error=1", 302);
     }
 };
